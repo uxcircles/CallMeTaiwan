@@ -182,7 +182,7 @@ function dlCard() {
   }
   ctx.fillStyle = 'rgba(193,18,31,0.6)';
   ctx.font = Math.round(W * 0.016) + 'px monospace';
-  const ht = 'callmetaiwan.com';
+  const ht = 'callmetaiwan.org';
   const htw = ctx.measureText(ht).width;
   ctx.fillText(ht, W - p - htw, H - p - Math.round(W * 0.027));
   const lnk = document.createElement('a');
