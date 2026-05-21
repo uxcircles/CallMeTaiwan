@@ -1,0 +1,1072 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What's in a Name? — Call Me Taiwan</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,700;1,400;1,700&family=Space+Mono:wght@400;700&family=Mulish:wght@300;400;500;600&display=swap');
+
+html,:root{
+  --bg:#07070f;--surface:#111126;--surface2:#191938;
+  --border:#242448;--border2:#303060;
+  --red:#c1121f;--red2:#e63946;
+  --blue:#3a86ff;--gold:#e9c46a;--green:#2dc653;
+  --muted:#8888aa;--muted2:#c0c0e0;--text:#eae6f8;
+  --tw:#3a86ff;--cn:#e63946;--nh:58px;
+}
+body{--bg:#07070f;--surface:#111126;--surface2:#191938;
+  --border:#242448;--border2:#303060;--red:#c1121f;--red2:#e63946;
+  --blue:#3a86ff;--gold:#e9c46a;--muted:#8888aa;--muted2:#c0c0e0;
+  --text:#eae6f8;--tw:#3a86ff;--cn:#e63946;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:#07070f;background:var(--bg);color:#eae6f8;color:var(--text);font-family:'Mulish',sans-serif;font-weight:300;overflow-x:hidden;}
+body::after{content:'';position:fixed;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.027'/%3E%3C/svg%3E");
+  pointer-events:none;z-index:9999;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:300;height:58px;
+  display:flex;align-items:center;justify-content:space-between;padding:0 40px;
+  background:rgba(7,7,15,0.94);backdrop-filter:blur(20px);border-bottom:1px solid #242448;}
+.nav-logo{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:3px;color:#e63946;
+  text-transform:uppercase;cursor:pointer;border:none;background:none;}
+.nav-menu{display:flex;gap:2px;list-style:none;}
+.nav-menu a{display:block;padding:8px 13px;font-family:'Space Mono',monospace;font-size:10px;
+  letter-spacing:1.5px;color:#8888aa;text-decoration:none;text-transform:uppercase;
+  border:1px solid transparent;transition:all 0.2s;white-space:nowrap;}
+.nav-menu a:hover{color:#eae6f8;border-color:#303060;}
+.nav-menu a.active{color:#e63946;border-color:#c1121f;}
+.hbg{display:none;background:none;border:none;color:#8888aa;font-size:20px;cursor:pointer;}
+
+/* PAGES */
+.page{display:none;min-height:100vh;padding-top:58px;background:#07070f;background:var(--bg);}
+.page.active{display:block;}
+
+/* SHARED */
+.inner{max-width:960px;margin:0 auto;padding:0 40px;}
+.ph{padding:60px 40px 40px;max-width:960px;margin:0 auto;}
+.eyebrow{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:4px;color:#8888aa;
+  text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:12px;}
+.eyebrow::before{content:'';width:20px;height:1px;background:#8888aa;}
+.stitle{font-family:'Cormorant Garamond',serif;font-size:clamp(32px,5vw,58px);font-weight:700;
+  line-height:1.07;margin-bottom:44px;}
+.stitle em{font-style:italic;color:#e9c46a;}
+hr.div{border:none;border-top:1px solid #242448;max-width:960px;margin:0 auto;}
+@keyframes up{from{opacity:0;transform:translateY(22px);}to{opacity:1;transform:translateY(0);}}
+.fu{opacity:0;transform:translateY(18px);transition:opacity 0.55s ease,transform 0.55s ease;}
+.fu.vis{opacity:1;transform:translateY(0);}
+
+/* ====== HOME ====== */
+.hero{min-height:calc(100vh - 58px);display:flex;flex-direction:column;
+  justify-content:center;padding:60px 40px 80px;max-width:960px;margin:0 auto;position:relative;}
+
+.h-h1{font-family:'Cormorant Garamond',serif;font-size:clamp(50px,9vw,108px);line-height:0.96;
+  font-weight:700;margin-bottom:30px;opacity:0;animation:up 0.7s ease 0.2s forwards;}
+.h-h1 em{font-style:italic;color:#e63946;}
+.strike{position:relative;color:#8888aa;}
+.strike::after{content:'';position:absolute;left:0;right:0;top:50%;height:4px;
+  background:#c1121f;transform:translateY(-50%);}
+.h-sub{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(18px,2.5vw,26px);
+  font-style:italic;
+  color:#c0c0e0;
+  line-height:1.4;
+  margin-bottom:32px;
+  opacity:0;
+  animation:up 0.7s ease 0.3s forwards;
+}
+.h-body{font-size:17px;line-height:1.8;color:#c0c0e0;max-width:560px;margin-bottom:44px;
+  opacity:0;animation:up 0.7s ease 0.35s forwards;}
+.h-body strong{color:#eae6f8;font-weight:500;}
+.h-cards{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;
+  opacity:0;animation:up 0.7s ease 0.5s forwards;}
+.hcard{background:#111126;border:1px solid #303060;padding:18px 14px;
+  cursor:pointer;transition:border-color 0.2s,transform 0.2s,background 0.2s;position:relative;overflow:hidden;}
+.hcard::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;
+  background:#c1121f;transform:scaleY(0);transform-origin:bottom;transition:transform 0.2s;}
+.hcard:hover{background:#191938;transform:translateY(-3px);}
+.hcard:hover::before{transform:scaleY(1);}
+.hc-ico{font-size:22px;margin-bottom:9px;display:block;}
+.hc-t{font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:700;margin-bottom:5px;}
+.hc-d{font-size:11px;color:#8888aa;line-height:1.5;}
+
+
+/* ====== NAMES ====== */
+.imposed-card{background:linear-gradient(135deg,#0d1b3e,#0a1628);border:1px solid #3a86ff;
+  padding:22px 26px;display:flex;align-items:center;gap:18px;margin-bottom:44px;
+  position:relative;overflow:hidden;}
+.imposed-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;background:#3a86ff;}
+.rtabs-label{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:2px;
+  color:#8888aa;text-transform:uppercase;margin-bottom:10px;}
+.rtabs{display:flex;gap:4px;margin-bottom:26px;flex-wrap:wrap;}
+.rtab{padding:7px 14px;background:transparent;border:1px solid #303060;color:#8888aa;
+  font-family:'Space Mono',monospace;font-size:10px;letter-spacing:1px;text-transform:uppercase;
+  cursor:pointer;transition:all 0.2s;}
+.rtab:hover{border-color:#c0c0e0;color:#eae6f8;}
+.rtab.active{background:#c1121f;border-color:#c1121f;color:#fff;}
+.cgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:13px;}
+.ccard{background:#111126;border:1px solid #242448;padding:20px;cursor:pointer;
+  transition:border-color 0.2s,transform 0.2s,background 0.2s;position:relative;overflow:hidden;}
+.ccard::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;
+  background:#c1121f;transform:scaleY(0);transform-origin:bottom;transition:transform 0.2s;}
+.ccard:hover{border-color:#303060;background:#191938;transform:translateY(-3px);}
+.ccard:hover::before{transform:scaleY(1);}
+.cf{font-size:28px;margin-bottom:9px;display:block;}
+.ca{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:700;font-style:italic;
+  color:#e63946;margin-bottom:3px;line-height:1.2;}
+.cr{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:1px;color:#8888aa;margin-bottom:11px;}
+.cr strong{color:#c0c0e0;}
+.cdiv{height:1px;background:#242448;margin:11px 0;}
+.cc{font-size:12px;line-height:1.6;color:#8888aa;}
+.cc .pw{color:#e9c46a;font-weight:500;}
+.cfoot{margin-top:11px;display:flex;justify-content:space-between;align-items:center;}
+.ctag{font-family:'Space Mono',monospace;font-size:8px;letter-spacing:1px;padding:3px 7px;
+  border:1px solid #303060;color:#8888aa;text-transform:uppercase;}
+.cyr{font-family:'Space Mono',monospace;font-size:8px;color:#8888aa;}
+
+/* ====== THREE NAMES ====== */
+#names3 .inner{padding-bottom:80px;}
+
+.names3-intro{font-size:17px;line-height:1.8;color:#c0c0e0;max-width:600px;margin-bottom:56px;}
+.names3-intro strong{color:#eae6f8;font-weight:500;}
+
+.three-cards,.four-cards{display:grid;grid-template-columns:1fr;gap:16px;margin-bottom:60px;}
+@media(min-width:560px){.four-cards{grid-template-columns:repeat(2,1fr);}}
+@media(min-width:960px){.four-cards{grid-template-columns:repeat(4,1fr);}}
+.ncard{padding:24px 20px;border:1px solid #303060;position:relative;overflow:hidden;}
+@media(max-width:560px){.ncard{padding:20px 16px;}}
+.ncard::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;}
+.ncard.passport::before{background:#8888aa;}
+.ncard.olympic::before{background:#e63946;}
+.ncard.heart::before{background:#3a86ff;}
+.ncard.danger::before{background:#7b0d0d;}
+.ncard.danger .ncard-eyebrow{color:#ff4444;}
+.ncard.danger .ncard-name{color:#ff4444;}
+.ncard.danger{background:linear-gradient(135deg,#1a0505,#111126);border-color:#7b0d0d;}
+.ncard-eyebrow{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:3px;
+  text-transform:uppercase;margin-bottom:10px;}
+.ncard.passport .ncard-eyebrow{color:#8888aa;}
+.ncard.olympic .ncard-eyebrow{color:#e63946;}
+.ncard.heart .ncard-eyebrow{color:#3a86ff;}
+.ncard-name{font-family:'Cormorant Garamond',serif;font-size:clamp(22px,4vw,28px);font-weight:700;
+  line-height:1.1;margin-bottom:10px;}
+.ncard.passport .ncard-name{color:#c0c0e0;}
+.ncard.olympic .ncard-name{color:#e63946;}
+.ncard.heart .ncard-name{color:#3a86ff;}
+.ncard-sub{font-size:13px;line-height:1.65;color:#8888aa;margin-bottom:14px;}
+.ncard-origin{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:1px;
+  color:#8888aa;padding:6px 10px;border:1px solid #303060;display:inline-block;}
+
+.paradox-box{background:#111126;border:1px solid #303060;padding:32px 36px;margin-bottom:48px;}
+.paradox-box h3{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:700;margin-bottom:18px;}
+.paradox-box h3 em{font-style:italic;color:#e9c46a;}
+.paradox-list{list-style:none;display:flex;flex-direction:column;gap:14px;}
+.paradox-list li{display:flex;gap:14px;align-items:flex-start;font-size:14px;line-height:1.7;color:#c0c0e0;}
+.paradox-list li .bullet{font-family:'Space Mono',monospace;font-size:11px;color:#e63946;
+  flex-shrink:0;margin-top:2px;}
+.paradox-list li strong{color:#eae6f8;font-weight:500;}
+
+.analogy-scroll{margin-bottom:48px;}
+.analogy-scroll h3{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:700;
+  margin-bottom:20px;}
+.analogy-scroll h3 em{font-style:italic;color:#e9c46a;}
+
+.analogy-item{display:grid;grid-template-columns:1fr auto 1fr;gap:12px;align-items:center;
+  padding:16px 0;border-bottom:1px solid #242448;}
+.analogy-item:last-child{border-bottom:none;}
+.ai-country{font-size:13px;line-height:1.6;color:#c0c0e0;}
+.ai-country strong{color:#eae6f8;font-weight:500;display:block;margin-bottom:2px;}
+.ai-arr{font-family:'Space Mono',monospace;font-size:11px;color:#303060;}
+.ai-name{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:700;
+  font-style:italic;text-align:right;}
+.ai-name.absurd{color:#e63946;}
+.ai-name.ok{color:#3a86ff;}
+
+.quote-final{border-left:3px solid #e9c46a;padding:20px 24px;
+  background:rgba(233,196,106,0.04);margin-bottom:80px;}
+.quote-final .ql{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:3px;
+  color:#e9c46a;text-transform:uppercase;margin-bottom:10px;}
+.quote-final blockquote{font-family:'Cormorant Garamond',serif;font-size:20px;
+  font-style:italic;line-height:1.65;color:#c0c0e0;}
+.quote-final blockquote strong{color:#eae6f8;font-style:normal;}
+
+/* ====== HISTORY ====== */
+.twrap{position:relative;padding-left:52px;max-width:720px;}
+.twrap::before{content:'';position:absolute;left:14px;top:0;bottom:0;width:1px;
+  background:linear-gradient(to bottom,#c1121f 0%,#3a86ff 65%,transparent 100%);}
+.era{position:relative;margin-bottom:52px;opacity:0;transform:translateX(-18px);
+  transition:opacity 0.55s ease,transform 0.55s ease;}
+.era.vis{opacity:1;transform:translateX(0);}
+.era-dot{position:absolute;left:-44px;top:8px;width:14px;height:14px;border-radius:50%;
+  border:2px solid #303060;background:#07070f;transition:background 0.3s,border-color 0.3s;}
+.era:hover .era-dot{background:#e9c46a;border-color:#e9c46a;}
+.era-meta{display:flex;align-items:baseline;gap:12px;margin-bottom:8px;}
+.era-yr{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:1px;color:#e9c46a;}
+.era-rl{font-family:'Space Mono',monospace;font-size:8px;letter-spacing:2px;color:#8888aa;
+  text-transform:uppercase;padding:2px 7px;border:1px solid #303060;}
+.era-t{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:700;margin-bottom:8px;line-height:1.2;}
+.era-b{font-size:13px;line-height:1.8;color:#c0c0e0;max-width:600px;}
+.era-b strong{color:#eae6f8;font-weight:500;}
+.chips{margin-top:11px;display:flex;flex-wrap:wrap;gap:5px;}
+.chip{font-family:'Space Mono',monospace;font-size:8px;letter-spacing:1px;padding:3px 8px;
+  background:#111126;border:1px solid #303060;color:#c0c0e0;text-transform:uppercase;}
+.era[data-e="democracy"] .era-t{color:#3a86ff;}
+.era[data-e="democracy"] .era-dot{background:#3a86ff;border-color:#3a86ff;}
+
+/* ====== DATA ====== */
+.vgrid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.vc{background:#111126;border:1px solid #303060;padding:24px;}
+.vc.wide{grid-column:1/-1;}
+.vlabel{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:3px;color:#8888aa;
+  text-transform:uppercase;margin-bottom:5px;}
+.vtitle{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:700;margin-bottom:16px;}
+.barchart{display:flex;flex-direction:column;gap:9px;}
+.brow{display:grid;grid-template-columns:100px 1fr 42px;align-items:center;gap:9px;}
+.bname{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:1px;color:#c0c0e0;
+  text-transform:uppercase;text-align:right;}
+.btrack{height:7px;background:#303060;overflow:hidden;}
+.bfill{height:100%;width:0%;transition:width 1.3s cubic-bezier(0.23,1,0.32,1);}
+.bval{font-family:'Space Mono',monospace;font-size:9px;color:#c0c0e0;text-align:right;}
+.sgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.si{background:#191938;border:1px solid #303060;padding:16px;text-align:center;}
+.sc{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;margin-bottom:7px;}
+.sc.tw{color:#3a86ff;}.sc.cn{color:#e63946;}
+.sn{font-family:'Cormorant Garamond',serif;font-size:42px;font-weight:700;line-height:1;}
+.sn.tw{color:#3a86ff;}.sn.cn{color:#e63946;}
+.sm{font-family:'Space Mono',monospace;font-size:9px;color:#8888aa;margin-top:3px;}
+.dwrap{display:flex;align-items:center;gap:26px;}
+.litem{display:flex;align-items:center;gap:7px;margin-bottom:7px;}
+.ldot{width:9px;height:9px;border-radius:50%;flex-shrink:0;}
+.lname{font-size:12px;color:#c0c0e0;flex:1;}
+.lpct{font-family:'Space Mono',monospace;font-size:10px;color:#eae6f8;}
+.fpair{margin-bottom:16px;}
+.flabel{display:flex;justify-content:space-between;margin-bottom:5px;}
+.flabel span{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:1px;color:#c0c0e0;}
+.ftrack{height:10px;background:#303060;}
+.ftw{height:50%;background:#3a86ff;width:0%;transition:width 1.4s cubic-bezier(0.23,1,0.32,1);}
+.fcn{height:50%;background:#e63946;width:0%;transition:width 1.4s cubic-bezier(0.23,1,0.32,1);}
+.lcwrap{position:relative;width:100%;height:155px;}
+canvas.lc{width:100%;height:100%;display:block;}
+.lcleg{display:flex;gap:18px;margin-top:9px;}
+.lci{display:flex;align-items:center;gap:5px;font-family:'Space Mono',monospace;font-size:9px;color:#c0c0e0;}
+.lcidot{width:8px;height:8px;border-radius:50%;}
+.src{font-family:'Space Mono',monospace;font-size:8px;letter-spacing:1px;color:#8888aa;margin-top:13px;}
+
+/* ====== COMPARE ====== */
+.vsh{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:14px;margin-bottom:32px;text-align:center;}
+.vsf{font-size:42px;display:block;margin-bottom:6px;}
+.vsn{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:700;}
+.vsn.tw{color:#3a86ff;}.vsn.cn{color:#e63946;}
+.vss{font-family:'Space Mono',monospace;font-size:8px;letter-spacing:2px;color:#8888aa;text-transform:uppercase;margin-top:3px;}
+.vsep{font-family:'Cormorant Garamond',serif;font-size:38px;font-style:italic;color:#303060;}
+.ctbl{width:100%;border-collapse:collapse;}
+.ctbl tr{border-top:1px solid #242448;}
+.ctbl td{padding:15px 10px;vertical-align:middle;}
+.col-tw{text-align:right;width:35%;}.col-mid{text-align:center;width:30%;}.col-cn{text-align:left;width:35%;}
+.mn{font-family:'Space Mono',monospace;font-size:8px;letter-spacing:2px;color:#8888aa;
+  text-transform:uppercase;display:block;margin-bottom:2px;}
+.mi{font-size:18px;}
+.vtw{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:700;color:#3a86ff;}
+.vcn{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:700;color:#e63946;}
+.vs2{display:block;font-family:'Space Mono',monospace;font-size:8px;color:#8888aa;letter-spacing:1px;margin-top:2px;}
+.wtw td.col-tw{background:rgba(58,134,255,0.05);}
+.wcn td.col-cn{background:rgba(230,57,70,0.05);}
+.kfact{background:#111126;border-left:3px solid #e9c46a;padding:18px 22px;margin-top:32px;margin-bottom:80px;}
+.kfl{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:3px;color:#e9c46a;
+  text-transform:uppercase;margin-bottom:7px;}
+.kfact p{font-size:14px;line-height:1.75;color:#c0c0e0;}
+.kfact strong{color:#eae6f8;}
+
+/* ====== GENERATOR ====== */
+.glayout{display:grid;grid-template-columns:1fr 1fr;gap:36px;
+  align-items:start;max-width:960px;margin:0 auto;padding:0 40px 80px;}
+.cg{margin-bottom:20px;}
+.clabel{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:2px;
+  color:#8888aa;text-transform:uppercase;margin-bottom:8px;display:block;}
+.csel,.cinp{width:100%;padding:10px 13px;background:#111126;
+  border:1px solid #303060;color:#eae6f8;
+  font-family:'Mulish',sans-serif;font-size:14px;outline:none;
+  transition:border-color 0.2s;appearance:none;}
+.csel:focus,.cinp:focus{border-color:#c0c0e0;}
+.cinp::placeholder{color:#8888aa;}
+.fopts{display:grid;grid-template-columns:1fr 1fr 1fr;gap:5px;}
+.fbtn{padding:8px 5px;background:#111126;border:1px solid #303060;
+  color:#8888aa;font-family:'Space Mono',monospace;font-size:9px;
+  letter-spacing:1px;text-transform:uppercase;cursor:pointer;
+  transition:all 0.2s;text-align:center;}
+.fbtn:hover{border-color:#c0c0e0;color:#eae6f8;}
+.fbtn.active{background:#191938;border-color:#e9c46a;color:#e9c46a;}
+.gbtn{width:100%;padding:13px;background:#c1121f;border:none;color:#fff;
+  font-family:'Space Mono',monospace;font-size:11px;letter-spacing:3px;
+  text-transform:uppercase;cursor:pointer;transition:background 0.2s,transform 0.15s;margin-top:5px;}
+.gbtn:hover{background:#e63946;transform:translateY(-2px);}
+.dlbtn{width:100%;padding:11px;background:transparent;border:1px solid #303060;
+  color:#c0c0e0;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:2px;
+  text-transform:uppercase;cursor:pointer;transition:all 0.2s;margin-top:7px;}
+.dlbtn:hover{border-color:#c0c0e0;color:#eae6f8;}
+.pwrap{position:sticky;top:68px;}
+.plabel{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:3px;
+  color:#8888aa;text-transform:uppercase;margin-bottom:11px;}
+#scard{width:100%;aspect-ratio:1;background:#0d0d1c;border:1px solid #303060;
+  padding:26px;display:flex;flex-direction:column;justify-content:space-between;
+  position:relative;overflow:hidden;transition:all 0.3s;}
+#scard.landscape{aspect-ratio:16/9;}
+#scard.story{aspect-ratio:9/16;max-height:460px;}
+#scard::before{content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse at 20% 80%,rgba(193,18,31,0.1) 0%,transparent 60%),
+             radial-gradient(ellipse at 80% 20%,rgba(37,99,235,0.07) 0%,transparent 60%);
+  pointer-events:none;}
+.sc-acc{position:absolute;left:0;top:0;bottom:0;width:3px;
+  background:linear-gradient(to bottom,#c1121f,transparent);}
+.sc-top{display:flex;justify-content:space-between;align-items:flex-start;}
+.sc-fl{font-size:34px;line-height:1;}
+.sc-tfl{font-size:18px;opacity:0.45;}
+.sc-body{flex:1;display:flex;flex-direction:column;justify-content:center;padding:14px 0;}
+.sc-q{font-family:'Space Mono',monospace;font-size:8px;letter-spacing:2px;
+  color:rgba(255,255,255,0.32);text-transform:uppercase;margin-bottom:9px;}
+.sc-abs{font-family:'Cormorant Garamond',serif;font-size:clamp(19px,3.5vw,30px);
+  font-weight:700;font-style:italic;color:#e63946;line-height:1.1;margin-bottom:4px;}
+.sc-arr{font-family:'Space Mono',monospace;font-size:9px;color:rgba(255,255,255,0.22);margin-bottom:12px;}
+.sc-tw{font-family:'Cormorant Garamond',serif;font-size:clamp(15px,2.5vw,22px);
+  font-weight:600;color:#3a86ff;margin-bottom:2px;}
+.sc-tws{font-family:'Space Mono',monospace;font-size:8px;letter-spacing:2px;
+  color:rgba(58,134,255,0.4);text-transform:uppercase;}
+.sc-ctx{font-size:10px;line-height:1.6;color:rgba(255,255,255,0.35);margin-top:12px;max-width:92%;}
+.sc-bot{display:flex;justify-content:space-between;align-items:flex-end;}
+.sc-nm{font-family:'Space Mono',monospace;font-size:8px;color:rgba(255,255,255,0.28);}
+.sc-ht{font-family:'Space Mono',monospace;font-size:8px;color:rgba(193,18,31,0.5);}
+
+.ccard-special{border-color:#e9c46a;background:linear-gradient(135deg,#1a1500,#111126);}
+.ccard-special .ca{color:#e9c46a;}
+.ccard-special-label{font-family:'Space Mono',monospace;font-size:8px;letter-spacing:2px;
+  color:#e9c46a;text-transform:uppercase;padding:3px 8px;border:1px solid #e9c46a;
+  display:inline-block;margin-bottom:10px;}
+/* MODAL */
+.mov{position:fixed;inset:0;background:rgba(0,0,0,0.88);backdrop-filter:blur(10px);
+  z-index:500;display:flex;align-items:center;justify-content:center;padding:20px;
+  opacity:0;pointer-events:none;transition:opacity 0.3s;}
+.mov.open{opacity:1;pointer-events:all;}
+.modal{background:#111126;border:1px solid #303060;
+  max-width:530px;width:100%;padding:34px;position:relative;
+  transform:translateY(16px);transition:transform 0.3s;}
+.mov.open .modal{transform:translateY(0);}
+.mc{position:absolute;top:13px;right:13px;background:none;border:none;
+  color:#8888aa;font-size:17px;cursor:pointer;font-family:'Space Mono',monospace;
+  transition:color 0.2s;}
+.mc:hover{color:#eae6f8;}
+.mflag{font-size:50px;display:block;margin-bottom:13px;}
+.mabs{font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:700;
+  font-style:italic;color:#e63946;margin-bottom:4px;line-height:1.1;}
+.mreal{font-family:'Space Mono',monospace;font-size:10px;color:#8888aa;
+  letter-spacing:1px;margin-bottom:18px;}
+.mdiv{height:1px;background:#303060;margin:16px 0;}
+.mbody{font-size:14px;line-height:1.75;color:#c0c0e0;}
+.mbody .pw{color:#e9c46a;font-weight:500;}
+.mbody p{margin-bottom:9px;}
+.mcmp{background:#191938;border:1px solid #303060;
+  padding:12px 16px;margin-top:16px;font-family:'Space Mono',monospace;
+  font-size:10px;line-height:1.9;}
+.mcmp .ml{color:#8888aa;font-size:9px;letter-spacing:2px;text-transform:uppercase;margin-bottom:5px;}
+.mcmp .mt{color:#c0c0e0;}
+.mcmp .mu{color:#3a86ff;}
+.msh{margin-top:18px;width:100%;padding:12px;background:#c1121f;border:none;
+  color:#fff;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:2px;
+  text-transform:uppercase;cursor:pointer;transition:background 0.2s;}
+.msh:hover{background:#e63946;}
+
+footer{border-top:1px solid #242448;padding:36px 40px;text-align:center;
+  font-family:'Space Mono',monospace;font-size:9px;color:#8888aa;letter-spacing:2px;
+  background:#07070f;line-height:2.2;}
+footer .brand{color:#e63946;font-size:11px;letter-spacing:4px;}
+
+/* RESPONSIVE */
+@media(max-width:760px){
+  nav{padding:0 20px;}
+  .nav-menu{display:none;}.nav-menu.open{display:flex;flex-direction:column;
+    position:fixed;top:58px;left:0;right:0;background:rgba(7,7,15,0.98);
+    border-bottom:1px solid #242448;padding:14px;gap:3px;z-index:299;}
+  .hbg{display:block;}
+  .hero,.ph,.inner,.glayout{padding-left:20px;padding-right:20px;}
+  .h-h1{font-size:50px;}
+  .h-cards{grid-template-columns:1fr 1fr;}
+  .three-cards{grid-template-columns:1fr;}
+  .vgrid{grid-template-columns:1fr;}.vc.wide{grid-column:1;}
+  .glayout{grid-template-columns:1fr;}.pwrap{position:static;}
+  .brow{grid-template-columns:70px 1fr 34px;}
+  .sn{font-size:34px;}.dwrap{flex-direction:column;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <button class="nav-logo" onclick="show('home')">Call Me Taiwan</button>
+  <ul class="nav-menu" id="nmenu">
+    <li><a href="#" onclick="show('home')" data-p="home" class="active">Home</a></li>
+    <li><a href="#" onclick="show('names')" data-p="names">The Name</a></li>
+    <li><a href="#" onclick="show('names3')" data-p="names3">4 Names</a></li>
+    <li><a href="#" onclick="show('history')" data-p="history">History</a></li>
+    <li><a href="#" onclick="show('data')" data-p="data">Data</a></li>
+    <li><a href="#" onclick="show('compare')" data-p="compare">TW vs CN</a></li>
+    <li><a href="#" onclick="show('generator')" data-p="generator">Make a Card</a></li>
+  </ul>
+  <button class="hbg" onclick="toggleMenu()">☰</button>
+</nav>
+
+<!-- ===== HOME ===== -->
+<div class="page active" id="home">
+  <div class="hero">
+    <h1 class="h-h1">What's in<br>a <em>Name?</em></h1>
+    <div class="h-sub">Taiwan has three names.<br>None of them were chosen.</div>
+    <p class="h-body">On its passport: <strong>Republic of China.</strong> At the Olympics: <strong>"Chinese Taipei."</strong> In people's hearts: <strong>Taiwan.</strong> For everyone who's ever had to explain Taiwan.</p>
+    <div class="h-cards">
+      <div class="hcard" onclick="show('names')"><span class="hc-ico">🏷️</span><div class="hc-t">The Name</div><div class="hc-d">What if this logic applied to your country?</div></div>
+      <div class="hcard" onclick="show('names3')"><span class="hc-ico">🪪</span><div class="hc-t">4 Names</div><div class="hc-d">Four names. Not one chosen by Taiwan.</div></div>
+      <div class="hcard" onclick="show('history')"><span class="hc-ico">📜</span><div class="hc-t">History</div><div class="hc-d">6,000 years of identity, from indigenous peoples to democracy.</div></div>
+      <div class="hcard" onclick="show('data')"><span class="hc-ico">📊</span><div class="hc-t">Data</div><div class="hc-d">Democracy, press freedom, semiconductors — by the numbers.</div></div>
+      <div class="hcard" onclick="show('generator')"><span class="hc-ico">🪄</span><div class="hc-t">Make a Card</div><div class="hc-d">Shareable cards for Instagram, Twitter, and Stories.</div></div>
+    </div>
+    <div class="hero-badge">
+      <span class="bf">🇹🇼</span>
+      <div class="bc">CALL ME TAIWAN</div>
+      <div class="bw">not "Chinese Taipei"</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== NAMES ===== -->
+<div class="page" id="names">
+  <div class="ph">
+    <div class="eyebrow">A Naming Question</div>
+    <h2 class="stitle">What if we applied<br>the <em>same logic</em> elsewhere?</h2>
+    <div class="imposed-card">
+      <span style="font-size:42px">🇹🇼</span>
+      <div>
+        <div style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:2px;color:#3a86ff;text-transform:uppercase;margin-bottom:5px">Is this name fair?</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:700;margin-bottom:4px">Taiwan</div>
+        <div style="font-family:'Space Mono',monospace;font-size:10px;color:#8888aa">
+          <span style="text-decoration:line-through;opacity:0.55">Chinese Taipei</span>
+          <span style="margin:0 8px;opacity:0.35">←</span>Used in Olympics &amp; international bodies — but who chose it?
+        </div>
+      </div>
+    </div>
+    <div class="rtabs">
+      <button class="rtab active" onclick="filt('all',this)">Everyone</button>
+      <button class="rtab" onclick="filt('european',this)">European friends</button>
+      <button class="rtab" onclick="filt('asian',this)">Asian friends</button>
+      <button class="rtab" onclick="filt('american',this)">American friends</button>
+      <button class="rtab" onclick="filt('special',this)" style="border-color:#e9c46a;color:#e9c46a">&#8617; Logic Reversed</button>
+    </div>
+    <div class="cgrid" id="cgrid"></div>
+  </div>
+</div>
+
+<!-- ===== THREE NAMES ===== -->
+<div class="page" id="names3">
+  <div class="ph">
+    <div class="eyebrow">The Identity Paradox</div>
+    <h2 class="stitle">Four names.<br><em>None chosen.</em></h2>
+  </div>
+  <div class="inner">
+    <p class="names3-intro">Taiwan is called four different things — depending on who is speaking, and what they want. <strong>Not one of these names was freely chosen by the Taiwanese people.</strong> Understanding the difference between them is the first step to understanding Taiwan's situation.</p>
+
+    <div class="four-cards">
+      <div class="ncard passport">
+        <div class="ncard-eyebrow">On the passport</div>
+        <div class="ncard-name">Republic<br>of China</div>
+        <div class="ncard-sub">A name from 1912, carried to Taiwan in 1949 by a government that lost a civil war. Changing it risks triggering a military crisis with Beijing. Not chosen — inherited.</div>
+        <div class="ncard-origin">Est. 1912 · Historical burden · Never voted on</div>
+      </div>
+      <div class="ncard olympic">
+        <div class="ncard-eyebrow">At the Olympics</div>
+        <div class="ncard-name">"Chinese<br>Taipei"</div>
+        <div class="ncard-sub">Imposed in 1981 under IOC pressure from Beijing. Taiwan was expelled and forced to accept this name just to compete. A city name used in place of a country.</div>
+        <div class="ncard-origin">Imposed 1981 · IOC · Chosen by Beijing, not Taiwan</div>
+      </div>
+      <div class="ncard danger">
+        <div class="ncard-eyebrow">In global institutions &amp; commerce</div>
+        <div class="ncard-name">"Taiwan,<br>Province of China"</div>
+        <div class="ncard-sub">Two versions of the same claim. In some UN agencies, WHO, and ISO databases: <strong style="color:#ff6b6b">"Taiwan, Province of China"</strong> — a label pushed by Beijing through institutional pressure, now contested by the EU Parliament, Australia, Czech Republic and others. On airline booking systems and online forms: <strong style="color:#ff6b6b">"Taiwan, China"</strong> — companies comply under threat of losing Chinese market access. A sovereignty claim disguised as punctuation — and a battle still being fought.</div>
+        <div class="ncard-origin">Contested by EU, Australia, Czech Republic · Still used in some UN agencies · Airlines &amp; forms under pressure</div>
+      </div>
+      <div class="ncard heart">
+        <div class="ncard-eyebrow">In people's hearts</div>
+        <div class="ncard-name">Taiwan</div>
+        <div class="ncard-sub">What most people on the island call themselves. Over 60% identify as Taiwanese — not Chinese. A living identity with no official international status. The only name that actually fits.</div>
+        <div class="ncard-origin">Always existed · Suppressed for decades · Still not official</div>
+      </div>
+    </div>
+
+    <div class="paradox-box">
+      <h3>So why doesn't Taiwan just <em>change its name?</em></h3>
+      <ul class="paradox-list">
+        <li><span class="bullet">01</span><div>Beijing has declared that any formal move toward independence — including a name change — would be treated as a <strong>trigger for military action</strong>. Taiwan lives under this threat permanently.</div></li>
+        <li><span class="bullet">02</span><div>Taiwan's constitution still officially names the state "Republic of China." Amending it requires a referendum. A referendum on the name is itself considered a provocation by Beijing — and by some of Taiwan's diplomatic allies who fear escalation.</div></li>
+        <li><span class="bullet">03</span><div>Many countries quietly prefer the <strong>status quo</strong> — "Chinese Taipei" lets them trade with both sides without choosing. Taiwan's naming problem is partly sustained by other nations' economic self-interest.</div></li>
+        <li><span class="bullet">04</span><div>Taiwan was only admitted back to the Olympics in 1981 under "Chinese Taipei." <strong>Challenging this risks expulsion</strong> from international competitions — soft power Taiwan cannot afford to lose.</div></li>
+        <li><span class="bullet">05</span><div>Beyond "Chinese Taipei," there are two further naming weapons. In some UN agencies, WHO, and ISO: <strong>"Taiwan, Province of China"</strong> — a label resulting from Beijing's institutional pressure, not a settled legal fact. Resolution 2758 never mentioned Taiwan's status — but China has used it to push this language into international bodies. The EU Parliament, Australia, and others are now pushing back. Meanwhile in airline booking systems and online forms: <strong>"Taiwan, China"</strong> — companies comply under threat of losing Chinese market access. In 2018, Beijing pressured over 40 airlines. Most complied within weeks.</div></li>
+      </ul>
+    </div>
+
+    <div class="analogy-scroll">
+      <h3>How precise is the <em>"Chinese" in "Chinese Taipei"?</em></h3>
+      <div class="analogy-item">
+        <div class="ai-country"><strong>Ottoman Empire → Greece</strong><br>Ruled Athens for 400 years. Would "Ottoman Athens" be acceptable today?</div>
+        <div class="ai-arr">→</div>
+        <div class="ai-name absurd">"Ottoman Athens"</div>
+      </div>
+      <div class="analogy-item">
+        <div class="ai-country"><strong>Qing Dynasty → Taiwan</strong><br>Ruled Taiwan 1683–1895. Would "Qing Taipei" at least make historical sense?</div>
+        <div class="ai-arr">→</div>
+        <div class="ai-name absurd">"Qing Taipei"?</div>
+      </div>
+      <div class="analogy-item">
+        <div class="ai-country"><strong>PRC → Taiwan</strong><br>Has never governed Taiwan for a single day. So where does "Chinese Taipei" come from?</div>
+        <div class="ai-arr">→</div>
+        <div class="ai-name absurd">"Chinese Taipei"?</div>
+      </div>
+      <div class="analogy-item" style="background:rgba(233,196,106,0.04);border-left:2px solid #e9c46a;padding-left:12px;">
+        <div class="ai-country"><strong style="color:#e9c46a">↩ Logic Reversed: Mongols → China</strong><br>Built Beijing, ruled China for ~100 years. By China's own logic — "Mongolian Beijing"?</div>
+        <div class="ai-arr">→</div>
+        <div class="ai-name" style="color:#e9c46a;font-style:italic;">"Mongolian Beijing"?</div>
+      </div>
+      <div class="analogy-item">
+        <div class="ai-country"><strong>What would make sense?</strong><br>A name reflecting the island's actual government, people, and identity.</div>
+        <div class="ai-arr">→</div>
+        <div class="ai-name ok">Taiwan?</div>
+      </div>
+    </div>
+
+    <div class="quote-final">
+      <div class="ql">A question worth sitting with</div>
+      <blockquote>Imagine your country had four names simultaneously — one from a lost civil war, one imposed by a sports committee, one being pushed into international institutions by your neighbour's political pressure, and one that everyone actually uses but no government officially recognises. Would you consider that fair? That is Taiwan's reality, every single day.</blockquote>
+    </div>
+  </div>
+</div>
+
+<!-- ===== HISTORY ===== -->
+<div class="page" id="history">
+  <div class="ph">
+    <div class="eyebrow">Taiwan History</div>
+    <h2 class="stitle">6,000 years<br>of <em>identity</em></h2>
+    <div class="twrap">
+      <div class="era" data-e="indigenous"><div class="era-dot"></div>
+        <div class="era-meta"><span class="era-yr">~4000 BCE – 1624</span><span class="era-rl">Indigenous</span></div>
+        <div class="era-t">The First Peoples</div>
+        <div class="era-b">Taiwan's <strong>16 officially recognised indigenous peoples</strong> — Amis, Atayal, Paiwan, Bunun and others — have inhabited the island for at least 6,000 years. Linguistic evidence suggests Taiwan may be the <strong>ancestral homeland of all Austronesian peoples</strong>, stretching from Madagascar to Hawaii.</div>
+        <div class="chips"><span class="chip">16 Peoples</span><span class="chip">Austronesian Origin</span><span class="chip">6000+ Years</span></div>
+      </div>
+      <div class="era" data-e="dutch"><div class="era-dot"></div>
+        <div class="era-meta"><span class="era-yr">1624 – 1662</span><span class="era-rl">Dutch & Spanish</span></div>
+        <div class="era-t">European Colonisation</div>
+        <div class="era-b">The Dutch East India Company established Fort Zeelandia in 1624. Spain briefly held the north (1626–1642). The Dutch introduced large-scale Han Chinese migration — the beginning of Taiwan's multi-ethnic character. First time Taiwan appears as a distinct territory in European records.</div>
+        <div class="chips"><span class="chip">VOC / Fort Zeelandia</span><span class="chip">Han Migration Begins</span><span class="chip">Trade Hub</span></div>
+      </div>
+      <div class="era" data-e="ming"><div class="era-dot"></div>
+        <div class="era-meta"><span class="era-yr">1662 – 1683</span><span class="era-rl">Ming Loyalists</span></div>
+        <div class="era-t">The Ming Loyalist Kingdom</div>
+        <div class="era-b">Koxinga expelled the Dutch and used Taiwan as a base to <strong>resist the Qing dynasty</strong> on the mainland. Taiwan became — for the first of many times — a refuge for those resisting mainland rule. A pattern that would repeat in 1949.</div>
+        <div class="chips"><span class="chip">Koxinga</span><span class="chip">Dutch Expelled</span><span class="chip">Anti-Qing Resistance</span></div>
+      </div>
+      <div class="era" data-e="qing"><div class="era-dot"></div>
+        <div class="era-meta"><span class="era-yr">1683 – 1895</span><span class="era-rl">Qing Dynasty</span></div>
+        <div class="era-t">Qing Administration</div>
+        <div class="era-b">The Qing incorporated Taiwan in 1683. It became a full province only in <strong>1887 — just 8 years before China ceded it to Japan</strong>. Over 100 uprisings against Qing rule were recorded. Worth noting: <strong>the Qing Dynasty is not the PRC.</strong> This is the only Chinese dynasty that ever governed Taiwan — so when we say "Chinese Taipei," which "China" does that refer to?</div>
+        <div class="chips"><span class="chip">Prefecture of Fujian</span><span class="chip">Province 1887</span><span class="chip">100+ Uprisings</span><span class="chip">Ceded to Japan 1895</span></div>
+      </div>
+      <div class="era" data-e="japan"><div class="era-dot"></div>
+        <div class="era-meta"><span class="era-yr">1895 – 1945</span><span class="era-rl">Empire of Japan</span></div>
+        <div class="era-t">Japanese Rule</div>
+        <div class="era-b">China ceded Taiwan to Japan after losing the First Sino-Japanese War. Japan ruled for <strong>50 years — longer than the PRC has existed</strong>. Railways, hospitals, schools, and legal systems were built. Taiwan's modern infrastructure is largely a legacy of this era.</div>
+        <div class="chips"><span class="chip">Treaty of Shimonoseki</span><span class="chip">50 Years</span><span class="chip">Modernisation</span><span class="chip">Wushe Incident 1930</span></div>
+      </div>
+      <div class="era" data-e="roc"><div class="era-dot"></div>
+        <div class="era-meta"><span class="era-yr">1945 – 1987</span><span class="era-rl">ROC / KMT</span></div>
+        <div class="era-t">ROC Rule & White Terror</div>
+        <div class="era-b">Japan surrendered Taiwan in 1945. After losing the Civil War, the KMT moved to Taiwan in 1949 — the same year the PRC was founded on the mainland. <strong>Two separate governments, born the same year, on either side of the strait.</strong> The 228 Massacre (1947) killed tens of thousands. Martial law lasted 38 years — the longest in history at the time.</div>
+        <div class="chips"><span class="chip">228 Massacre 1947</span><span class="chip">KMT 1949</span><span class="chip">38 Years Martial Law</span><span class="chip">"Chinese Taipei" Imposed 1981</span></div>
+      </div>
+      <div class="era" data-e="democracy"><div class="era-dot"></div>
+        <div class="era-meta"><span class="era-yr">1987 – Present</span><span class="era-rl">Democracy</span></div>
+        <div class="era-t">Taiwan's Democratic Miracle</div>
+        <div class="era-b">Martial law lifted 1987. First direct presidential election <strong>1996</strong> — Asia's first for a Chinese-speaking nation. Two peaceful transfers of power between rival parties. Legalised same-sex marriage 2019 — <strong>first in Asia</strong>. Produces 60% of the world's advanced chips. <strong>The PRC has never governed Taiwan for a single day.</strong></div>
+        <div class="chips"><span class="chip">Martial Law Lifted 1987</span><span class="chip">Election 1996</span><span class="chip">Same-Sex Marriage 2019</span><span class="chip">Top 10 Democracy</span><span class="chip">TSMC · 60% Chips</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== DATA ===== -->
+<div class="page" id="data">
+  <div class="ph"><div class="eyebrow">Data & Indicators</div><h2 class="stitle">Taiwan in <em>numbers</em></h2></div>
+  <div class="inner" style="padding-bottom:80px">
+    <div class="vgrid">
+      <div class="vc fu"><div class="vlabel">EIU Democracy Index 2023</div><div class="vtitle">Democracy Rankings</div>
+        <div class="barchart">
+          <div class="brow"><div class="bname">Norway</div><div class="btrack"><div class="bfill" style="background:#4cc9f0" data-w="98"></div></div><div class="bval">9.81</div></div>
+          <div class="brow"><div class="bname">Sweden</div><div class="btrack"><div class="bfill" style="background:#4cc9f0" data-w="94"></div></div><div class="bval">9.39</div></div>
+          <div class="brow"><div class="bname">Taiwan 🇹🇼</div><div class="btrack"><div class="bfill" style="background:#3a86ff" data-w="85"></div></div><div class="bval">8.92</div></div>
+          <div class="brow"><div class="bname">USA</div><div class="btrack"><div class="bfill" style="background:#90e0ef" data-w="77"></div></div><div class="bval">7.85</div></div>
+          <div class="brow"><div class="bname">China 🇨🇳</div><div class="btrack"><div class="bfill" style="background:#e63946" data-w="20"></div></div><div class="bval">1.97</div></div>
+        </div>
+        <div class="src">Source: Economist Intelligence Unit</div>
+      </div>
+      <div class="vc fu"><div class="vlabel">RSF Press Freedom Index 2023</div><div class="vtitle">Press Freedom</div>
+        <div class="sgrid">
+          <div class="si"><div class="sc tw">🇹🇼 Taiwan</div><div class="sn tw">#35</div><div class="sm">World Rank</div></div>
+          <div class="si"><div class="sc cn">🇨🇳 China</div><div class="sn cn">#179</div><div class="sm">out of 180</div></div>
+        </div>
+        <div class="barchart" style="margin-top:16px">
+          <div class="brow"><div class="bname">Taiwan 🇹🇼</div><div class="btrack"><div class="bfill" style="background:#3a86ff" data-w="72"></div></div><div class="bval">72.3</div></div>
+          <div class="brow"><div class="bname">China 🇨🇳</div><div class="btrack"><div class="bfill" style="background:#e63946" data-w="11"></div></div><div class="bval">11.0</div></div>
+        </div>
+        <div class="src">Source: Reporters Without Borders</div>
+      </div>
+      <div class="vc fu"><div class="vlabel">Global Semiconductor Foundry 2023</div><div class="vtitle">Taiwan Controls the World's Chips</div>
+        <div class="dwrap">
+          <svg width="148" height="148" viewBox="0 0 148 148" style="flex-shrink:0">
+            <circle cx="74" cy="74" r="55" fill="none" stroke="#242448" stroke-width="25"/>
+            <circle cx="74" cy="74" r="55" fill="none" stroke="#3a86ff" stroke-width="25" stroke-dasharray="207 138" stroke-dashoffset="86"/>
+            <circle cx="74" cy="74" r="55" fill="none" stroke="#f77f00" stroke-width="25" stroke-dasharray="45 300" stroke-dashoffset="-121"/>
+            <circle cx="74" cy="74" r="55" fill="none" stroke="#4cc9f0" stroke-width="25" stroke-dasharray="31 314" stroke-dashoffset="-166"/>
+            <circle cx="74" cy="74" r="55" fill="none" stroke="#303060" stroke-width="25" stroke-dasharray="62 283" stroke-dashoffset="-197"/>
+            <text x="74" y="69" text-anchor="middle" fill="#3a86ff" font-family="Cormorant Garamond,serif" font-size="19" font-weight="700">60%</text>
+            <text x="74" y="86" text-anchor="middle" fill="#8888aa" font-family="Space Mono,monospace" font-size="8">Taiwan</text>
+          </svg>
+          <div>
+            <div class="litem"><div class="ldot" style="background:#3a86ff"></div><div class="lname">Taiwan (TSMC)</div><div class="lpct">60%</div></div>
+            <div class="litem"><div class="ldot" style="background:#f77f00"></div><div class="lname">Samsung (Korea)</div><div class="lpct">13%</div></div>
+            <div class="litem"><div class="ldot" style="background:#4cc9f0"></div><div class="lname">Intel (USA)</div><div class="lpct">9%</div></div>
+            <div class="litem"><div class="ldot" style="background:#303060"></div><div class="lname">Others</div><div class="lpct">18%</div></div>
+          </div>
+        </div>
+        <div class="src">Source: TrendForce Q4 2023 · Advanced chips ≤5nm: Taiwan >90%</div>
+      </div>
+      <div class="vc fu"><div class="vlabel">Freedom House 2024</div><div class="vtitle">Civil & Political Freedom</div>
+        <div class="fpair"><div class="flabel"><span>Political Rights</span><span>TW 96 · CN 0 /100</span></div><div class="ftrack"><div class="ftw" data-w="96"></div><div class="fcn" data-w="0"></div></div></div>
+        <div class="fpair"><div class="flabel"><span>Civil Liberties</span><span>TW 91 · CN 10 /100</span></div><div class="ftrack"><div class="ftw" data-w="91"></div><div class="fcn" data-w="10"></div></div></div>
+        <div class="fpair"><div class="flabel"><span>Internet Freedom</span><span>TW 78 · CN 9 /100</span></div><div class="ftrack"><div class="ftw" data-w="78"></div><div class="fcn" data-w="9"></div></div></div>
+        <div class="src">Source: Freedom House · Blue = Taiwan · Red = China</div>
+      </div>
+      <div class="vc wide fu"><div class="vlabel">GDP per Capita USD — World Bank</div><div class="vtitle">Economic Trajectory 1990–2023</div>
+        <div class="lcwrap"><canvas class="lc" id="gdpc"></canvas></div>
+        <div class="lcleg">
+          <div class="lci"><div class="lcidot" style="background:#3a86ff"></div>Taiwan (~$35,000 in 2023)</div>
+          <div class="lci"><div class="lcidot" style="background:#e63946"></div>China (~$12,700 in 2023)</div>
+        </div>
+        <div class="src">Source: World Bank</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== COMPARE ===== -->
+<div class="page" id="compare">
+  <div class="ph"><div class="eyebrow">Taiwan &amp; China — Compared</div><h2 class="stitle">Two governments.<br><em>One claim — is it valid?</em></h2>
+    <div class="vsh">
+      <div><span class="vsf">🇹🇼</span><div class="vsn tw">Taiwan</div><div class="vss">Republic of China · Est. 1912</div></div>
+      <div class="vsep">vs</div>
+      <div><span class="vsf">🇨🇳</span><div class="vsn cn">China</div><div class="vss">People's Republic · Est. 1949</div></div>
+    </div>
+    <table class="ctbl">
+      <tr class="wtw"><td class="col-tw"><span class="vtw">Free</span><span class="vs2">Score 94/100</span></td><td class="col-mid"><span class="mn">Freedom House</span><span class="mi">🗽</span></td><td class="col-cn"><span class="vcn">Not Free</span><span class="vs2">Score 9/100</span></td></tr>
+      <tr class="wtw"><td class="col-tw"><span class="vtw">#35</span><span class="vs2">Press Freedom Rank</span></td><td class="col-mid"><span class="mn">Press Freedom</span><span class="mi">📰</span></td><td class="col-cn"><span class="vcn">#179</span><span class="vs2">of 180 countries</span></td></tr>
+      <tr class="wtw"><td class="col-tw"><span class="vtw">8.92</span><span class="vs2">Democracy Index</span></td><td class="col-mid"><span class="mn">EIU Democracy</span><span class="mi">🗳️</span></td><td class="col-cn"><span class="vcn">1.97</span><span class="vs2">Authoritarian</span></td></tr>
+      <tr class="wtw"><td class="col-tw"><span class="vtw">~$35K</span><span class="vs2">GDP per Capita</span></td><td class="col-mid"><span class="mn">GDP per Capita</span><span class="mi">💰</span></td><td class="col-cn"><span class="vcn">~$12.7K</span><span class="vs2">GDP per Capita</span></td></tr>
+      <tr class="wtw"><td class="col-tw"><span class="vtw">60%</span><span class="vs2">Global Foundry Share</span></td><td class="col-mid"><span class="mn">Semiconductors</span><span class="mi">💾</span></td><td class="col-cn"><span class="vcn">~7%</span><span class="vs2">Global Foundry Share</span></td></tr>
+      <tr class="wtw"><td class="col-tw"><span class="vtw">Legal</span><span class="vs2">Since 2019 · First in Asia</span></td><td class="col-mid"><span class="mn">Same-Sex Marriage</span><span class="mi">🏳️‍🌈</span></td><td class="col-cn"><span class="vcn">Illegal</span><span class="vs2">Criminalised</span></td></tr>
+      <tr class="wtw"><td class="col-tw"><span class="vtw">146</span><span class="vs2">Visa-Free Destinations</span></td><td class="col-mid"><span class="mn">Passport Power</span><span class="mi">🛂</span></td><td class="col-cn"><span class="vcn">85</span><span class="vs2">Visa-Free Destinations</span></td></tr>
+      <tr><td class="col-tw"><span class="vtw">Never</span><span class="vs2">PRC has never governed Taiwan</span></td><td class="col-mid"><span class="mn">Historical Rule</span><span class="mi">📜</span></td><td class="col-cn"><span class="vcn">Claims</span><span class="vs2">Since 1949</span></td></tr>
+    </table>
+    <div class="kfact"><div class="kfl">A question of precedent</div><p>The PRC was founded in 1949. <strong>It has never governed Taiwan for a single day.</strong> Every post-colonial nation that achieved self-governance — Ireland, Algeria, India, Vietnam — is recognised under its own name. Taiwan has governed itself longer than most. Does it deserve the same recognition?</p></div>
+  </div>
+</div>
+
+<!-- ===== GENERATOR ===== -->
+<div class="page" id="generator">
+  <div class="ph"><div class="eyebrow">Social Card Generator</div><h2 class="stitle">Share the <em>question</em></h2></div>
+  <div class="glayout">
+    <div>
+      <div class="cg"><label class="clabel">Choose a Case</label><select class="csel" id="gcase" onchange="updCard()"></select></div>
+      <div class="cg"><label class="clabel">Your Name / City (optional)</label><input type="text" class="cinp" id="gname" placeholder="e.g. A Taiwanese in Berlin" oninput="updCard()"></div>
+      <div class="cg"><label class="clabel">Format</label>
+        <div class="fopts">
+          <button class="fbtn active" onclick="setFmt('square',this)">1:1<br><small>Instagram</small></button>
+          <button class="fbtn" onclick="setFmt('landscape',this)">16:9<br><small>Twitter</small></button>
+          <button class="fbtn" onclick="setFmt('story',this)">9:16<br><small>Story</small></button>
+        </div>
+      </div>
+      <button class="gbtn" onclick="updCard()">↻ Refresh</button>
+      <button class="dlbtn" onclick="dlCard()">↓ Download Image</button>
+    </div>
+    <div class="pwrap">
+      <div class="plabel">Preview</div>
+      <div id="scard">
+        <div class="sc-acc"></div>
+        <div class="sc-top"><span class="sc-fl" id="sc-fl">🇺🇦</span><span class="sc-tfl">🇹🇼</span></div>
+        <div class="sc-body">
+          <div class="sc-q">Would this make sense to you?</div>
+          <div class="sc-abs" id="sc-abs">"Russian Kyiv"</div>
+          <div class="sc-arr">if not → then why accept ↓</div>
+          <div class="sc-tw">"Chinese Taipei"</div>
+          <div class="sc-tws">Taiwan's imposed name</div>
+          <div class="sc-ctx" id="sc-ctx">Russia claims Ukraine is historically its territory — the same argument China uses for Taiwan.</div>
+        </div>
+        <div class="sc-bot"><span class="sc-nm" id="sc-nm"></span><span class="sc-ht">#TaiwanIsTaiwan</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL -->
+<div class="mov" id="modal" onclick="closeMov(event)">
+  <div class="modal">
+    <button class="mc" onclick="closeMod()">✕</button>
+    <span class="mflag" id="mf"></span>
+    <div class="mabs" id="ma"></div>
+    <div class="mreal" id="mr"></div>
+    <div class="mdiv"></div>
+    <div class="mbody" id="mb"></div>
+    <div class="mcmp" id="mc"></div>
+    <button class="msh" onclick="goGen()">→ Share This Question</button>
+  </div>
+</div>
+
+<footer><span class="brand">CALL ME TAIWAN</span><br>callmetaiwan.com · DESIGN DIPLOMACY<br>Sources: EIU · Freedom House · RSF · World Bank · TrendForce</footer>
+
+<script>
+var CASES=[
+  {id:'ukraine',r:'european',flag:'\u{1F1FA}\u{1F1E6}',abs:'"Russian Kyiv"',real:'Ukraine',cl:'Russia',yr:'Ongoing since 2022',
+   sh:'Russia claims Ukraine is "historically" its territory \u2014 the same argument China uses for Taiwan. Would the world accept Ukraine competing as "Russian Kyiv"?',
+   full:'<p>Russia\'s justification for invading Ukraine mirrors Beijing\'s position on Taiwan: <span class="pw">Ukraine is historically Russian territory</span>. Yet no one forces Ukraine to compete under an imposed name.</p><p>If this logic fails for Ukraine \u2014 why does the world accept it for Taiwan?</p>',
+   cmp:{t:'Ukraine forced to compete as "Russian Kyiv"?',u:'"Chinese Taipei" \u2014 Taiwan\'s actual situation'}},
+  {id:'greece',r:'european',flag:'\u{1F1EC}\u{1F1F7}',abs:'"Ottoman Athens"',real:'Greece',cl:'Ottoman Empire (modern Turkey)',yr:'400 years of Ottoman rule',
+   sh:'The Ottoman Empire actually governed Greece for 400 years. China has never governed Taiwan. If "Ottoman Athens" is unacceptable \u2014 why is "Chinese Taipei" accepted?',
+   full:'<p>The Ottoman Empire <span class="pw">actually administered Greece for roughly 400 years</span> \u2014 from 1453 to 1821. China has never governed Taiwan as the PRC, which was founded in 1949.</p><p>"Ottoman Athens" would at least be historically grounded. "Chinese Taipei" is not even that.</p>',
+   cmp:{t:'Greece never forced to use "Ottoman Athens"',u:'"Chinese Taipei" \u2014 historically weaker, globally accepted'}},
+  {id:'estonia',r:'european',flag:'\u{1F1EA}\u{1F1EA}',abs:'"Soviet Tallinn"',real:'Estonia',cl:'Soviet Union',yr:'Occupied 1940\u20131991',
+   sh:'Estonia was occupied by the USSR for 51 years. When it re-declared independence in 1991, no negotiation over its name was needed. Taiwan has governed itself longer \u2014 why is it different?',
+   full:'<p>Estonia was incorporated into the Soviet Union in 1940. For <span class="pw">51 years, many countries never legally recognised Soviet annexation</span>.</p><p>When Estonia re-declared independence in 1991, it did not negotiate its name. Taiwan has self-governed since 1949 \u2014 longer than Estonia\'s entire occupation \u2014 yet still competes under a fabricated name.</p>',
+   cmp:{t:'Estonia reclaimed its name in 1991',u:'Taiwan still uses "Chinese Taipei" today'}},
+  {id:'latvia',r:'european',flag:'\u{1F1F1}\u{1F1FB}',abs:'"Soviet Riga"',real:'Latvia',cl:'Soviet Union',yr:'Occupied 1940\u20131991',
+   sh:'The West maintained non-recognition of Soviet Baltic annexation for 50 years \u2014 a principled stand it has never applied to Taiwan. Why the difference?',
+   full:'<p>Western nations maintained <span class="pw">non-recognition of Soviet Baltic annexation</span> throughout the Cold War, keeping Baltic diplomats in Washington.</p><p>That same principle \u2014 that a powerful neighbour\'s claim does not erase a nation\'s identity \u2014 has not been applied to Taiwan. Why not?</p>',
+   cmp:{t:'West refused to recognise Soviet claim on Latvia',u:'Same West accepts "Chinese Taipei"'}},
+  {id:'lithuania',r:'european',flag:'\u{1F1F1}\u{1F1F9}',abs:'"Soviet Vilnius"',real:'Lithuania',cl:'Soviet Union',yr:'Occupied 1940\u20131991',
+   sh:'Lithuania allows Taiwan to use "Taiwan" in its representative office name. Why does Lithuania understand this \u2014 when many larger nations do not?',
+   full:'<p>In 2021, Lithuania <span class="pw">allowed Taiwan to open a representative office under the name "Taiwan"</span> \u2014 triggering massive Chinese economic pressure. Vilnius held firm.</p><p>Because Lithuanians remember what it means to fight for your name. Does the rest of the world?</p>',
+   cmp:{t:'Lithuania fought for its own name \u2014 and supports Taiwan\'s',u:'"Chinese Taipei" \u2014 what Lithuania refuses to accept'}},
+  {id:'poland',r:'european',flag:'\u{1F1F5}\u{1F1F1}',abs:'"Russian Warsaw"',real:'Poland',cl:'Russia / Prussia / Austria',yr:'Partitioned 1772\u20131918',
+   sh:'Poland was erased from the map for 123 years. When reborn in 1918, no one questioned its name. Should Taiwan\'s identity be treated differently?',
+   full:'<p>Poland was partitioned three times and <span class="pw">ceased to exist as a state for 123 years</span>. Yet Polish identity survived. When reborn in 1918, no one questioned its name.</p><p>Taiwan\'s identity has survived decades of international erasure. Should it not receive the same recognition?</p>',
+   cmp:{t:'Poland reborn with its own name after 123 years',u:'Taiwan self-governing 75 years, still "Chinese Taipei"'}},
+  {id:'finland',r:'european',flag:'\u{1F1EB}\u{1F1EE}',abs:'"Russian Helsinki"',real:'Finland',cl:'Russian Empire / USSR',yr:'Russian rule 1809\u20131917',
+   sh:'Finland was a Grand Duchy of Russia for 109 years, then survived the Winter War. Would "Russian Helsinki" ever be acceptable?',
+   full:'<p>Finland was under Russian rule for 109 years. In 1939, the Soviet Union invaded \u2014 <span class="pw">the Winter War killed over 160,000 Finns</span> defending their sovereignty.</p><p>Finland is now a NATO member. No one calls its capital "Russian Helsinki." Does Taiwan\'s 75 years of democracy deserve the same honour?</p>',
+   cmp:{t:'Finland\'s sovereignty respected after the Winter War',u:'Taiwan\'s sovereignty erased into "Chinese Taipei"'}},
+  {id:'norway',r:'european',flag:'\u{1F1F3}\u{1F1F4}',abs:'"Swedish Oslo"',real:'Norway',cl:'Sweden / Denmark',yr:'Union with Sweden 1814\u20131905',
+   sh:'Norway was under Danish rule for 400 years, then Swedish for nearly a century. Its 1905 independence by referendum was respected globally. Why should Taiwan\'s self-determination be different?',
+   full:'<p>Norway spent <span class="pw">over 400 years under Danish rule</span>, then nearly a century in union with Sweden. Its 1905 independence by referendum was a landmark for self-determination.</p><p>Taiwan has held democratic elections since 1996. Should that not count?</p>',
+   cmp:{t:'Norwegian referendum on independence respected globally',u:'Taiwanese identity polls dismissed internationally'}},
+  {id:'denmark',r:'european',flag:'\u{1F1E9}\u{1F1F0}',abs:'"German Copenhagen"',real:'Denmark',cl:'Nazi Germany',yr:'Occupied 1940\u20131945',
+   sh:'Germany occupied Denmark for 5 years. Today "German Copenhagen" would be deeply offensive. If 5 years of occupation does not justify renaming \u2014 what about zero days?',
+   full:'<p>Nazi Germany occupied Denmark from 1940 to 1945. <span class="pw">The occupation remains a defining national memory</span> for Danes.</p><p>Calling Copenhagen "German Copenhagen" would be considered deeply offensive. Yet Taiwan \u2014 never governed by the PRC \u2014 is asked to accept "Chinese Taipei." Five years of occupation does not justify renaming. Neither does zero days.</p>',
+   cmp:{t:'"German Copenhagen" \u2014 offensive after 5 years of occupation',u:'"Chinese Taipei" \u2014 accepted despite zero days of PRC rule'}},
+  {id:'iceland',r:'european',flag:'\u{1F1EE}\u{1F1F8}',abs:'"Danish Reykjavik"',real:'Iceland',cl:'Denmark',yr:'500 years of Danish rule \u00b7 Independent 1944',
+   sh:'Iceland was ruled by Denmark for 500 years \u2014 longer than any period in Taiwan\'s history. It declared independence in 1944. No one questions Reykjavik today. Why should Taipei need a prefix?',
+   full:'<p>Iceland was under Danish rule for roughly <span class="pw">500 years</span>, one of the longest colonial relationships in Nordic history. It declared independence in 1944.</p><p>Today, no one calls Reykjavik "Danish Reykjavik." Taiwan has governed itself since 1949. Does a capital city need a foreign prefix to be legitimate?</p>',
+   cmp:{t:'"Danish Reykjavik" \u2014 absurd after 500 years of rule',u:'"Chinese Taipei" \u2014 imposed despite zero PRC governance'}},
+  {id:'ireland',r:'european',flag:'\u{1F1EE}\u{1F1EA}',abs:'"British Dublin"',real:'Ireland',cl:'Britain',yr:'~800 years of British rule',
+   sh:'How would an Irish person react to "British Dublin"? Is that reaction different from how Taiwanese people feel about "Chinese Taipei"?',
+   full:'<p>Ireland endured roughly 800 years of British presence. The <span class="pw">fight for Irish identity</span> \u2014 its language, culture, and name \u2014 was one of the defining struggles of the 20th century.</p><p>"British Dublin" would be a profound insult. Does "Chinese Taipei" carry the same weight for Taiwan?</p>',
+   cmp:{t:'"British Dublin" \u2014 universally recognised as insulting',u:'"Chinese Taipei" \u2014 accepted without question'}},
+  {id:'algeria',r:'european',flag:'\u{1F1E9}\u{1F1FF}',abs:'"French Algiers"',real:'Algeria',cl:'France',yr:'132 years of French colonization',
+   sh:'France called Algeria an integral part of France \u2014 not a colony, a "department." Algeria fought a brutal war for its name. Should Taiwan have to do the same?',
+   full:'<p>France did not consider Algeria a colony \u2014 it was officially a <span class="pw">department of France</span>, as integral as Normandy. This framing denied Algerian self-determination for 132 years.</p><p>Algeria won independence in 1962 after a brutal war. Taiwan has self-governed peacefully for 75 years. Should peaceful self-governance count for less than armed struggle?</p>',
+   cmp:{t:'Algeria\'s independence recognised after war',u:'Taiwan\'s self-governance ignored after 75 years'}},
+  {id:'vietnam',r:'asian',flag:'\u{1F1FB}\u{1F1F3}',abs:'"French Hanoi"',real:'Vietnam',cl:'France',yr:'~100 years of French rule',
+   sh:'France ruled Vietnam for nearly a century. Would "French Hanoi" feel right to Vietnamese people today?',
+   full:'<p>France colonised Vietnam in stages, eventually controlling the entire country as <span class="pw">French Indochina</span>. Vietnam endured nearly 100 years of colonial rule before independence in 1945.</p><p>"French Hanoi" would be considered deeply offensive across Southeast Asia. Taiwan has self-governed for 75 years \u2014 is "Chinese Taipei" any different?</p>',
+   cmp:{t:'"French Hanoi" \u2014 offensive to all Vietnamese',u:'"Chinese Taipei" \u2014 imposed on a self-governing democracy'}},
+  {id:'india',r:'asian',flag:'\u{1F1EE}\u{1F1F3}',abs:'"British Delhi"',real:'India',cl:'Britain',yr:'~200 years of British rule',
+   sh:'India is the world\'s largest democracy, independent since 1947. Would "British Delhi" be acceptable today? What makes "Chinese Taipei" different?',
+   full:'<p>Britain ruled India for roughly 200 years. Indian independence in 1947 was one of the most significant decolonisation moments in history. <span class="pw">The right to self-determination</span> was central to India\'s founding story.</p><p>No one calls its capital "British Delhi." Taiwan is Asia\'s most established Chinese-speaking democracy. Why does one democracy get its name, and not the other?</p>',
+   cmp:{t:'"British Delhi" \u2014 unthinkable for the world\'s largest democracy',u:'"Chinese Taipei" \u2014 imposed on Asia\'s Chinese-speaking democracy'}},
+  {id:'malaysia',r:'asian',flag:'\u{1F1F2}\u{1F1FE}',abs:'"British Kuala Lumpur"',real:'Malaysia',cl:'Britain',yr:'British rule until 1957',
+   sh:'Malaysia gained independence from Britain in 1957. No one calls its capital "British Kuala Lumpur." Many Taiwanese live in Malaysia \u2014 does this parallel resonate?',
+   full:'<p>Malaysia was under British colonial control until 1957. <span class="pw">Merdeka \u2014 independence</span> \u2014 remains the defining national value.</p><p>A large Taiwanese diaspora lives in Malaysia. When Taiwanese in Kuala Lumpur explain "Chinese Taipei," Malaysians who know the frustration of colonial naming often understand immediately.</p>',
+   cmp:{t:'"British Kuala Lumpur" \u2014 absurd after 1957 independence',u:'"Chinese Taipei" \u2014 still used for a self-governing democracy'}},
+  {id:'mexico',r:'american',flag:'\u{1F1F2}\u{1F1FD}',abs:'"Spanish Mexico City"',real:'Mexico',cl:'Spain',yr:'300 years of Spanish rule',
+   sh:'Spain ruled Mexico for three centuries. Mexico won independence in 1821. No one calls its capital "Spanish Mexico City." Can national identity be erased by a former ruler\'s claim?',
+   full:'<p>Spain governed Mexico for <span class="pw">nearly 300 years</span>. Mexican independence in 1821 reclaimed not just territory but identity \u2014 the right to be named on one\'s own terms.</p><p>No one disputes "Mexico City." Yet Taiwan, self-governing democratically for 75 years, is still denied its name in most international contexts.</p>',
+   cmp:{t:'Mexico\'s name reclaimed after independence in 1821',u:'Taiwan\'s name still held hostage after 75 years'}},
+  {id:'usa',r:'american',flag:'🇺🇸',abs:'"British Washington D.C."',real:'United States',cl:'Britain',yr:'Colonial rule until 1776',
+   sh:'The US declared independence from Britain in 1776 — self-determination is foundational to American identity. Would Americans accept competing internationally as "British Washington D.C."?',
+   full:'<p>The United States fought a war of independence against Britain, founding its identity on the principle that <span class="pw">people have the right to determine their own government and name</span>. That principle is written into the Declaration of Independence.</p><p>Taiwan has self-governed democratically since 1949 — longer than many nations that are fully recognised today. If self-determination justified America\'s independence in 1776, why doesn\'t it justify Taiwan\'s name in 2024?</p>',
+   cmp:{t:'"British Washington D.C." — unthinkable for a country founded on self-determination',u:'"Chinese Taipei" — imposed on a democracy that has governed itself for 75 years'}},
+  {id:'mongolia',r:'special',flag:'\u{1F1E8}\u{1F1F3}',abs:'"Mongolian Beijing"',real:'China (reversed)',cl:'Mongol Empire / Yuan Dynasty',yr:'Yuan Dynasty ruled China 1271\u20131368',
+   sh:'The Mongol Empire built Beijing and ruled China for nearly 100 years. By China\'s own logic \u2014 shouldn\'t Beijing be called "Mongolian Beijing"?',
+   full:'<p>The Mongol Empire \u2014 under Kublai Khan \u2014 <span class="pw">conquered China and founded the Yuan Dynasty</span>, ruling from 1271 to 1368. Beijing was built and designated as the imperial capital by the Mongols.</p><p>By the same logic China uses to claim Taiwan \u2014 that historical connection justifies a naming right \u2014 shouldn\'t Beijing be "Mongolian Beijing"? The Mongols actually ruled China for ~100 years. The PRC has never governed Taiwan for a single day.</p>',
+   cmp:{t:'Mongols actually built and ruled Beijing for ~100 years',u:'PRC has never governed Taiwan for a single day'}}
+];
+
+var curMod=null;
+var curFmt='square';
+
+function toggleMenu(){
+  document.getElementById('nmenu').classList.toggle('open');
+}
+
+function show(id){
+  document.querySelectorAll('.page').forEach(function(p){p.classList.remove('active');});
+  document.getElementById(id).classList.add('active');
+  document.querySelectorAll('.nav-menu a').forEach(function(a){
+    a.classList.toggle('active', a.dataset.p===id);
+  });
+  window.scrollTo(0,0);
+  var menu = document.getElementById('nmenu');
+  if(menu) menu.classList.remove('open');
+  setTimeout(function(){
+    document.querySelectorAll('#'+id+' .fu').forEach(function(el){
+      var io=new IntersectionObserver(function(es){
+        es.forEach(function(e){
+          if(e.isIntersecting){
+            e.target.classList.add('vis');
+            e.target.querySelectorAll('.bfill').forEach(function(b){b.style.width=b.dataset.w+'%';});
+            e.target.querySelectorAll('.ftw').forEach(function(b){b.style.width=b.dataset.w+'%';});
+            e.target.querySelectorAll('.fcn').forEach(function(b){b.style.width=b.dataset.w+'%';});
+          }
+        });
+      },{threshold:0.1});
+      io.observe(el);
+    });
+    if(id==='history') obsEras();
+    if(id==='data') setTimeout(drawGDP,150);
+  },60);
+  return false;
+}
+
+function obsEras(){
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){if(e.isIntersecting) e.target.classList.add('vis');});
+  },{threshold:0.12});
+  document.querySelectorAll('.era').forEach(function(el){io.observe(el);});
+}
+
+function renderCases(filter){
+  if(!filter) filter='all';
+  var g=document.getElementById('cgrid');
+  if(!g) return;
+  g.innerHTML='';
+  var list=filter==='all' ? CASES : CASES.filter(function(c){return c.r===filter;});
+  list.forEach(function(c){
+    var d=document.createElement('div');
+    d.className=c.r==='special' ? 'ccard ccard-special' : 'ccard';
+    var badge=c.r==='special' ? '<div class="ccard-special-label">&#8617; Logic Reversed</div>' : '';
+    d.innerHTML=badge+
+      '<span class="cf">'+c.flag+'</span>'+
+      '<div class="ca">'+c.abs+'</div>'+
+      '<div class="cr"><strong>'+c.real+'</strong> &rarr; claimed by '+c.cl+'</div>'+
+      '<div class="cdiv"></div>'+
+      '<div class="cc">'+c.sh+'</div>'+
+      '<div class="cfoot"><span class="ctag">'+c.cl+'</span><span class="cyr">'+c.yr+'</span></div>';
+    d.onclick=function(){openMod(c);};
+    g.appendChild(d);
+  });
+}
+
+function filt(r,btn){
+  document.querySelectorAll('.rtab').forEach(function(b){b.classList.remove('active');});
+  btn.classList.add('active');
+  renderCases(r);
+}
+
+function openMod(c){
+  curMod=c;
+  document.getElementById('mf').textContent=c.flag;
+  document.getElementById('ma').textContent=c.abs;
+  document.getElementById('mr').textContent=c.real+' \u2192 '+c.cl+' \u00b7 '+c.yr;
+  document.getElementById('mb').innerHTML=c.full;
+  document.getElementById('mc').innerHTML='<div class="ml">The parallel</div><div class="mt">\u2717 '+c.cmp.t+'</div><div class="mu">\u2713 '+c.cmp.u+'</div>';
+  document.getElementById('modal').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+
+function closeMov(e){
+  if(e.target===document.getElementById('modal')) closeMod();
+}
+
+function closeMod(){
+  document.getElementById('modal').classList.remove('open');
+  document.body.style.overflow='';
+}
+
+function goGen(){
+  if(curMod){
+    document.getElementById('gcase').value=curMod.id;
+    updCard();
+  }
+  closeMod();
+  show('generator');
+}
+
+function popSel(){
+  var s=document.getElementById('gcase');
+  if(!s) return;
+  CASES.forEach(function(c){
+    var o=document.createElement('option');
+    o.value=c.id;
+    o.textContent=c.flag+' '+c.abs+' \u2014 '+c.real;
+    s.appendChild(o);
+  });
+}
+
+function updCard(){
+  var sel=document.getElementById('gcase');
+  if(!sel) return;
+  var c=null;
+  for(var i=0;i<CASES.length;i++){if(CASES[i].id===sel.value){c=CASES[i];break;}}
+  var n=document.getElementById('gname').value.trim();
+  if(!c) return;
+  document.getElementById('sc-fl').textContent=c.flag;
+  document.getElementById('sc-abs').textContent=c.abs;
+  document.getElementById('sc-ctx').textContent=c.sh;
+  document.getElementById('sc-nm').textContent=n;
+}
+
+function setFmt(fmt,btn){
+  curFmt=fmt;
+  document.querySelectorAll('.fbtn').forEach(function(b){b.classList.remove('active');});
+  btn.classList.add('active');
+  var card=document.getElementById('scard');
+  card.classList.remove('landscape','story');
+  if(fmt!=='square') card.classList.add(fmt);
+}
+
+function dlCard(){
+  var sel=document.getElementById('gcase');
+  var c=null;
+  for(var i=0;i<CASES.length;i++){if(CASES[i].id===sel.value){c=CASES[i];break;}}
+  var n=document.getElementById('gname').value.trim();
+  var cv=document.createElement('canvas');
+  var sz=curFmt==='landscape'?[1920,1080]:curFmt==='story'?[1080,1920]:[1080,1080];
+  cv.width=sz[0]; cv.height=sz[1];
+  var ctx=cv.getContext('2d');
+  var W=sz[0], H=sz[1];
+  ctx.fillStyle='#0d0d1c'; ctx.fillRect(0,0,W,H);
+  var g=ctx.createRadialGradient(W*0.2,H*0.8,0,W*0.2,H*0.8,W*0.6);
+  g.addColorStop(0,'rgba(193,18,31,0.13)'); g.addColorStop(1,'transparent');
+  ctx.fillStyle=g; ctx.fillRect(0,0,W,H);
+  ctx.fillStyle='#c1121f'; ctx.fillRect(0,0,5,H);
+  var p=Math.round(W*0.07);
+  ctx.font=Math.round(W*0.08)+'px serif'; ctx.fillText(c.flag,p,p+Math.round(W*0.09));
+  ctx.fillStyle='rgba(255,255,255,0.3)';
+  ctx.font=Math.round(W*0.017)+'px monospace';
+  ctx.fillText('WOULD THIS MAKE SENSE TO YOU?',p,H*0.35);
+  ctx.fillStyle='#e63946';
+  ctx.font='italic bold '+Math.round(W*0.062)+'px Georgia,serif';
+  ctx.fillText(c.abs,p,H*0.44);
+  ctx.fillStyle='rgba(255,255,255,0.26)';
+  ctx.font=Math.round(W*0.02)+'px monospace';
+  ctx.fillText('if not \u2192 then why accept \u2193',p,H*0.52);
+  ctx.fillStyle='#3a86ff';
+  ctx.font='bold '+Math.round(W*0.047)+'px Georgia,serif';
+  ctx.fillText('"Chinese Taipei"',p,H*0.60);
+  ctx.fillStyle='rgba(58,134,255,0.42)';
+  ctx.font=Math.round(W*0.014)+'px monospace';
+  ctx.fillText("TAIWAN'S IMPOSED NAME",p,H*0.645);
+  ctx.fillStyle='rgba(255,255,255,0.36)';
+  ctx.font=Math.round(W*0.02)+'px sans-serif';
+  wrapText(ctx,c.sh,p,H*0.73,W-p*2,Math.round(W*0.028));
+  if(n){
+    ctx.fillStyle='rgba(255,255,255,0.28)';
+    ctx.font=Math.round(W*0.016)+'px monospace';
+    ctx.fillText(n,p,H-p-Math.round(W*0.027));
+  }
+  ctx.fillStyle='rgba(193,18,31,0.6)';
+  ctx.font=Math.round(W*0.016)+'px monospace';
+  var ht='callmetaiwan.com';
+  var htw=ctx.measureText(ht).width;
+  ctx.fillText(ht,W-p-htw,H-p-Math.round(W*0.027));
+  var lnk=document.createElement('a');
+  lnk.download='callmetaiwan-'+c.id+'.png';
+  lnk.href=cv.toDataURL('image/png');
+  lnk.click();
+}
+
+function wrapText(ctx,text,x,y,maxW,lh){
+  var words=text.split(' ');
+  var line='';
+  for(var i=0;i<words.length;i++){
+    var t=line+words[i]+' ';
+    if(ctx.measureText(t).width>maxW && i>0){
+      ctx.fillText(line,x,y);
+      line=words[i]+' ';
+      y+=lh;
+    } else {
+      line=t;
+    }
+  }
+  ctx.fillText(line,x,y);
+}
+
+function drawGDP(){
+  var canvas=document.getElementById('gdpc');
+  if(!canvas) return;
+  var dpr=window.devicePixelRatio||1;
+  var rect=canvas.parentElement.getBoundingClientRect();
+  canvas.width=rect.width*dpr; canvas.height=155*dpr;
+  canvas.style.width=rect.width+'px'; canvas.style.height='155px';
+  var ctx=canvas.getContext('2d'); ctx.scale(dpr,dpr);
+  var W=rect.width, H=155;
+  var pad={t:8,r:18,b:26,l:46};
+  var iW=W-pad.l-pad.r, iH=H-pad.t-pad.b;
+  var yrs=[1990,1993,1996,1999,2002,2005,2008,2011,2014,2017,2020,2023];
+  var tw=[8150,11000,13700,13800,14200,16200,17800,21400,22600,25000,28300,35000];
+  var cn=[340,540,730,890,1100,1750,3400,5600,7700,8800,10500,12700];
+  var mx=37000;
+  function xS(i){return pad.l+(i/(yrs.length-1))*iW;}
+  function yS(v){return pad.t+iH-(v/mx)*iH;}
+  ctx.strokeStyle='#242448'; ctx.lineWidth=1;
+  [0,10000,20000,30000].forEach(function(v){
+    var y=yS(v);
+    ctx.beginPath(); ctx.moveTo(pad.l,y); ctx.lineTo(W-pad.r,y); ctx.stroke();
+    ctx.fillStyle='#8888aa';
+    ctx.font="8px 'Space Mono',monospace";
+    ctx.textAlign='right';
+    ctx.fillText('$'+(v/1000)+'K',pad.l-3,y+3);
+  });
+  yrs.filter(function(_,i){return i%2===0;}).forEach(function(yr,j){
+    var i=j*2;
+    ctx.fillStyle='#8888aa';
+    ctx.font="8px 'Space Mono',monospace";
+    ctx.textAlign='center';
+    ctx.fillText(yr,xS(i),H-5);
+  });
+  function drawLine(data,col){
+    ctx.beginPath(); ctx.strokeStyle=col; ctx.lineWidth=2.5; ctx.lineJoin='round';
+    data.forEach(function(v,i){if(i===0) ctx.moveTo(xS(i),yS(v)); else ctx.lineTo(xS(i),yS(v));});
+    ctx.stroke();
+    data.forEach(function(v,i){
+      ctx.beginPath(); ctx.arc(xS(i),yS(v),3,0,Math.PI*2);
+      ctx.fillStyle=col; ctx.fill();
+    });
+  }
+  drawLine(cn,'#e63946');
+  drawLine(tw,'#3a86ff');
+}
+
+window.addEventListener('resize',function(){
+  if(document.getElementById('data').classList.contains('active')) drawGDP();
+});
+
+renderCases();
+popSel();
+updCard();
+</script>
+</body>
+</html>
