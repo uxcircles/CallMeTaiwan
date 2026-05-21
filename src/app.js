@@ -180,16 +180,11 @@ function dlCard() {
     ctx.font = Math.round(W * 0.016) + 'px monospace';
     ctx.fillText(n, p, H - p - Math.round(W * 0.027));
   }
-  const lineH = Math.round(W * 0.022);
+  ctx.fillStyle = 'rgba(193,18,31,0.65)';
   ctx.font = Math.round(W * 0.016) + 'px monospace';
-  ctx.fillStyle = 'rgba(193,18,31,0.5)';
-  const domain = 'callmetaiwan.org';
-  const domainW = ctx.measureText(domain).width;
-  ctx.fillText(domain, W - p - domainW, H - p - Math.round(W * 0.01));
-  ctx.fillStyle = 'rgba(193,18,31,0.75)';
-  const tag = '#TaiwanIsTaiwan';
-  const tagW = ctx.measureText(tag).width;
-  ctx.fillText(tag, W - p - tagW, H - p - Math.round(W * 0.01) - lineH);
+  const ht = '#TaiwanIsTaiwan · callmetaiwan.org';
+  const htw = ctx.measureText(ht).width;
+  ctx.fillText(ht, W - p - htw, H - p - Math.round(W * 0.027));
   const lnk = document.createElement('a');
   lnk.download = 'callmetaiwan-' + c.id + '.png';
   lnk.href = cv.toDataURL('image/png');
