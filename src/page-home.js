@@ -70,18 +70,24 @@ cycleName();
 setInterval(cycleName, 3200);
 
 // ── TopoJSON shared fetch ─────────────────────────────────────────────────────
-const ALLIES = new Set([84, 320, 332, 340, 584, 520, 585, 600, 659, 662, 670, 798, 336]);
-
-const TINY_DOTS = [
-  { lon:  166.9, lat:  -0.5 },  // Nauru
-  { lon:  179.2, lat:  -8.5 },  // Tuvalu
-  { lon:  134.6, lat:   7.5 },  // Palau
-  { lon:  171.2, lat:   7.1 },  // Marshall Islands
-  { lon:  -62.7, lat:  17.3 },  // St Kitts & Nevis
-  { lon:  -61.0, lat:  13.9 },  // St Lucia
-  { lon:  -61.2, lat:  13.3 },  // St Vincent & Grenadines
-  { lon:   12.5, lat:  41.9 },  // Vatican City
+// Ally data: id = ISO numeric, dot = needs radial-gradient dot (tiny island),
+// flagLon/flagLat = optional display offset so flags don't overlap
+const ALLY_INFO = [
+  { id: 84,  flag: '🇧🇿', lon: -88.5, lat:  17.2 },                              // Belize
+  { id: 320, flag: '🇬🇹', lon: -90.3, lat:  15.8 },                              // Guatemala
+  { id: 332, flag: '🇭🇹', lon: -73.0, lat:  18.9 },                              // Haiti
+  { id: 340, flag: '🇭🇳', lon: -86.6, lat:  15.0 },                              // Honduras
+  { id: 600, flag: '🇵🇾', lon: -58.0, lat: -23.3 },                              // Paraguay
+  { id: 584, flag: '🇲🇭', lon: 171.2, lat:   7.1, dot: true },                   // Marshall Islands
+  { id: 520, flag: '🇳🇷', lon: 166.9, lat:  -0.5, dot: true },                   // Nauru
+  { id: 585, flag: '🇵🇼', lon: 134.6, lat:   7.5, dot: true },                   // Palau
+  { id: 659, flag: '🇰🇳', lon: -62.7, lat:  17.3, dot: true, flagLat: 18.1 },   // St Kitts & Nevis
+  { id: 662, flag: '🇱🇨', lon: -61.0, lat:  13.9, dot: true, flagLat: 14.7 },   // St Lucia
+  { id: 670, flag: '🇻🇨', lon: -61.2, lat:  13.3, dot: true, flagLat: 12.5 },   // St Vincent & Grenadines
+  { id: 798, flag: '🇹🇻', lon: 179.2, lat:  -8.5, dot: true },                   // Tuvalu
+  { id: 336, flag: '🇻🇦', lon:  12.5, lat:  41.9, dot: true },                   // Vatican City
 ];
+const ALLIES = new Set(ALLY_INFO.map(a => a.id));
 
 function decodeTopo(topo, name) {
   const { scale: s, translate: t } = topo.transform;
@@ -197,6 +203,7 @@ function drawMap(canvas, polygons) {
   ctx.fillRect(0, 0, W, H);
 
   polygons.forEach(({ ring, id }) => {
+    if (id === 10) return;           // hide Antarctica
     const ally = ALLIES.has(id);
     const tw   = id === 158;
 
@@ -226,15 +233,24 @@ function drawMap(canvas, polygons) {
     ctx.stroke();
   });
 
-  TINY_DOTS.forEach(({ lon, lat }) => {
+  // Ally dots + flag emoji
+  ctx.font = '13px serif';
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+  ALLY_INFO.forEach(({ lon, lat, flag, dot, flagLat }) => {
     const x = xS(lon), y = yS(lat);
-    const g = ctx.createRadialGradient(x, y, 0, x, y, 7);
-    g.addColorStop(0, 'rgba(58,134,255,0.85)');
-    g.addColorStop(1, 'transparent');
-    ctx.beginPath(); ctx.arc(x, y, 7, 0, Math.PI * 2);
-    ctx.fillStyle = g; ctx.fill();
-    ctx.beginPath(); ctx.arc(x, y, 2.5, 0, Math.PI * 2);
-    ctx.fillStyle = '#3a86ff'; ctx.fill();
+    if (dot) {
+      const g = ctx.createRadialGradient(x, y, 0, x, y, 7);
+      g.addColorStop(0, 'rgba(58,134,255,0.85)');
+      g.addColorStop(1, 'transparent');
+      ctx.beginPath(); ctx.arc(x, y, 7, 0, Math.PI * 2);
+      ctx.fillStyle = g; ctx.fill();
+      ctx.beginPath(); ctx.arc(x, y, 2.5, 0, Math.PI * 2);
+      ctx.fillStyle = '#3a86ff'; ctx.fill();
+    }
+    // Draw flag emoji (use flagLat offset if supplied, else default above dot/centroid)
+    const fy = flagLat != null ? yS(flagLat) : (dot ? y - 11 : y - 9);
+    ctx.fillText(flag, x, fy);
   });
 
   const tx = xS(121), ty = yS(23.5);
@@ -264,4 +280,34 @@ if (mapCanvas) {
   }, { threshold: 0.1 });
 
   io.observe(mapCanvas);
+}
+
+// ── Clickable scroll arrow ────────────────────────────────────────────────────
+const scrollArrow = document.querySelector('.hs-scroll');
+if (scrollArrow) {
+  scrollArrow.addEventListener('click', () => {
+    document.querySelector('.hs-map-section')?.scrollIntoView({ behavior: 'smooth' });
+  });
+}
+
+// ── Scroll-reveal ─────────────────────────────────────────────────────────────
+// Map section: full container fade+slide
+const mapInner = document.querySelector('.hs-map-inner');
+if (mapInner) {
+  mapInner.classList.add('sr');
+  new IntersectionObserver(([e], obs) => {
+    if (!e.isIntersecting) return;
+    obs.disconnect();
+    mapInner.classList.add('sr--in');
+  }, { threshold: 0.1 }).observe(mapInner);
+}
+
+// Cards section: container stays visible, cards animate in on entry
+const navInner = document.querySelector('.hs-nav-inner');
+if (navInner) {
+  new IntersectionObserver(([e], obs) => {
+    if (!e.isIntersecting) return;
+    obs.disconnect();
+    navInner.classList.add('sr--in');
+  }, { threshold: 0.1 }).observe(navInner);
 }

@@ -563,10 +563,12 @@ footer .brand{color:#e63946;font-size:11px;letter-spacing:4px;}
   letter-spacing: 3px;
   color: #8888aa;
   text-transform: uppercase;
-  animation: globe-bounce 2.2s ease-in-out infinite;
+  cursor: pointer;
   opacity: 0;
   animation: up 0.5s ease 0.8s forwards, globe-bounce 2.2s ease-in-out 1.3s infinite;
+  transition: color 0.2s;
 }
+.hs-scroll:hover { color: #c0c0e0; }
 
 /* Map section */
 .hs-map-section {
@@ -601,7 +603,7 @@ footer .brand{color:#e63946;font-size:11px;letter-spacing:4px;}
 
 .hs-map-canvas {
   width: 100%;
-  height: 420px;
+  height: 520px;
   display: block;
   background: #07070f;
 }
@@ -632,12 +634,39 @@ footer .brand{color:#e63946;font-size:11px;letter-spacing:4px;}
 .hs-nav-inner { max-width: 960px; margin: 0 auto; }
 .hs-nav-inner .eyebrow { margin-bottom: 32px; }
 
+/* ── Scroll reveal ─────────────────────────────────────────────────────────── */
+.sr {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.sr.sr--in {
+  opacity: 1;
+  transform: none;
+}
+
+/* Card stagger within revealed section */
+.hs-nav-inner.sr--in .hcard {
+  animation: card-up 0.5s ease both;
+}
+.hs-nav-inner.sr--in .hcard:nth-child(1) { animation-delay: 0.05s; }
+.hs-nav-inner.sr--in .hcard:nth-child(2) { animation-delay: 0.12s; }
+.hs-nav-inner.sr--in .hcard:nth-child(3) { animation-delay: 0.19s; }
+.hs-nav-inner.sr--in .hcard:nth-child(4) { animation-delay: 0.26s; }
+.hs-nav-inner.sr--in .hcard:nth-child(5) { animation-delay: 0.33s; }
+.hs-nav-inner.sr--in .hcard:nth-child(6) { animation-delay: 0.40s; }
+
+@keyframes card-up {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: none; }
+}
+
 @media (max-width: 760px) {
   .hs-hero { padding: 40px 20px 60px; }
   .hs-hero-inner { display: block; }
   .hs-hero-right { display: none; }
   .hs-map-section { padding: 60px 20px; }
-  .hs-map-canvas { height: 240px; }
+  .hs-map-canvas { height: 280px; }
   .hs-map-stat { gap: 16px; flex-wrap: wrap; }
   .hs-nav-section { padding: 60px 20px 80px; }
 }
