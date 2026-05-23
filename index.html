@@ -290,31 +290,86 @@
 
 <!-- ===== COMPARE ===== -->
 <div class="page" id="compare">
+  <!-- Canvas lives here in DOM but is positioned fixed via JS -->
+  <canvas id="globe-canvas" style="display:none"></canvas>
+
+  <!-- Hero: full-viewport, title always visible over the globe -->
   <div class="globe-stage">
-    <canvas id="globe-canvas"></canvas>
-    <div class="globe-loading">Locating Taiwan…</div>
-  </div>
-  <div id="compare-content">
-  <div class="ph"><div class="eyebrow">Taiwan &amp; China — Compared</div><h2 class="stitle">Two governments.<br><em>One claim — is it valid?</em></h2>
-    <div class="vsh">
-      <div><span class="vsf">🇹🇼</span><div class="vsn tw">Taiwan</div><div class="vss">Republic of China · Est. 1912</div></div>
-      <div class="vsep">vs</div>
-      <div><span class="vsf">🇨🇳</span><div class="vsn cn">China</div><div class="vss">People's Republic · Est. 1949</div></div>
+    <div class="globe-hero-content">
+      <div class="eyebrow">Taiwan &amp; China — Compared</div>
+      <h2 class="stitle">Two governments.<br><em>One claim — is it valid?</em></h2>
+      <div class="vsh">
+        <div><span class="vsf">🇹🇼</span><div class="vsn tw">Taiwan</div><div class="vss">Republic of China · Est. 1912</div></div>
+        <div class="vsep">vs</div>
+        <div><span class="vsf">🇨🇳</span><div class="vsn cn">China</div><div class="vss">People's Republic · Est. 1949</div></div>
+      </div>
+      <div class="globe-scroll-hint">↓ scroll to compare</div>
     </div>
-    <table class="ctbl">
-      <tr class="wtw"><td class="col-tw"><span class="vtw">Free</span><span class="vs2">Score 94/100</span></td><td class="col-mid"><span class="mn">Freedom House</span><span class="mi">🗽</span></td><td class="col-cn"><span class="vcn">Not Free</span><span class="vs2">Score 9/100</span></td></tr>
-      <tr class="wtw"><td class="col-tw"><span class="vtw">79/100</span><span class="vs2">Internet Freedom 2024</span></td><td class="col-mid"><span class="mn">Internet Freedom</span><span class="mi">🌐</span></td><td class="col-cn"><span class="vcn">9/100</span><span class="vs2">Not Free</span></td></tr>
-      <tr class="wtw"><td class="col-tw"><span class="vtw">#35</span><span class="vs2">Press Freedom Rank</span></td><td class="col-mid"><span class="mn">Press Freedom</span><span class="mi">📰</span></td><td class="col-cn"><span class="vcn">#179</span><span class="vs2">of 180 countries</span></td></tr>
-      <tr class="wtw"><td class="col-tw"><span class="vtw">8.92</span><span class="vs2">Democracy Index</span></td><td class="col-mid"><span class="mn">EIU Democracy</span><span class="mi">🗳️</span></td><td class="col-cn"><span class="vcn">1.97</span><span class="vs2">Authoritarian</span></td></tr>
-      <tr class="wtw"><td class="col-tw"><span class="vtw">~$35K</span><span class="vs2">GDP per Capita</span></td><td class="col-mid"><span class="mn">GDP per Capita</span><span class="mi">💰</span></td><td class="col-cn"><span class="vcn">~$12.7K</span><span class="vs2">GDP per Capita</span></td></tr>
-      <tr class="wtw"><td class="col-tw"><span class="vtw">60%</span><span class="vs2">Global Foundry Share</span></td><td class="col-mid"><span class="mn">Semiconductors</span><span class="mi">💾</span></td><td class="col-cn"><span class="vcn">~7%</span><span class="vs2">Global Foundry Share</span></td></tr>
-      <tr class="wtw"><td class="col-tw"><span class="vtw">Legal</span><span class="vs2">Since 2019 · First in Asia</span></td><td class="col-mid"><span class="mn">Same-Sex Marriage</span><span class="mi">🏳️‍🌈</span></td><td class="col-cn"><span class="vcn">Illegal</span><span class="vs2">Criminalised</span></td></tr>
-      <tr class="wtw"><td class="col-tw"><span class="vtw">146</span><span class="vs2">Visa-Free Destinations</span></td><td class="col-mid"><span class="mn">Passport Power</span><span class="mi">🛂</span></td><td class="col-cn"><span class="vcn">85</span><span class="vs2">Visa-Free Destinations</span></td></tr>
-      <tr><td class="col-tw"><span class="vtw">Never</span><span class="vs2">PRC has never governed Taiwan</span></td><td class="col-mid"><span class="mn">Historical Rule</span><span class="mi">📜</span></td><td class="col-cn"><span class="vcn">Claims</span><span class="vs2">Since 1949</span></td></tr>
-    </table>
-    <div class="kfact"><div class="kfl">A question of precedent</div><p>The PRC was founded in 1949. <strong>It has never governed Taiwan for a single day.</strong> Every post-colonial nation that achieved self-governance — Ireland, Algeria, India, Vietnam — is recognised under its own name. Taiwan has governed itself longer than most. Does it deserve the same recognition?</p></div>
   </div>
-  </div><!-- /compare-content -->
+
+  <!-- Comparison cards — slide up from below the globe -->
+  <div id="compare-content">
+    <div class="compare-cards-wrap">
+      <div class="compare-cards">
+
+        <div class="cmp-card">
+          <div class="cc-tw"><div class="vtw">Free</div><div class="vs2">Score 94/100</div></div>
+          <div class="cc-mid"><div class="cc-ico">🗽</div><div class="cc-label">Freedom House</div></div>
+          <div class="cc-cn"><div class="vcn">Not Free</div><div class="vs2">Score 9/100</div></div>
+        </div>
+
+        <div class="cmp-card">
+          <div class="cc-tw"><div class="vtw">79/100</div><div class="vs2">Internet Freedom 2024</div></div>
+          <div class="cc-mid"><div class="cc-ico">🌐</div><div class="cc-label">Internet Freedom</div></div>
+          <div class="cc-cn"><div class="vcn">9/100</div><div class="vs2">Not Free</div></div>
+        </div>
+
+        <div class="cmp-card">
+          <div class="cc-tw"><div class="vtw">#35</div><div class="vs2">Press Freedom Rank</div></div>
+          <div class="cc-mid"><div class="cc-ico">📰</div><div class="cc-label">Press Freedom</div></div>
+          <div class="cc-cn"><div class="vcn">#179</div><div class="vs2">of 180 countries</div></div>
+        </div>
+
+        <div class="cmp-card">
+          <div class="cc-tw"><div class="vtw">8.92</div><div class="vs2">Democracy Index</div></div>
+          <div class="cc-mid"><div class="cc-ico">🗳️</div><div class="cc-label">EIU Democracy</div></div>
+          <div class="cc-cn"><div class="vcn">1.97</div><div class="vs2">Authoritarian</div></div>
+        </div>
+
+        <div class="cmp-card">
+          <div class="cc-tw"><div class="vtw">~$35K</div><div class="vs2">GDP per Capita</div></div>
+          <div class="cc-mid"><div class="cc-ico">💰</div><div class="cc-label">GDP per Capita</div></div>
+          <div class="cc-cn"><div class="vcn">~$12.7K</div><div class="vs2">GDP per Capita</div></div>
+        </div>
+
+        <div class="cmp-card">
+          <div class="cc-tw"><div class="vtw">60%</div><div class="vs2">Global Foundry Share</div></div>
+          <div class="cc-mid"><div class="cc-ico">💾</div><div class="cc-label">Semiconductors</div></div>
+          <div class="cc-cn"><div class="vcn">~7%</div><div class="vs2">Global Foundry Share</div></div>
+        </div>
+
+        <div class="cmp-card">
+          <div class="cc-tw"><div class="vtw">Legal</div><div class="vs2">Since 2019 · First in Asia</div></div>
+          <div class="cc-mid"><div class="cc-ico">🏳️‍🌈</div><div class="cc-label">Same-Sex Marriage</div></div>
+          <div class="cc-cn"><div class="vcn">Illegal</div><div class="vs2">Criminalised</div></div>
+        </div>
+
+        <div class="cmp-card">
+          <div class="cc-tw"><div class="vtw">146</div><div class="vs2">Visa-Free Destinations</div></div>
+          <div class="cc-mid"><div class="cc-ico">🛂</div><div class="cc-label">Passport Power</div></div>
+          <div class="cc-cn"><div class="vcn">85</div><div class="vs2">Visa-Free Destinations</div></div>
+        </div>
+
+        <div class="cmp-card cmp-card--neutral">
+          <div class="cc-tw"><div class="vtw">Never</div><div class="vs2">PRC has never governed Taiwan</div></div>
+          <div class="cc-mid"><div class="cc-ico">📜</div><div class="cc-label">Historical Rule</div></div>
+          <div class="cc-cn"><div class="vcn">Claims</div><div class="vs2">Since 1949</div></div>
+        </div>
+
+      </div>
+      <div class="kfact"><div class="kfl">A question of precedent</div><p>The PRC was founded in 1949. <strong>It has never governed Taiwan for a single day.</strong> Every post-colonial nation that achieved self-governance — Ireland, Algeria, India, Vietnam — is recognised under its own name. Taiwan has governed itself longer than most. Does it deserve the same recognition?</p></div>
+    </div>
+  </div>
 </div>
 
 <!-- ===== GENERATOR ===== -->
