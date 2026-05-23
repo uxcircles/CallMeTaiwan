@@ -5,22 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Why Taiwan Isn't "Chinese Taipei" | CallMeTaiwan.org</title>
 <meta name="description" content="Most Taiwanese reject the name &quot;Chinese Taipei&quot; — yet it persists across the Olympics and global institutions. The story of a name no one voted for.">
-
-<!-- Open Graph (Facebook, LINE, Discord, etc.) -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://callmetaiwan.org">
 <meta property="og:title" content="Why Taiwan Isn't &quot;Chinese Taipei&quot;">
 <meta property="og:description" content="Most Taiwanese reject the name &quot;Chinese Taipei&quot; — yet it persists across the Olympics and global institutions. The story of a name no one voted for.">
 <meta property="og:image" content="https://callmetaiwan.org/OG.png">
-
-<!-- Twitter / X Card -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:url" content="https://callmetaiwan.org">
 <meta name="twitter:title" content="Why Taiwan Isn't &quot;Chinese Taipei&quot;">
 <meta name="twitter:description" content="Most Taiwanese reject the name &quot;Chinese Taipei&quot; — yet it persists across the Olympics and global institutions. The story of a name no one voted for.">
 <meta name="twitter:image" content="https://callmetaiwan.org/OG.png">
-
-<!-- Canonical -->
 <link rel="canonical" href="https://callmetaiwan.org">
 <link rel="icon" type="image/png" sizes="512x512" href="/favicon_512.png">
 <link rel="apple-touch-icon" href="/favicon_512.png">
@@ -29,31 +23,30 @@
 <body>
 
 <nav>
-  <button class="nav-logo" onclick="show('home')">Call Me Taiwan</button>
+  <button class="nav-logo" onclick="window.location.href='/'">Call Me Taiwan</button>
   <ul class="nav-menu" id="nmenu">
-    <li><a href="#" onclick="show('home')" data-p="home" class="active">Home</a></li>
-    <li><a href="#" onclick="show('names')" data-p="names">The Name</a></li>
-    <li><a href="#" onclick="show('names3')" data-p="names3">4 Names</a></li>
-    <li><a href="#" onclick="show('history')" data-p="history">History</a></li>
-    <li><a href="#" onclick="show('data')" data-p="data">Data</a></li>
-    <li><a href="#" onclick="show('compare')" data-p="compare">TW vs CN</a></li>
-    <li><a href="#" onclick="show('generator')" data-p="generator">Make a Card</a></li>
+    <li><a href="/">Home</a></li>
+    <li><a href="/the-name">The Name</a></li>
+    <li><a href="/identity">4 Names</a></li>
+    <li><a href="/history">History</a></li>
+    <li><a href="/data">Data</a></li>
+    <li><a href="/tw-vs-cn">TW vs CN</a></li>
+    <li><a href="/make-a-card">Make a Card</a></li>
   </ul>
   <button class="hbg" onclick="toggleMenu()">☰</button>
 </nav>
 
-<!-- ===== HOME ===== -->
 <div class="page active" id="home">
   <div class="hero">
     <h1 class="h-h1">What's in<br>a <em>Name?</em></h1>
     <div class="h-sub">Taiwan has three names.<br>None of them were chosen.</div>
     <p class="h-body">On its passport: <strong>Republic of China.</strong> At the Olympics: <strong>"Chinese Taipei."</strong> In people's hearts: <strong>Taiwan.</strong> For everyone who's ever had to explain Taiwan.</p>
     <div class="h-cards">
-      <div class="hcard" onclick="show('names')"><span class="hc-ico">🏷️</span><div class="hc-t">The Name</div><div class="hc-d">What if this logic applied to your country?</div></div>
-      <div class="hcard" onclick="show('names3')"><span class="hc-ico">🪪</span><div class="hc-t">4 Names</div><div class="hc-d">Four names. Not one chosen by Taiwan.</div></div>
-      <div class="hcard" onclick="show('history')"><span class="hc-ico">📜</span><div class="hc-t">History</div><div class="hc-d">6,000 years of identity, from indigenous peoples to democracy.</div></div>
-      <div class="hcard" onclick="show('data')"><span class="hc-ico">📊</span><div class="hc-t">Data</div><div class="hc-d">Democracy, press freedom, semiconductors — by the numbers.</div></div>
-      <div class="hcard" onclick="show('generator')"><span class="hc-ico">🪄</span><div class="hc-t">Make a Card</div><div class="hc-d">Shareable cards for Instagram, Twitter, and Stories.</div></div>
+      <div class="hcard" onclick="location.href='/the-name'"><span class="hc-ico">🏷️</span><div class="hc-t">The Name</div><div class="hc-d">What if this logic applied to your country?</div></div>
+      <div class="hcard" onclick="location.href='/identity'"><span class="hc-ico">🪪</span><div class="hc-t">4 Names</div><div class="hc-d">Four names. Not one chosen by Taiwan.</div></div>
+      <div class="hcard" onclick="location.href='/history'"><span class="hc-ico">📜</span><div class="hc-t">History</div><div class="hc-d">6,000 years of identity, from indigenous peoples to democracy.</div></div>
+      <div class="hcard" onclick="location.href='/data'"><span class="hc-ico">📊</span><div class="hc-t">Data</div><div class="hc-d">Democracy, press freedom, semiconductors — by the numbers.</div></div>
+      <div class="hcard" onclick="location.href='/make-a-card'"><span class="hc-ico">🪄</span><div class="hc-t">Make a Card</div><div class="hc-d">Shareable cards for Instagram, Twitter, and Stories.</div></div>
     </div>
     <div class="hero-badge">
       <span class="bf">🇹🇼</span>
@@ -63,368 +56,8 @@
   </div>
 </div>
 
-<!-- ===== NAMES ===== -->
-<div class="page" id="names">
-  <div class="ph">
-    <div class="eyebrow">A Naming Question</div>
-    <h2 class="stitle">What if we applied<br>the <em>same logic</em> elsewhere?</h2>
-    <div class="imposed-card">
-      <span style="font-size:42px">🇹🇼</span>
-      <div>
-        <div style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:2px;color:#3a86ff;text-transform:uppercase;margin-bottom:5px">Is this name fair?</div>
-        <div style="font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:700;margin-bottom:4px">Taiwan</div>
-        <div style="font-family:'Space Mono',monospace;font-size:10px;color:#8888aa">
-          <span style="text-decoration:line-through;opacity:0.55">Chinese Taipei</span>
-          <span style="margin:0 8px;opacity:0.35">←</span>Used in Olympics &amp; international bodies — but who chose it?
-        </div>
-      </div>
-    </div>
-    <div class="rtabs">
-      <button class="rtab active" onclick="filt('all',this)">Everyone</button>
-      <button class="rtab" onclick="filt('european',this)">European friends</button>
-      <button class="rtab" onclick="filt('asian',this)">Asian friends</button>
-      <button class="rtab" onclick="filt('american',this)">American friends</button>
-      <button class="rtab" onclick="filt('special',this)" style="border-color:#e9c46a;color:#e9c46a">&#8617; Logic Reversed</button>
-    </div>
-    <div class="cgrid" id="cgrid"></div>
-  </div>
-</div>
-
-<!-- ===== THREE NAMES ===== -->
-<div class="page" id="names3">
-  <div class="ph">
-    <div class="eyebrow">The Identity Paradox</div>
-    <h2 class="stitle">Four names.<br><em>None chosen.</em></h2>
-  </div>
-  <div class="inner">
-    <p class="names3-intro">Taiwan is called four different things — depending on who is speaking, and what they want. <strong>Not one of these names was freely chosen by the Taiwanese people.</strong> Understanding the difference between them is the first step to understanding Taiwan's situation.</p>
-
-    <div class="four-cards">
-      <div class="ncard passport">
-        <div class="ncard-eyebrow">On the passport</div>
-        <div class="ncard-name">Republic<br>of China</div>
-        <div class="ncard-sub">A name from 1912, carried to Taiwan in 1949 by a government that lost a civil war. Changing it risks triggering a military crisis with Beijing. Not chosen — inherited.</div>
-        <div class="ncard-origin">Est. 1912 · Historical burden · Never voted on</div>
-      </div>
-      <div class="ncard olympic">
-        <div class="ncard-eyebrow">At the Olympics</div>
-        <div class="ncard-name">"Chinese<br>Taipei"</div>
-        <div class="ncard-sub">Imposed in 1981 under IOC pressure from Beijing. Taiwan was expelled and forced to accept this name just to compete. A city name used in place of a country.</div>
-        <div class="ncard-origin">Imposed 1981 · IOC · Chosen by Beijing, not Taiwan</div>
-      </div>
-      <div class="ncard danger">
-        <div class="ncard-eyebrow">In global institutions &amp; commerce</div>
-        <div class="ncard-name">"Taiwan,<br>Province of China"</div>
-        <div class="ncard-sub">Two versions of the same claim. In some UN agencies, WHO, and ISO databases: <strong style="color:#ff6b6b">"Taiwan, Province of China"</strong> — a label pushed by Beijing through institutional pressure, now contested by the EU Parliament, Australia, Czech Republic and others. On airline booking systems and online forms: <strong style="color:#ff6b6b">"Taiwan, China"</strong> — companies comply under threat of losing Chinese market access. A sovereignty claim disguised as punctuation — and a battle still being fought.</div>
-        <div class="ncard-origin">Contested by EU, Australia, Czech Republic · Still used in some UN agencies · Airlines &amp; forms under pressure</div>
-      </div>
-      <div class="ncard heart">
-        <div class="ncard-eyebrow">In people's hearts</div>
-        <div class="ncard-name">Taiwan</div>
-        <div class="ncard-sub">What most people on the island call themselves. Over 60% identify as Taiwanese — not Chinese. A living identity with no official international status. The only name that actually fits.</div>
-        <div class="ncard-origin">Always existed · Suppressed for decades · Still not official</div>
-      </div>
-    </div>
-
-    <div class="paradox-box">
-      <h3>So why doesn't Taiwan just <em>change its name?</em></h3>
-      <ul class="paradox-list">
-        <li><span class="bullet">01</span><div>Beijing has declared that any formal move toward independence — including a name change — would be treated as a <strong>trigger for military action</strong>. Taiwan lives under this threat permanently.</div></li>
-        <li><span class="bullet">02</span><div>Taiwan's constitution still officially names the state "Republic of China." Amending it requires a referendum. A referendum on the name is itself considered a provocation by Beijing — and by some of Taiwan's diplomatic allies who fear escalation.</div></li>
-        <li><span class="bullet">03</span><div>Many countries quietly prefer the <strong>status quo</strong> — "Chinese Taipei" lets them trade with both sides without choosing. Taiwan's naming problem is partly sustained by other nations' economic self-interest.</div></li>
-        <li><span class="bullet">04</span><div>Taiwan was only admitted back to the Olympics in 1981 under "Chinese Taipei." <strong>Challenging this risks expulsion</strong> from international competitions — soft power Taiwan cannot afford to lose.</div></li>
-        <li><span class="bullet">05</span><div>Beyond "Chinese Taipei," there are two further naming weapons. In some UN agencies, WHO, and ISO: <strong>"Taiwan, Province of China"</strong> — a label resulting from Beijing's institutional pressure, not a settled legal fact. Resolution 2758 never mentioned Taiwan's status — but China has used it to push this language into international bodies. The EU Parliament, Australia, and others are now pushing back. Meanwhile in airline booking systems and online forms: <strong>"Taiwan, China"</strong> — companies comply under threat of losing Chinese market access. In 2018, Beijing pressured over 40 airlines. Most complied within weeks.</div></li>
-      </ul>
-    </div>
-
-    <div class="analogy-scroll">
-      <h3>How precise is the <em>"Chinese" in "Chinese Taipei"?</em></h3>
-      <div class="analogy-item">
-        <div class="ai-country"><strong>Ottoman Empire → Greece</strong><br>Ruled Athens for 400 years. Would "Ottoman Athens" be acceptable today?</div>
-        <div class="ai-arr">→</div>
-        <div class="ai-name absurd">"Ottoman Athens"</div>
-      </div>
-      <div class="analogy-item">
-        <div class="ai-country"><strong>Qing Dynasty → Taiwan</strong><br>Ruled Taiwan 1683–1895. Would "Qing Taipei" at least make historical sense?</div>
-        <div class="ai-arr">→</div>
-        <div class="ai-name absurd">"Qing Taipei"?</div>
-      </div>
-      <div class="analogy-item">
-        <div class="ai-country"><strong>PRC → Taiwan</strong><br>Has never governed Taiwan for a single day. So where does "Chinese Taipei" come from?</div>
-        <div class="ai-arr">→</div>
-        <div class="ai-name absurd">"Chinese Taipei"?</div>
-      </div>
-      <div class="analogy-item" style="background:rgba(233,196,106,0.04);border-left:2px solid #e9c46a;padding-left:12px;">
-        <div class="ai-country"><strong style="color:#e9c46a">↩ Logic Reversed: Mongols → China</strong><br>Built Beijing, ruled China for ~100 years. By China's own logic — "Mongolian Beijing"?</div>
-        <div class="ai-arr">→</div>
-        <div class="ai-name" style="color:#e9c46a;font-style:italic;">"Mongolian Beijing"?</div>
-      </div>
-      <div class="analogy-item">
-        <div class="ai-country"><strong>What would make sense?</strong><br>A name reflecting the island's actual government, people, and identity.</div>
-        <div class="ai-arr">→</div>
-        <div class="ai-name ok">Taiwan?</div>
-      </div>
-    </div>
-
-    <div class="quote-final">
-      <div class="ql">A question worth sitting with</div>
-      <blockquote>Imagine your country had four names simultaneously — one from a lost civil war, one imposed by a sports committee, one being pushed into international institutions by your neighbour's political pressure, and one that everyone actually uses but no government officially recognises. Would you consider that fair? That is Taiwan's reality, every single day.</blockquote>
-    </div>
-  </div>
-</div>
-
-<!-- ===== HISTORY ===== -->
-<div class="page" id="history">
-  <div class="ph">
-    <div class="eyebrow">Taiwan History</div>
-    <h2 class="stitle">6,000 years<br>of <em>identity</em></h2>
-    <div class="twrap">
-      <div class="era" data-e="indigenous"><div class="era-dot"></div>
-        <div class="era-meta"><span class="era-yr">~4000 BCE – 1624</span><span class="era-rl">Indigenous</span></div>
-        <div class="era-t">The First Peoples</div>
-        <div class="era-b">Taiwan's <strong>16 officially recognised indigenous peoples</strong> — Amis, Atayal, Paiwan, Bunun and others — have inhabited the island for at least 6,000 years. Linguistic evidence suggests Taiwan may be the <strong>ancestral homeland of all Austronesian peoples</strong>, stretching from Madagascar to Hawaii.</div>
-        <div class="chips"><span class="chip">16 Peoples</span><span class="chip">Austronesian Origin</span><span class="chip">6000+ Years</span></div>
-      </div>
-      <div class="era" data-e="dutch"><div class="era-dot"></div>
-        <div class="era-meta"><span class="era-yr">1624 – 1662</span><span class="era-rl">Dutch & Spanish</span></div>
-        <div class="era-t">European Colonisation</div>
-        <div class="era-b">The Dutch East India Company established Fort Zeelandia in 1624. Spain briefly held the north (1626–1642). The Dutch introduced large-scale Han Chinese migration — the beginning of Taiwan's multi-ethnic character. First time Taiwan appears as a distinct territory in European records.</div>
-        <div class="chips"><span class="chip">VOC / Fort Zeelandia</span><span class="chip">Han Migration Begins</span><span class="chip">Trade Hub</span></div>
-      </div>
-      <div class="era" data-e="ming"><div class="era-dot"></div>
-        <div class="era-meta"><span class="era-yr">1662 – 1683</span><span class="era-rl">Ming Loyalists</span></div>
-        <div class="era-t">The Ming Loyalist Kingdom</div>
-        <div class="era-b">Koxinga expelled the Dutch and used Taiwan as a base to <strong>resist the Qing dynasty</strong> on the mainland. Taiwan became — for the first of many times — a refuge for those resisting mainland rule. A pattern that would repeat in 1949.</div>
-        <div class="chips"><span class="chip">Koxinga</span><span class="chip">Dutch Expelled</span><span class="chip">Anti-Qing Resistance</span></div>
-      </div>
-      <div class="era" data-e="qing"><div class="era-dot"></div>
-        <div class="era-meta"><span class="era-yr">1683 – 1895</span><span class="era-rl">Qing Dynasty</span></div>
-        <div class="era-t">Qing Administration</div>
-        <div class="era-b">The Qing incorporated Taiwan in 1683. It became a full province only in <strong>1887 — just 8 years before China ceded it to Japan</strong>. Over 100 uprisings against Qing rule were recorded. Worth noting: <strong>the Qing Dynasty is not the PRC.</strong> This is the only Chinese dynasty that ever governed Taiwan — so when we say "Chinese Taipei," which "China" does that refer to?</div>
-        <div class="chips"><span class="chip">Prefecture of Fujian</span><span class="chip">Province 1887</span><span class="chip">100+ Uprisings</span><span class="chip">Ceded to Japan 1895</span></div>
-      </div>
-      <div class="era" data-e="japan"><div class="era-dot"></div>
-        <div class="era-meta"><span class="era-yr">1895 – 1945</span><span class="era-rl">Empire of Japan</span></div>
-        <div class="era-t">Japanese Rule</div>
-        <div class="era-b">China ceded Taiwan to Japan after losing the First Sino-Japanese War. Japan ruled for <strong>50 years — longer than the PRC has existed</strong>. Railways, hospitals, schools, and legal systems were built. Taiwan's modern infrastructure is largely a legacy of this era.</div>
-        <div class="chips"><span class="chip">Treaty of Shimonoseki</span><span class="chip">50 Years</span><span class="chip">Modernisation</span><span class="chip">Wushe Incident 1930</span></div>
-      </div>
-      <div class="era" data-e="roc"><div class="era-dot"></div>
-        <div class="era-meta"><span class="era-yr">1945 – 1987</span><span class="era-rl">ROC / KMT</span></div>
-        <div class="era-t">ROC Rule & White Terror</div>
-        <div class="era-b">Japan surrendered Taiwan in 1945. After losing the Civil War, the KMT moved to Taiwan in 1949 — the same year the PRC was founded on the mainland. <strong>Two separate governments, born the same year, on either side of the strait.</strong> The 228 Massacre (1947) killed tens of thousands. Martial law lasted 38 years — the longest in history at the time.</div>
-        <div class="chips"><span class="chip">228 Massacre 1947</span><span class="chip">KMT 1949</span><span class="chip">38 Years Martial Law</span><span class="chip">"Chinese Taipei" Imposed 1981</span></div>
-      </div>
-      <div class="era" data-e="democracy"><div class="era-dot"></div>
-        <div class="era-meta"><span class="era-yr">1987 – Present</span><span class="era-rl">Democracy</span></div>
-        <div class="era-t">Taiwan's Democratic Miracle</div>
-        <div class="era-b">Martial law lifted 1987. First direct presidential election <strong>1996</strong> — Asia's first for a Chinese-speaking nation. Two peaceful transfers of power between rival parties. Legalised same-sex marriage 2019 — <strong>first in Asia</strong>. Produces 60% of the world's advanced chips. <strong>The PRC has never governed Taiwan for a single day.</strong></div>
-        <div class="chips"><span class="chip">Martial Law Lifted 1987</span><span class="chip">Election 1996</span><span class="chip">Same-Sex Marriage 2019</span><span class="chip">Top 10 Democracy</span><span class="chip">TSMC · 60% Chips</span></div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ===== DATA ===== -->
-<div class="page" id="data">
-  <div class="ph"><div class="eyebrow">Data & Indicators</div><h2 class="stitle">Taiwan in <em>numbers</em></h2></div>
-  <div class="inner" style="padding-bottom:80px">
-    <div class="vgrid">
-      <div class="vc fu"><div class="vlabel">EIU Democracy Index 2023</div><div class="vtitle">Democracy Rankings</div>
-        <div class="barchart">
-          <div class="brow"><div class="bname">Norway</div><div class="btrack"><div class="bfill" style="background:#4cc9f0" data-w="98"></div></div><div class="bval">9.81</div></div>
-          <div class="brow"><div class="bname">Sweden</div><div class="btrack"><div class="bfill" style="background:#4cc9f0" data-w="94"></div></div><div class="bval">9.39</div></div>
-          <div class="brow"><div class="bname">Taiwan 🇹🇼</div><div class="btrack"><div class="bfill" style="background:#3a86ff" data-w="85"></div></div><div class="bval">8.92</div></div>
-          <div class="brow"><div class="bname">USA</div><div class="btrack"><div class="bfill" style="background:#90e0ef" data-w="77"></div></div><div class="bval">7.85</div></div>
-          <div class="brow"><div class="bname">China 🇨🇳</div><div class="btrack"><div class="bfill" style="background:#e63946" data-w="20"></div></div><div class="bval">1.97</div></div>
-        </div>
-        <div class="src">Source: Economist Intelligence Unit</div>
-      </div>
-      <div class="vc fu"><div class="vlabel">RSF Press Freedom Index 2023</div><div class="vtitle">Press Freedom</div>
-        <div class="sgrid">
-          <div class="si"><div class="sc tw">🇹🇼 Taiwan</div><div class="sn tw">#35</div><div class="sm">World Rank</div></div>
-          <div class="si"><div class="sc cn">🇨🇳 China</div><div class="sn cn">#179</div><div class="sm">out of 180</div></div>
-        </div>
-        <div class="barchart" style="margin-top:16px">
-          <div class="brow"><div class="bname">Taiwan 🇹🇼</div><div class="btrack"><div class="bfill" style="background:#3a86ff" data-w="72"></div></div><div class="bval">72.3</div></div>
-          <div class="brow"><div class="bname">China 🇨🇳</div><div class="btrack"><div class="bfill" style="background:#e63946" data-w="11"></div></div><div class="bval">11.0</div></div>
-        </div>
-        <div class="src">Source: Reporters Without Borders</div>
-      </div>
-      <div class="vc fu"><div class="vlabel">Global Semiconductor Foundry 2023</div><div class="vtitle">Taiwan Controls the World's Chips</div>
-        <div class="dwrap">
-          <svg width="148" height="148" viewBox="0 0 148 148" style="flex-shrink:0">
-            <circle cx="74" cy="74" r="55" fill="none" stroke="#242448" stroke-width="25"/>
-            <circle cx="74" cy="74" r="55" fill="none" stroke="#3a86ff" stroke-width="25" stroke-dasharray="207 138" stroke-dashoffset="86"/>
-            <circle cx="74" cy="74" r="55" fill="none" stroke="#f77f00" stroke-width="25" stroke-dasharray="45 300" stroke-dashoffset="-121"/>
-            <circle cx="74" cy="74" r="55" fill="none" stroke="#4cc9f0" stroke-width="25" stroke-dasharray="31 314" stroke-dashoffset="-166"/>
-            <circle cx="74" cy="74" r="55" fill="none" stroke="#303060" stroke-width="25" stroke-dasharray="62 283" stroke-dashoffset="-197"/>
-            <text x="74" y="69" text-anchor="middle" fill="#3a86ff" font-family="Cormorant Garamond,serif" font-size="19" font-weight="700">60%</text>
-            <text x="74" y="86" text-anchor="middle" fill="#8888aa" font-family="Space Mono,monospace" font-size="8">Taiwan</text>
-          </svg>
-          <div>
-            <div class="litem"><div class="ldot" style="background:#3a86ff"></div><div class="lname">Taiwan (TSMC)</div><div class="lpct">60%</div></div>
-            <div class="litem"><div class="ldot" style="background:#f77f00"></div><div class="lname">Samsung (Korea)</div><div class="lpct">13%</div></div>
-            <div class="litem"><div class="ldot" style="background:#4cc9f0"></div><div class="lname">Intel (USA)</div><div class="lpct">9%</div></div>
-            <div class="litem"><div class="ldot" style="background:#303060"></div><div class="lname">Others</div><div class="lpct">18%</div></div>
-          </div>
-        </div>
-        <div class="src">Source: TrendForce Q4 2023 · Advanced chips ≤5nm: Taiwan >90%</div>
-      </div>
-      <div class="vc fu"><div class="vlabel">Freedom House 2025</div><div class="vtitle">Civil & Political Freedom</div>
-        <div class="fpair"><div class="flabel"><span>Political Rights</span><span>TW 38/40 · CN 0/40</span></div><div class="ftrack"><div class="ftw" data-w="95"></div><div class="fcn" data-w="0"></div></div></div>
-        <div class="fpair"><div class="flabel"><span>Civil Liberties</span><span>TW 56/60 · CN 11/60</span></div><div class="ftrack"><div class="ftw" data-w="93"></div><div class="fcn" data-w="18"></div></div></div>
-        <div class="fpair"><div class="flabel"><span>Overall Score</span><span>TW 94 · CN 9 /100</span></div><div class="ftrack"><div class="ftw" data-w="94"></div><div class="fcn" data-w="9"></div></div></div>
-        <div class="fpair"><div class="flabel"><span>Internet Freedom</span><span>TW 79 · CN 9 /100</span></div><div class="ftrack"><div class="ftw" data-w="79"></div><div class="fcn" data-w="9"></div></div></div>
-        <div class="src">Sources: Freedom House Freedom in the World 2025 (Civil &amp; Political) · Freedom on the Net 2024 (Internet) · Blue = Taiwan · Red = China</div>
-      </div>
-      <div class="vc wide fu"><div class="vlabel">GDP per Capita USD — World Bank</div><div class="vtitle">Economic Trajectory 1990–2023</div>
-        <div class="lcwrap"><canvas class="lc" id="gdpc"></canvas></div>
-        <div class="lcleg">
-          <div class="lci"><div class="lcidot" style="background:#3a86ff"></div>Taiwan (~$35,000 in 2023)</div>
-          <div class="lci"><div class="lcidot" style="background:#e63946"></div>China (~$12,700 in 2023)</div>
-        </div>
-        <div class="src">Source: World Bank</div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ===== COMPARE ===== -->
-<div class="page" id="compare">
-  <!-- Canvas lives here in DOM but is positioned fixed via JS -->
-  <canvas id="globe-canvas" style="display:none"></canvas>
-
-  <!-- Hero: full-viewport, title always visible over the globe -->
-  <div class="globe-stage">
-    <div class="globe-hero-content">
-      <div class="eyebrow">Taiwan &amp; China — Compared</div>
-      <h2 class="stitle">Two governments.<br><em>One claim — is it valid?</em></h2>
-      <div class="vsh">
-        <div><span class="vsf">🇹🇼</span><div class="vsn tw">Taiwan</div><div class="vss">Republic of China · Est. 1912</div></div>
-        <div class="vsep">vs</div>
-        <div><span class="vsf">🇨🇳</span><div class="vsn cn">China</div><div class="vss">People's Republic · Est. 1949</div></div>
-      </div>
-      <div class="globe-scroll-hint" onclick="scrollToCompare()">↓ scroll to compare</div>
-    </div>
-  </div>
-
-  <!-- Comparison cards — slide up from below the globe -->
-  <div id="compare-content">
-    <div class="compare-cards-wrap">
-      <div class="compare-cards">
-
-        <div class="cmp-card">
-          <div class="cc-tw"><div class="vtw">Free</div><div class="vs2">Score 94/100</div></div>
-          <div class="cc-mid"><div class="cc-ico">🗽</div><div class="cc-label">Freedom House</div></div>
-          <div class="cc-cn"><div class="vcn">Not Free</div><div class="vs2">Score 9/100</div></div>
-        </div>
-
-        <div class="cmp-card">
-          <div class="cc-tw"><div class="vtw">79/100</div><div class="vs2">Internet Freedom 2024</div></div>
-          <div class="cc-mid"><div class="cc-ico">🌐</div><div class="cc-label">Internet Freedom</div></div>
-          <div class="cc-cn"><div class="vcn">9/100</div><div class="vs2">Not Free</div></div>
-        </div>
-
-        <div class="cmp-card">
-          <div class="cc-tw"><div class="vtw">#35</div><div class="vs2">Press Freedom Rank</div></div>
-          <div class="cc-mid"><div class="cc-ico">📰</div><div class="cc-label">Press Freedom</div></div>
-          <div class="cc-cn"><div class="vcn">#179</div><div class="vs2">of 180 countries</div></div>
-        </div>
-
-        <div class="cmp-card">
-          <div class="cc-tw"><div class="vtw">8.92</div><div class="vs2">Democracy Index</div></div>
-          <div class="cc-mid"><div class="cc-ico">🗳️</div><div class="cc-label">EIU Democracy</div></div>
-          <div class="cc-cn"><div class="vcn">1.97</div><div class="vs2">Authoritarian</div></div>
-        </div>
-
-        <div class="cmp-card">
-          <div class="cc-tw"><div class="vtw">~$35K</div><div class="vs2">GDP per Capita</div></div>
-          <div class="cc-mid"><div class="cc-ico">💰</div><div class="cc-label">GDP per Capita</div></div>
-          <div class="cc-cn"><div class="vcn">~$12.7K</div><div class="vs2">GDP per Capita</div></div>
-        </div>
-
-        <div class="cmp-card">
-          <div class="cc-tw"><div class="vtw">60%</div><div class="vs2">Global Foundry Share</div></div>
-          <div class="cc-mid"><div class="cc-ico">💾</div><div class="cc-label">Semiconductors</div></div>
-          <div class="cc-cn"><div class="vcn">~7%</div><div class="vs2">Global Foundry Share</div></div>
-        </div>
-
-        <div class="cmp-card">
-          <div class="cc-tw"><div class="vtw">Legal</div><div class="vs2">Since 2019 · First in Asia</div></div>
-          <div class="cc-mid"><div class="cc-ico">🏳️‍🌈</div><div class="cc-label">Same-Sex Marriage</div></div>
-          <div class="cc-cn"><div class="vcn">Illegal</div><div class="vs2">Criminalised</div></div>
-        </div>
-
-        <div class="cmp-card">
-          <div class="cc-tw"><div class="vtw">146</div><div class="vs2">Visa-Free Destinations</div></div>
-          <div class="cc-mid"><div class="cc-ico">🛂</div><div class="cc-label">Passport Power</div></div>
-          <div class="cc-cn"><div class="vcn">85</div><div class="vs2">Visa-Free Destinations</div></div>
-        </div>
-
-        <div class="cmp-card cmp-card--neutral">
-          <div class="cc-tw"><div class="vtw">Never</div><div class="vs2">PRC has never governed Taiwan</div></div>
-          <div class="cc-mid"><div class="cc-ico">📜</div><div class="cc-label">Historical Rule</div></div>
-          <div class="cc-cn"><div class="vcn">Claims</div><div class="vs2">Since 1949</div></div>
-        </div>
-
-      </div>
-      <div class="kfact"><div class="kfl">A question of precedent</div><p>The PRC was founded in 1949. <strong>It has never governed Taiwan for a single day.</strong> Every post-colonial nation that achieved self-governance — Ireland, Algeria, India, Vietnam — is recognised under its own name. Taiwan has governed itself longer than most. Does it deserve the same recognition?</p></div>
-    </div>
-  </div>
-</div>
-
-<!-- ===== GENERATOR ===== -->
-<div class="page" id="generator">
-  <div class="ph"><div class="eyebrow">Social Card Generator</div><h2 class="stitle">Share the <em>question</em></h2></div>
-  <div class="glayout">
-    <div>
-      <div class="cg"><label class="clabel">Choose a Case</label><select class="csel" id="gcase" onchange="updCard()"></select></div>
-      <div class="cg"><label class="clabel">Your Name / City (optional)</label><input type="text" class="cinp" id="gname" placeholder="e.g. A Taiwanese in Berlin" oninput="updCard()"></div>
-      <div class="cg"><label class="clabel">Format</label>
-        <div class="fopts">
-          <button class="fbtn active" onclick="setFmt('square',this)">1:1<br><small>Instagram</small></button>
-          <button class="fbtn" onclick="setFmt('landscape',this)">16:9<br><small>Twitter</small></button>
-          <button class="fbtn" onclick="setFmt('story',this)">9:16<br><small>Story</small></button>
-        </div>
-      </div>
-      <button class="gbtn" onclick="dlCard()">↓ Download Image</button>
-    </div>
-    <div class="pwrap">
-      <div class="plabel">Preview</div>
-      <div id="scard">
-        <div class="sc-acc"></div>
-        <div class="sc-top"><span class="sc-fl" id="sc-fl">🇺🇦</span><span class="sc-tfl">🇹🇼</span></div>
-        <div class="sc-body">
-          <div class="sc-q">Would this make sense to you?</div>
-          <div class="sc-abs" id="sc-abs">"Russian Kyiv"</div>
-          <div class="sc-arr">if not → then why accept ↓</div>
-          <div class="sc-tw">"Chinese Taipei"</div>
-          <div class="sc-tws">Taiwan's imposed name</div>
-          <div class="sc-ctx" id="sc-ctx">Russia claims Ukraine is historically its territory — the same argument China uses for Taiwan.</div>
-        </div>
-        <div class="sc-bot"><span class="sc-nm" id="sc-nm"></span><span class="sc-ht">#TaiwanIsTaiwan · callmetaiwan.org</span></div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- MODAL -->
-<div class="mov" id="modal" onclick="closeMov(event)">
-  <div class="modal">
-    <button class="mc" onclick="closeMod()">✕</button>
-    <span class="mflag" id="mf"></span>
-    <div class="mabs" id="ma"></div>
-    <div class="mreal" id="mr"></div>
-    <div class="mdiv"></div>
-    <div class="mbody" id="mb"></div>
-    <div class="mcmp" id="mc"></div>
-    <button class="msh" onclick="goGen()">→ Share This Question</button>
-  </div>
-</div>
-
 <footer><span class="brand">CALL ME TAIWAN</span><br>callmetaiwan.com · DESIGN DIPLOMACY<br>Sources: EIU · Freedom House · RSF · World Bank · TrendForce</footer>
 
-<script type="module" src="/src/app.js"></script>
+<script type="module" src="/src/page-home.js"></script>
 </body>
 </html>

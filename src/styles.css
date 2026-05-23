@@ -126,7 +126,7 @@ hr.div{border:none;border-top:1px solid #242448;max-width:960px;margin:0 auto;}
 .cyr{font-family:'Space Mono',monospace;font-size:8px;color:#8888aa;}
 
 /* ====== THREE NAMES ====== */
-#names3 .inner{padding-bottom:80px;}
+#identity .inner{padding-bottom:80px;}
 
 .names3-intro{font-size:17px;line-height:1.8;color:#c0c0e0;max-width:600px;margin-bottom:56px;}
 .names3-intro strong{color:#eae6f8;font-weight:500;}

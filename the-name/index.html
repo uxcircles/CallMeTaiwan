@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What If This Logic Applied to Your Country? | CallMeTaiwan.org</title>
+<meta name="description" content="&quot;Chinese Taipei&quot; is Taiwan's imposed name. What if the same logic applied to Ukraine, India, or Greece? A comparison that makes the absurdity clear.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://callmetaiwan.org/the-name">
+<meta property="og:title" content="What If This Logic Applied to Your Country?">
+<meta property="og:description" content="&quot;Chinese Taipei&quot; is Taiwan's imposed name. What if the same logic applied to Ukraine, India, or Greece?">
+<meta property="og:image" content="https://callmetaiwan.org/OG.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://callmetaiwan.org/the-name">
+<meta name="twitter:title" content="What If This Logic Applied to Your Country?">
+<meta name="twitter:description" content="&quot;Chinese Taipei&quot; is Taiwan's imposed name. What if the same logic applied to Ukraine, India, or Greece?">
+<meta name="twitter:image" content="https://callmetaiwan.org/OG.png">
+<link rel="canonical" href="https://callmetaiwan.org/the-name">
+<link rel="icon" type="image/png" sizes="512x512" href="/favicon_512.png">
+<link rel="apple-touch-icon" href="/favicon_512.png">
+<link rel="stylesheet" href="/src/styles.css">
+</head>
+<body>
+
+<nav>
+  <button class="nav-logo" onclick="window.location.href='/'">Call Me Taiwan</button>
+  <ul class="nav-menu" id="nmenu">
+    <li><a href="/">Home</a></li>
+    <li><a href="/the-name">The Name</a></li>
+    <li><a href="/identity">4 Names</a></li>
+    <li><a href="/history">History</a></li>
+    <li><a href="/data">Data</a></li>
+    <li><a href="/tw-vs-cn">TW vs CN</a></li>
+    <li><a href="/make-a-card">Make a Card</a></li>
+  </ul>
+  <button class="hbg" onclick="toggleMenu()">☰</button>
+</nav>
+
+<div class="page active" id="names">
+  <div class="ph">
+    <div class="eyebrow">A Naming Question</div>
+    <h2 class="stitle">What if we applied<br>the <em>same logic</em> elsewhere?</h2>
+    <div class="imposed-card">
+      <span style="font-size:42px">🇹🇼</span>
+      <div>
+        <div style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:2px;color:#3a86ff;text-transform:uppercase;margin-bottom:5px">Is this name fair?</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:700;margin-bottom:4px">Taiwan</div>
+        <div style="font-family:'Space Mono',monospace;font-size:10px;color:#8888aa">
+          <span style="text-decoration:line-through;opacity:0.55">Chinese Taipei</span>
+          <span style="margin:0 8px;opacity:0.35">←</span>Used in Olympics &amp; international bodies — but who chose it?
+        </div>
+      </div>
+    </div>
+    <div class="rtabs">
+      <button class="rtab active" onclick="filt('all',this)">Everyone</button>
+      <button class="rtab" onclick="filt('european',this)">European friends</button>
+      <button class="rtab" onclick="filt('asian',this)">Asian friends</button>
+      <button class="rtab" onclick="filt('american',this)">American friends</button>
+      <button class="rtab" onclick="filt('special',this)" style="border-color:#e9c46a;color:#e9c46a">&#8617; Logic Reversed</button>
+    </div>
+    <div class="cgrid" id="cgrid"></div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="mov" id="modal" onclick="closeMov(event)">
+  <div class="modal">
+    <button class="mc" onclick="closeMod()">✕</button>
+    <span class="mflag" id="mf"></span>
+    <div class="mabs" id="ma"></div>
+    <div class="mreal" id="mr"></div>
+    <div class="mdiv"></div>
+    <div class="mbody" id="mb"></div>
+    <div class="mcmp" id="mc"></div>
+    <button class="msh" onclick="goGen()">→ Share This Question</button>
+  </div>
+</div>
+
+<footer><span class="brand">CALL ME TAIWAN</span><br>callmetaiwan.com · DESIGN DIPLOMACY<br>Sources: EIU · Freedom House · RSF · World Bank · TrendForce</footer>
+
+<script type="module" src="/src/page-names.js"></script>
+</body>
+</html>

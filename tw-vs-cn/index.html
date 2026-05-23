@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Taiwan vs China — Compared | CallMeTaiwan.org</title>
+<meta name="description" content="Two governments, one claim. Side-by-side comparison of Taiwan and China on democracy, press freedom, internet freedom, GDP, and more.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://callmetaiwan.org/tw-vs-cn">
+<meta property="og:title" content="Taiwan vs China — Compared">
+<meta property="og:description" content="Two governments, one claim. Side-by-side comparison of Taiwan and China on democracy, press freedom, internet freedom, GDP, and more.">
+<meta property="og:image" content="https://callmetaiwan.org/OG.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://callmetaiwan.org/tw-vs-cn">
+<meta name="twitter:title" content="Taiwan vs China — Compared">
+<meta name="twitter:description" content="Two governments, one claim. Side-by-side comparison of Taiwan and China on democracy, press freedom, internet freedom, GDP, and more.">
+<meta name="twitter:image" content="https://callmetaiwan.org/OG.png">
+<link rel="canonical" href="https://callmetaiwan.org/tw-vs-cn">
+<link rel="icon" type="image/png" sizes="512x512" href="/favicon_512.png">
+<link rel="apple-touch-icon" href="/favicon_512.png">
+<link rel="stylesheet" href="/src/styles.css">
+</head>
+<body>
+
+<nav>
+  <button class="nav-logo" onclick="window.location.href='/'">Call Me Taiwan</button>
+  <ul class="nav-menu" id="nmenu">
+    <li><a href="/">Home</a></li>
+    <li><a href="/the-name">The Name</a></li>
+    <li><a href="/identity">4 Names</a></li>
+    <li><a href="/history">History</a></li>
+    <li><a href="/data">Data</a></li>
+    <li><a href="/tw-vs-cn">TW vs CN</a></li>
+    <li><a href="/make-a-card">Make a Card</a></li>
+  </ul>
+  <button class="hbg" onclick="toggleMenu()">☰</button>
+</nav>
+
+<div class="page active" id="compare">
+  <!-- Canvas lives here in DOM but is positioned fixed via JS -->
+  <canvas id="globe-canvas" style="display:none"></canvas>
+
+  <!-- Hero: full-viewport, title always visible over the globe -->
+  <div class="globe-stage">
+    <div class="globe-hero-content">
+      <div class="eyebrow">Taiwan &amp; China — Compared</div>
+      <h2 class="stitle">Two governments.<br><em>One claim — is it valid?</em></h2>
+      <div class="vsh">
+        <div><span class="vsf">🇹🇼</span><div class="vsn tw">Taiwan</div><div class="vss">Republic of China · Est. 1912</div></div>
+        <div class="vsep">vs</div>
+        <div><span class="vsf">🇨🇳</span><div class="vsn cn">China</div><div class="vss">People's Republic · Est. 1949</div></div>
+      </div>
+      <div class="globe-scroll-hint" onclick="scrollToCompare()">↓ scroll to compare</div>
+    </div>
+  </div>
+
+  <!-- Comparison cards -->
+  <div id="compare-content">
+    <div class="compare-cards-wrap">
+      <div class="compare-cards">
+
+        <div class="cmp-card">
+          <div class="cc-tw"><div class="vtw">Free</div><div class="vs2">Score 94/100</div></div>
+          <div class="cc-mid"><div class="cc-ico">🗽</div><div class="cc-label">Freedom House</div></div>
+          <div class="cc-cn"><div class="vcn">Not Free</div><div class="vs2">Score 9/100</div></div>
+        </div>
+
+        <div class="cmp-card">
+          <div class="cc-tw"><div class="vtw">79/100</div><div class="vs2">Internet Freedom 2024</div></div>
+          <div class="cc-mid"><div class="cc-ico">🌐</div><div class="cc-label">Internet Freedom</div></div>
+          <div class="cc-cn"><div class="vcn">9/100</div><div class="vs2">Not Free</div></div>
+        </div>
+
+        <div class="cmp-card">
+          <div class="cc-tw"><div class="vtw">#35</div><div class="vs2">Press Freedom Rank</div></div>
+          <div class="cc-mid"><div class="cc-ico">📰</div><div class="cc-label">Press Freedom</div></div>
+          <div class="cc-cn"><div class="vcn">#179</div><div class="vs2">of 180 countries</div></div>
+        </div>
+
+        <div class="cmp-card">
+          <div class="cc-tw"><div class="vtw">8.92</div><div class="vs2">Democracy Index</div></div>
+          <div class="cc-mid"><div class="cc-ico">🗳️</div><div class="cc-label">EIU Democracy</div></div>
+          <div class="cc-cn"><div class="vcn">1.97</div><div class="vs2">Authoritarian</div></div>
+        </div>
+
+        <div class="cmp-card">
+          <div class="cc-tw"><div class="vtw">~$35K</div><div class="vs2">GDP per Capita</div></div>
+          <div class="cc-mid"><div class="cc-ico">💰</div><div class="cc-label">GDP per Capita</div></div>
+          <div class="cc-cn"><div class="vcn">~$12.7K</div><div class="vs2">GDP per Capita</div></div>
+        </div>
+
+        <div class="cmp-card">
+          <div class="cc-tw"><div class="vtw">60%</div><div class="vs2">Global Foundry Share</div></div>
+          <div class="cc-mid"><div class="cc-ico">💾</div><div class="cc-label">Semiconductors</div></div>
+          <div class="cc-cn"><div class="vcn">~7%</div><div class="vs2">Global Foundry Share</div></div>
+        </div>
+
+        <div class="cmp-card">
+          <div class="cc-tw"><div class="vtw">Legal</div><div class="vs2">Since 2019 · First in Asia</div></div>
+          <div class="cc-mid"><div class="cc-ico">🏳️‍🌈</div><div class="cc-label">Same-Sex Marriage</div></div>
+          <div class="cc-cn"><div class="vcn">Illegal</div><div class="vs2">Criminalised</div></div>
+        </div>
+
+        <div class="cmp-card">
+          <div class="cc-tw"><div class="vtw">146</div><div class="vs2">Visa-Free Destinations</div></div>
+          <div class="cc-mid"><div class="cc-ico">🛂</div><div class="cc-label">Passport Power</div></div>
+          <div class="cc-cn"><div class="vcn">85</div><div class="vs2">Visa-Free Destinations</div></div>
+        </div>
+
+        <div class="cmp-card cmp-card--neutral">
+          <div class="cc-tw"><div class="vtw">Never</div><div class="vs2">PRC has never governed Taiwan</div></div>
+          <div class="cc-mid"><div class="cc-ico">📜</div><div class="cc-label">Historical Rule</div></div>
+          <div class="cc-cn"><div class="vcn">Claims</div><div class="vs2">Since 1949</div></div>
+        </div>
+
+      </div>
+      <div class="kfact"><div class="kfl">A question of precedent</div><p>The PRC was founded in 1949. <strong>It has never governed Taiwan for a single day.</strong> Every post-colonial nation that achieved self-governance — Ireland, Algeria, India, Vietnam — is recognised under its own name. Taiwan has governed itself longer than most. Does it deserve the same recognition?</p></div>
+    </div>
+  </div>
+</div>
+
+<footer><span class="brand">CALL ME TAIWAN</span><br>callmetaiwan.com · DESIGN DIPLOMACY<br>Sources: EIU · Freedom House · RSF · World Bank · TrendForce</footer>
+
+<script type="module" src="/src/page-compare.js"></script>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Make a Card — Share Taiwan's Story | CallMeTaiwan.org</title>
+<meta name="description" content="Create shareable social media cards that ask: would this naming logic apply to your country? Download for Instagram, Twitter, and Stories.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://callmetaiwan.org/make-a-card">
+<meta property="og:title" content="Make a Card — Share Taiwan's Story">
+<meta property="og:description" content="Create shareable social media cards that ask: would this naming logic apply to your country? Download for Instagram, Twitter, and Stories.">
+<meta property="og:image" content="https://callmetaiwan.org/OG.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://callmetaiwan.org/make-a-card">
+<meta name="twitter:title" content="Make a Card — Share Taiwan's Story">
+<meta name="twitter:description" content="Create shareable social media cards that ask: would this naming logic apply to your country? Download for Instagram, Twitter, and Stories.">
+<meta name="twitter:image" content="https://callmetaiwan.org/OG.png">
+<link rel="canonical" href="https://callmetaiwan.org/make-a-card">
+<link rel="icon" type="image/png" sizes="512x512" href="/favicon_512.png">
+<link rel="apple-touch-icon" href="/favicon_512.png">
+<link rel="stylesheet" href="/src/styles.css">
+</head>
+<body>
+
+<nav>
+  <button class="nav-logo" onclick="window.location.href='/'">Call Me Taiwan</button>
+  <ul class="nav-menu" id="nmenu">
+    <li><a href="/">Home</a></li>
+    <li><a href="/the-name">The Name</a></li>
+    <li><a href="/identity">4 Names</a></li>
+    <li><a href="/history">History</a></li>
+    <li><a href="/data">Data</a></li>
+    <li><a href="/tw-vs-cn">TW vs CN</a></li>
+    <li><a href="/make-a-card">Make a Card</a></li>
+  </ul>
+  <button class="hbg" onclick="toggleMenu()">☰</button>
+</nav>
+
+<div class="page active" id="generator">
+  <div class="ph"><div class="eyebrow">Social Card Generator</div><h2 class="stitle">Share the <em>question</em></h2></div>
+  <div class="glayout">
+    <div>
+      <div class="cg"><label class="clabel">Choose a Case</label><select class="csel" id="gcase" onchange="updCard()"></select></div>
+      <div class="cg"><label class="clabel">Your Name / City (optional)</label><input type="text" class="cinp" id="gname" placeholder="e.g. A Taiwanese in Berlin" oninput="updCard()"></div>
+      <div class="cg"><label class="clabel">Format</label>
+        <div class="fopts">
+          <button class="fbtn active" onclick="setFmt('square',this)">1:1<br><small>Instagram</small></button>
+          <button class="fbtn" onclick="setFmt('landscape',this)">16:9<br><small>Twitter</small></button>
+          <button class="fbtn" onclick="setFmt('story',this)">9:16<br><small>Story</small></button>
+        </div>
+      </div>
+      <button class="gbtn" onclick="dlCard()">↓ Download Image</button>
+    </div>
+    <div class="pwrap">
+      <div class="plabel">Preview</div>
+      <div id="scard">
+        <div class="sc-acc"></div>
+        <div class="sc-top"><span class="sc-fl" id="sc-fl">🇺🇦</span><span class="sc-tfl">🇹🇼</span></div>
+        <div class="sc-body">
+          <div class="sc-q">Would this make sense to you?</div>
+          <div class="sc-abs" id="sc-abs">"Russian Kyiv"</div>
+          <div class="sc-arr">if not → then why accept ↓</div>
+          <div class="sc-tw">"Chinese Taipei"</div>
+          <div class="sc-tws">Taiwan's imposed name</div>
+          <div class="sc-ctx" id="sc-ctx">Russia claims Ukraine is historically its territory — the same argument China uses for Taiwan.</div>
+        </div>
+        <div class="sc-bot"><span class="sc-nm" id="sc-nm"></span><span class="sc-ht">#TaiwanIsTaiwan · callmetaiwan.org</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer><span class="brand">CALL ME TAIWAN</span><br>callmetaiwan.com · DESIGN DIPLOMACY<br>Sources: EIU · Freedom House · RSF · World Bank · TrendForce</footer>
+
+<script type="module" src="/src/page-generator.js"></script>
+</body>
+</html>
