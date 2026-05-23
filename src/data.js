@@ -45,7 +45,7 @@ export const CASES = [
    sh:'How would an Irish person react to "British Dublin"? Is that reaction different from how Taiwanese people feel about "Chinese Taipei"?',
    full:'<p>Ireland endured roughly 800 years of British presence. The <span class="pw">fight for Irish identity</span> — its language, culture, and name — was one of the defining struggles of the 20th century.</p><p>"British Dublin" would be a profound insult. Does "Chinese Taipei" carry the same weight for Taiwan?</p>',
    cmp:{t:'"British Dublin" — universally recognised as insulting',u:'"Chinese Taipei" — accepted without question'}},
-  {id:'algeria',r:'european',flag:'\u{1F1E9}\u{1F1FF}',abs:'"French Algiers"',real:'Algeria',cl:'France',yr:'132 years of French colonization',
+  {id:'algeria',r:'european',flag:'\u{1F1E9}\u{1F1FF}',abs:'"French Algiers"',real:'Algeria',cl:'France',yr:'132 years of French colonisation',
    sh:'France called Algeria an integral part of France — not a colony, a "department." Algeria fought a brutal war for its name. Should Taiwan have to do the same?',
    full:`<p>France did not consider Algeria a colony — it was officially a <span class="pw">department of France</span>, as integral as Normandy. This framing denied Algerian self-determination for 132 years.</p><p>Algeria won independence in 1962 after a brutal war. Taiwan has self-governed peacefully for ${yearsGoverned} years. Should peaceful self-governance count for less than armed struggle?</p>`,
    cmp:{t:"Algeria's independence recognised after war",u:`Taiwan's self-governance ignored after ${yearsGoverned} years`}},
