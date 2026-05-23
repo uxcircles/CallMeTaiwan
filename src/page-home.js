@@ -293,23 +293,20 @@ if (scrollArrow) {
 }
 
 // ── Scroll-reveal ─────────────────────────────────────────────────────────────
-// Map section: full container fade+slide
-const mapInner = document.querySelector('.hs-map-inner');
-if (mapInner) {
-  mapInner.classList.add('sr');
+// Observe the *section* (large target, reliable hit) → animate the *inner* container.
+// threshold: 0 fires as soon as 1px of the section enters the viewport.
+function revealOn(sectionSel, innerSel) {
+  const section = document.querySelector(sectionSel);
+  const inner   = document.querySelector(innerSel);
+  if (!section || !inner) return;
+  inner.classList.add('sr');
   new IntersectionObserver(([e], obs) => {
     if (!e.isIntersecting) return;
     obs.disconnect();
-    mapInner.classList.add('sr--in');
-  }, { threshold: 0.1 }).observe(mapInner);
+    // Small rAF delay so the browser has painted the sr (opacity:0) state first
+    requestAnimationFrame(() => inner.classList.add('sr--in'));
+  }, { threshold: 0 }).observe(section);
 }
 
-// Cards section: container stays visible, cards animate in on entry
-const navInner = document.querySelector('.hs-nav-inner');
-if (navInner) {
-  new IntersectionObserver(([e], obs) => {
-    if (!e.isIntersecting) return;
-    obs.disconnect();
-    navInner.classList.add('sr--in');
-  }, { threshold: 0.1 }).observe(navInner);
-}
+revealOn('.hs-map-section', '.hs-map-inner');
+revealOn('.hs-nav-section', '.hs-nav-inner');

@@ -572,9 +572,6 @@ footer .brand{color:#e63946;font-size:11px;letter-spacing:4px;}
 
 /* Map section */
 .hs-map-section {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
   padding: 80px 40px;
   border-top: 1px solid #242448;
 }
