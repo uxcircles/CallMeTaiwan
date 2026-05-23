@@ -272,7 +272,7 @@ canvas.lc{width:100%;height:100%;display:block;}
 .vs2{display:block;font-family:'Space Mono',monospace;font-size:8px;color:#8888aa;letter-spacing:1px;margin-top:2px;}
 .wtw td.col-tw{background:rgba(58,134,255,0.05);}
 .wcn td.col-cn{background:rgba(230,57,70,0.05);}
-.kfact{background:#111126;border-left:3px solid #e9c46a;padding:18px 22px;margin-top:32px;margin-bottom:80px;}
+.kfact{background:rgba(8,8,20,0.55);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-left:3px solid #e9c46a;padding:18px 22px;margin-top:32px;margin-bottom:80px;}
 .kfl{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:3px;color:#e9c46a;
   text-transform:uppercase;margin-bottom:7px;}
 .kfact p{font-size:14px;line-height:1.75;color:#c0c0e0;}
@@ -458,27 +458,30 @@ footer .brand{color:#e63946;font-size:11px;letter-spacing:4px;}
 .cmp-card {
   display: grid;
   grid-template-columns: 1fr 150px 1fr;
-  background: rgba(11,11,28,0.82);
-  border: 1px solid #1e1e42;
+  background: rgba(8,8,20,0.52);       /* frosted — map shows through */
+  border: 1px solid rgba(48,48,96,0.7);
   border-radius: 8px;
   overflow: hidden;
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  transition: border-color 0.2s;
+  backdrop-filter: blur(16px) saturate(1.4);
+  -webkit-backdrop-filter: blur(16px) saturate(1.4);
+  transition: border-color 0.2s, background 0.2s;
 }
-.cmp-card:hover { border-color: #303060; }
+.cmp-card:hover {
+  border-color: rgba(58,134,255,0.35);
+  background: rgba(10,10,28,0.62);
+}
 
 .cc-tw {
   padding: 20px 22px;
   text-align: right;
-  background: rgba(58,134,255,0.05);
-  border-right: 1px solid #1a1a40;
+  background: rgba(58,134,255,0.07);
+  border-right: 1px solid rgba(58,134,255,0.12);
 }
 .cc-cn {
   padding: 20px 22px;
   text-align: left;
-  background: rgba(230,57,70,0.05);
-  border-left: 1px solid #1a1a40;
+  background: rgba(230,57,70,0.07);
+  border-left: 1px solid rgba(230,57,70,0.12);
 }
 .cc-mid {
   display: flex;
