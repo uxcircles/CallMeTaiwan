@@ -299,12 +299,10 @@ function revealOn(sectionSel, innerSel) {
   const section = document.querySelector(sectionSel);
   const inner   = document.querySelector(innerSel);
   if (!section || !inner) return;
-  inner.classList.add('sr');
   new IntersectionObserver(([e], obs) => {
     if (!e.isIntersecting) return;
     obs.disconnect();
-    // Small rAF delay so the browser has painted the sr (opacity:0) state first
-    requestAnimationFrame(() => inner.classList.add('sr--in'));
+    inner.classList.add('sr--in');
   }, { threshold: 0 }).observe(section);
 }
 
