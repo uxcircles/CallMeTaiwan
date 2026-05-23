@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,700;1,400;1,700&family=Space+Mono:wght@400;700&family=Mulish:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,700;1,400;1,700&family=Space+Mono:wght@400;700&family=Mulish:wght@300;400;500;600&family=Caveat:wght@400;700&display=swap');
 
 html,:root{
   --bg:#07070f;--surface:#111126;--surface2:#191938;
@@ -75,7 +75,7 @@ hr.div{border:none;border-top:1px solid #242448;max-width:960px;margin:0 auto;}
 .h-body{font-size:17px;line-height:1.8;color:#c0c0e0;max-width:560px;margin-bottom:44px;
   opacity:0;animation:up 0.7s ease 0.35s forwards;}
 .h-body strong{color:#eae6f8;font-weight:500;}
-.h-cards{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;
+.h-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;
   opacity:0;animation:up 0.7s ease 0.5s forwards;}
 .hcard{background:#111126;border:1px solid #303060;padding:18px 14px;
   cursor:pointer;transition:border-color 0.2s,transform 0.2s,background 0.2s;position:relative;overflow:hidden;}
@@ -389,6 +389,258 @@ footer{border-top:1px solid #242448;padding:36px 40px;text-align:center;
   font-family:'Space Mono',monospace;font-size:9px;color:#8888aa;letter-spacing:2px;
   background:#07070f;line-height:2.2;}
 footer .brand{color:#e63946;font-size:11px;letter-spacing:4px;}
+
+/* ====== HOME — SCROLL NARRATIVE ====== */
+
+.hs-hero {
+  min-height: calc(100vh - 58px);
+  display: flex;
+  align-items: center;
+  padding: 60px 40px 80px;
+  overflow: hidden;   /* prevent Taiwan canvas bleed causing horizontal scroll */
+}
+.hs-hero-inner {
+  max-width: 960px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 56px;
+}
+.hs-hero-left { flex: 1; min-width: 0; }
+
+/* Right panel: Taiwan map + badge */
+.hs-hero-right {
+  flex: 0 0 300px;
+  position: relative;
+  height: 480px;
+  overflow: visible;
+}
+@keyframes map-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+.hs-taiwan-canvas {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 140%;
+  height: 140%;
+  transform: translate(-50%, -50%);  /* base: center on panel */
+  display: block;
+  pointer-events: none;
+  opacity: 0;
+  animation: map-in 0.9s ease 0.5s forwards;
+}
+
+/* Name badge sticker — entry + tilt managed entirely by JS */
+.hs-badge {
+  position: absolute;
+  bottom: 30%;
+  right: -12px;
+  width: 195px;
+  background: #f4ede0;
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: 0 12px 42px rgba(0,0,0,0.70), 0 3px 8px rgba(0,0,0,0.40);
+  opacity: 0;
+  transition: opacity 0.35s ease, transform 0.45s ease;
+}
+.hs-badge-top {
+  background: #e63946;
+  padding: 10px 15px 8px;
+}
+.hs-badge-hello {
+  font-family: 'Space Mono', monospace;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  color: #fff;
+  line-height: 1;
+}
+.hs-badge-mynameis {
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 1px;
+  color: rgba(255,255,255,0.82);
+  margin-top: 3px;
+}
+.hs-badge-body {
+  padding: 10px 15px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.hs-badge-taiwan {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px;
+  font-style: italic;
+  color: #2a1a1a;
+  text-decoration: line-through;
+  text-decoration-color: #c1121f;  /* updated via JS each cycle */
+  text-decoration-thickness: 2px;
+  line-height: 1.2;
+  transition: text-decoration-color 0.35s ease;
+}
+.hs-badge-imposed {
+  font-family: 'Caveat', cursive;
+  font-weight: 700;
+  font-size: 25px;
+  color: #1a0808;
+  line-height: 1.25;
+  min-height: 58px;
+  display: flex;
+  align-items: center;
+  transition: opacity 0.3s ease;
+}
+
+.hs-h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(52px, 9vw, 108px);
+  line-height: 0.96;
+  font-weight: 700;
+  margin-bottom: 44px;
+  opacity: 0;
+  animation: up 0.7s ease 0.15s forwards;
+}
+.hs-h1 em { font-style: italic; color: #e63946; }
+
+.hs-intro {
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: #8888aa;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  opacity: 0;
+  animation: up 0.6s ease 0.4s forwards;
+}
+
+.hs-cycle-box {
+  border-left: 3px solid var(--cc, #e63946);
+  padding: 18px 22px;
+  background: rgba(255,255,255,0.03);
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 320px;
+  margin-bottom: 14px;
+  transition: border-color 0.5s ease;
+  opacity: 0;
+  animation: up 0.6s ease 0.5s forwards;
+}
+.hs-cycle-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(22px, 4vw, 38px);
+  font-weight: 700;
+  font-style: italic;
+  color: var(--cc, #e63946);
+  transition: opacity 0.35s ease, color 0.35s ease;
+  line-height: 1.15;
+}
+.hs-cycle-ctx {
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 1.5px;
+  color: #8888aa;
+  text-transform: uppercase;
+  margin-top: 6px;
+  transition: opacity 0.35s ease;
+}
+
+.hs-cycle-note {
+  font-size: 13px;
+  color: #8888aa;
+  line-height: 1.6;
+  opacity: 0;
+  animation: up 0.6s ease 0.6s forwards;
+}
+
+.hs-scroll {
+  margin-top: 48px;
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 3px;
+  color: #8888aa;
+  text-transform: uppercase;
+  animation: globe-bounce 2.2s ease-in-out infinite;
+  opacity: 0;
+  animation: up 0.5s ease 0.8s forwards, globe-bounce 2.2s ease-in-out 1.3s infinite;
+}
+
+/* Map section */
+.hs-map-section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 80px 40px;
+  border-top: 1px solid #242448;
+}
+.hs-map-inner { max-width: 960px; width: 100%; margin: 0 auto; }
+
+.hs-map-stat {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  margin: 20px 0 40px;
+}
+.hs-map-n {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(72px, 12vw, 130px);
+  font-weight: 700;
+  color: #3a86ff;
+  line-height: 1;
+  flex-shrink: 0;
+}
+.hs-map-desc {
+  font-size: 18px;
+  line-height: 1.65;
+  color: #c0c0e0;
+}
+.hs-map-desc em { color: #8888aa; font-style: normal; font-size: 14px; display: block; margin-top: 6px; }
+
+.hs-map-canvas {
+  width: 100%;
+  height: 420px;
+  display: block;
+  background: #07070f;
+}
+
+.hs-map-legend {
+  display: flex;
+  gap: 22px;
+  margin-top: 14px;
+  flex-wrap: wrap;
+}
+.hs-map-legend span {
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 1.5px;
+  color: #8888aa;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+.hs-leg-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+
+/* Cards / nav section */
+.hs-nav-section {
+  padding: 80px 40px 100px;
+  border-top: 1px solid #242448;
+}
+.hs-nav-inner { max-width: 960px; margin: 0 auto; }
+.hs-nav-inner .eyebrow { margin-bottom: 32px; }
+
+@media (max-width: 760px) {
+  .hs-hero { padding: 40px 20px 60px; }
+  .hs-hero-inner { display: block; }
+  .hs-hero-right { display: none; }
+  .hs-map-section { padding: 60px 20px; }
+  .hs-map-canvas { height: 240px; }
+  .hs-map-stat { gap: 16px; flex-wrap: wrap; }
+  .hs-nav-section { padding: 60px 20px 80px; }
+}
 
 /* ====== GLOBE / COMPARE ====== */
 

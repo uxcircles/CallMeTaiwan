@@ -37,23 +37,106 @@
 </nav>
 
 <div class="page active" id="home">
-  <div class="hero">
-    <h1 class="h-h1">What's in<br>a <em>Name?</em></h1>
-    <div class="h-sub">Taiwan has three names.<br>None of them were chosen.</div>
-    <p class="h-body">On its passport: <strong>Republic of China.</strong> At the Olympics: <strong>"Chinese Taipei."</strong> In people's hearts: <strong>Taiwan.</strong> For everyone who's ever had to explain Taiwan.</p>
-    <div class="h-cards">
-      <div class="hcard" onclick="location.href='/the-name'"><span class="hc-ico">🏷️</span><div class="hc-t">The Name</div><div class="hc-d">What if this logic applied to your country?</div></div>
-      <div class="hcard" onclick="location.href='/identity'"><span class="hc-ico">🪪</span><div class="hc-t">4 Names</div><div class="hc-d">Four names. Not one chosen by Taiwan.</div></div>
-      <div class="hcard" onclick="location.href='/history'"><span class="hc-ico">📜</span><div class="hc-t">History</div><div class="hc-d">6,000 years of identity, from indigenous peoples to democracy.</div></div>
-      <div class="hcard" onclick="location.href='/data'"><span class="hc-ico">📊</span><div class="hc-t">Data</div><div class="hc-d">Democracy, press freedom, semiconductors — by the numbers.</div></div>
-      <div class="hcard" onclick="location.href='/make-a-card'"><span class="hc-ico">🪄</span><div class="hc-t">Make a Card</div><div class="hc-d">Shareable cards for Instagram, Twitter, and Stories.</div></div>
+
+  <!-- ① Hero: name cycling -->
+  <section class="hs-hero">
+    <div class="hs-hero-inner">
+
+      <!-- Left: text -->
+      <div class="hs-hero-left">
+        <div class="eyebrow">Call Me Taiwan</div>
+        <h1 class="hs-h1">What's in<br>a <em>Name?</em></h1>
+        <p class="hs-intro">Taiwan is known internationally as</p>
+        <div class="hs-cycle-box">
+          <div class="hs-cycle-name" id="hs-name"></div>
+          <div class="hs-cycle-ctx"  id="hs-ctx"></div>
+        </div>
+        <p class="hs-cycle-note">None of these names were chosen by the Taiwanese people.</p>
+        <div class="hs-scroll">↓ scroll</div>
+      </div>
+
+      <!-- Right: Taiwan map (real TopoJSON shape) + name badge -->
+      <div class="hs-hero-right" aria-hidden="true">
+        <canvas id="hs-taiwan-canvas" class="hs-taiwan-canvas"></canvas>
+        <div class="hs-badge" id="hs-badge">
+          <div class="hs-badge-top">
+            <div class="hs-badge-hello">HELLO</div>
+            <div class="hs-badge-mynameis">my name is</div>
+          </div>
+          <div class="hs-badge-body">
+            <div class="hs-badge-taiwan">Taiwan</div>
+            <div class="hs-badge-imposed" id="hs-badge-name"></div>
+          </div>
+        </div>
+      </div>
+
     </div>
-    <div class="hero-badge">
-      <span class="bf">🇹🇼</span>
-      <div class="bc">CALL ME TAIWAN</div>
-      <div class="bw">not "Chinese Taipei"</div>
+  </section>
+
+  <!-- ② Diplomatic recognition map -->
+  <section class="hs-map-section">
+    <div class="hs-map-inner">
+      <div class="eyebrow">Diplomatic Reality</div>
+      <div class="hs-map-stat">
+        <span class="hs-map-n">12</span>
+        <div class="hs-map-desc">
+          countries officially<br>recognize Taiwan.
+          <em>The rest pretend the question doesn't exist.</em>
+        </div>
+      </div>
+      <canvas id="rec-map" class="hs-map-canvas"></canvas>
+      <div class="hs-map-legend">
+        <span><span class="hs-leg-dot" style="background:#3a86ff"></span>Taiwan</span>
+        <span><span class="hs-leg-dot" style="background:rgba(58,134,255,0.45)"></span>Diplomatic allies</span>
+        <span><span class="hs-leg-dot" style="background:#1a1a30"></span>No official recognition</span>
+      </div>
     </div>
-  </div>
+  </section>
+
+  <!-- ③ Navigation cards -->
+  <section class="hs-nav-section">
+    <div class="hs-nav-inner">
+      <div class="eyebrow">The Full Story</div>
+      <div class="h-cards">
+        <div class="hcard" onclick="location.href='/the-name'">
+          <span class="hc-ico">🏷️</span>
+          <div class="hc-t">The Name</div>
+          <div class="hc-d">What if this logic applied to your country?</div>
+        </div>
+        <div class="hcard" onclick="location.href='/identity'">
+          <span class="hc-ico">🪪</span>
+          <div class="hc-t">4 Names</div>
+          <div class="hc-d">Four names. Not one chosen by Taiwan.</div>
+        </div>
+        <div class="hcard" onclick="location.href='/history'">
+          <span class="hc-ico">📜</span>
+          <div class="hc-t">History</div>
+          <div class="hc-d">6,000 years of identity, from indigenous peoples to democracy.</div>
+        </div>
+        <div class="hcard" onclick="location.href='/data'">
+          <span class="hc-ico">📊</span>
+          <div class="hc-t">Data</div>
+          <div class="hc-d">Democracy, press freedom, semiconductors — by the numbers.</div>
+        </div>
+        <div class="hcard" onclick="location.href='/tw-vs-cn'">
+          <span class="hc-ico">🌏</span>
+          <div class="hc-t">TW vs CN</div>
+          <div class="hc-d">Two governments, one claim. Side by side.</div>
+        </div>
+        <div class="hcard" onclick="location.href='/make-a-card'">
+          <span class="hc-ico">🪄</span>
+          <div class="hc-t">Make a Card</div>
+          <div class="hc-d">Shareable cards for Instagram, Twitter, and Stories.</div>
+        </div>
+      </div>
+      <div class="hero-badge">
+        <span class="bf">🇹🇼</span>
+        <div class="bc">CALL ME TAIWAN</div>
+        <div class="bw">not "Chinese Taipei"</div>
+      </div>
+    </div>
+  </section>
+
 </div>
 
 <footer><span class="brand">CALL ME TAIWAN</span><br>callmetaiwan.com · DESIGN DIPLOMACY<br>Sources: EIU · Freedom House · RSF · World Bank · TrendForce</footer>
