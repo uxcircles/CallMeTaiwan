@@ -395,6 +395,9 @@ footer .brand{color:#e63946;font-size:11px;letter-spacing:4px;}
 /* Globe canvas is fixed-viewport via JS; just hide it by default */
 #globe-canvas { display: none; }
 
+/* Allow slid content to extend beyond page edges without clipping */
+#compare { overflow-x: clip; }
+
 /* Hero section — full viewport, title always visible */
 .globe-stage {
   position: relative;
@@ -437,6 +440,12 @@ footer .brand{color:#e63946;font-size:11px;letter-spacing:4px;}
 #compare-content {
   position: relative;
   z-index: 2;
+  will-change: transform;   /* GPU-accelerated slide */
+}
+
+/* Hero content slide is also GPU-accelerated */
+.globe-hero-content {
+  will-change: transform, opacity;
 }
 
 /* Wrap for max-width + padding */
