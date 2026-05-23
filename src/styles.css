@@ -429,8 +429,10 @@ footer .brand{color:#e63946;font-size:11px;letter-spacing:4px;}
   color: #8888aa;
   text-transform: uppercase;
   margin-top: 22px;
+  cursor: pointer;
   animation: globe-bounce 2.2s ease-in-out infinite;
 }
+.globe-scroll-hint:hover { color: #c0c0e0; }
 @keyframes globe-bounce {
   0%,100% { transform: translateY(0); }
   50%      { transform: translateY(6px); }

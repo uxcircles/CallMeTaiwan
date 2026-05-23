@@ -16,9 +16,10 @@ function decodeTopo(topo, name) {
   }
   const polys = [];
   topo.objects[name].geometries.forEach(g => {
+    const id = +g.id;
     const rings = g.type === 'Polygon'      ? g.arcs
                 : g.type === 'MultiPolygon' ? g.arcs.flat() : [];
-    rings.forEach(r => polys.push(r.flatMap(decArc)));
+    rings.forEach(r => polys.push({ ring: r.flatMap(decArc), id }));
   });
   return polys;
 }
@@ -100,15 +101,15 @@ export function startGlobe() {
 
     // Globe drifts to right side as user scrolls
     const driftFrac = mobile ? 0 : clamp(scrollY / (vH * 0.50));
-    const targetX   = lerp(W / 2, W * 0.70, ease(driftFrac));
+    const targetX   = lerp(W / 2, W * 0.82, ease(driftFrac));
     if (gx === null) gx = W / 2;
     gx += (targetX - gx) * 0.07;
-    const gy = H / 2;
+    const gy = lerp(H * 0.43, H * 0.60, ease(driftFrac));
 
     // Zoom globe in on scroll to highlight Taiwan/China area
     // (only kicks in after the intro animation has settled)
     if (el > 5.8) {
-      R = R * lerp(1, 1.22, ease(driftFrac));
+      R = R * lerp(1, 1.42, ease(driftFrac));
     }
 
     // Content (title + cards) slides LEFT — both in sync
@@ -131,6 +132,13 @@ export function startGlobe() {
     ctx.save();
     ctx.scale(dpr, dpr);
     ctx.clearRect(0, 0, W, H);
+
+    // Clip canvas to stop at footer top so globe never overlaps footer
+    const footerEl  = document.querySelector('footer');
+    const footerTop = footerEl ? footerEl.getBoundingClientRect().top : H;
+    const clipH     = Math.min(H, Math.max(0, footerTop));
+    ctx.beginPath(); ctx.rect(0, 0, W, clipH); ctx.clip();
+
     ctx.globalAlpha = gA;
 
     // Stars
@@ -182,30 +190,57 @@ export function startGlobe() {
 
     // Country borders
     if (worldPolygons) {
-      ctx.lineWidth = 0.85;
-      worldPolygons.forEach(ring => {
-        ctx.beginPath(); ctx.strokeStyle='rgba(100,165,255,0.42)';
-        let mv=true;
-        for (const [lon,lat] of ring) {
-          const p=ortho(lon,lat,cLon,cLat,R); if(!p){mv=true;continue;}
-          mv?(ctx.moveTo(gx+p[0],gy-p[1]),mv=false):ctx.lineTo(gx+p[0],gy-p[1]);
-        }
-        ctx.stroke();
-      });
+      const fa = ease(driftFrac); // 0 = top, 1 = scrolled
+
+      function drawRings(ids, lw, stroke, fill) {
+        ctx.lineWidth = lw;
+        worldPolygons.forEach(({ ring, id }) => {
+          if (ids !== null && !ids.includes(id)) return;
+          if (ids === null && (id === 156 || id === 158)) return;
+          ctx.beginPath();
+          let mv = true;
+          for (const [lon,lat] of ring) {
+            const p=ortho(lon,lat,cLon,cLat,R); if(!p){mv=true;continue;}
+            mv?(ctx.moveTo(gx+p[0],gy-p[1]),mv=false):ctx.lineTo(gx+p[0],gy-p[1]);
+          }
+          if (fill) { ctx.fillStyle = fill; ctx.fill(); }
+          ctx.strokeStyle = stroke;
+          ctx.stroke();
+        });
+      }
+
+      // Others — same color, very slight fade on scroll
+      drawRings(null, 0.85,
+        `rgba(100,165,255,${lerp(0.42, 0.32, fa).toFixed(2)})`);
+
+      // China — blue → red, subtle red fill
+      drawRings([156], lerp(0.85, 1.0, fa),
+        `rgba(${Math.round(lerp(100,230,fa))},${Math.round(lerp(165,57,fa))},${Math.round(lerp(255,70,fa))},${lerp(0.42,0.88,fa).toFixed(2)})`,
+        `rgba(230,57,70,${lerp(0, 0.09, fa).toFixed(2)})`);
+
+      // Taiwan — default blue → vivid blue, subtle blue fill
+      drawRings([158], lerp(0.85, 1.0, fa),
+        `rgba(${Math.round(lerp(100,58,fa))},${Math.round(lerp(165,134,fa))},255,${lerp(0.42,1.0,fa).toFixed(2)})`,
+        `rgba(58,134,255,${lerp(0, 0.13, fa).toFixed(2)})`);
     }
+
+    // Dots appear only after globe zooms in (el 4.0–5.8 = fade in, 5.8+ = settled)
+    const dotA = el < 4.0 ? 0 : clamp((el - 4.0) / 1.8);
 
     // Taiwan dot — small & precise, pulsing glow
     const twP = ortho(121,23.5,cLon,cLat,R);
-    if (twP) {
+    if (twP && dotA > 0) {
       const dr    = R * 0.014;
-      const pulse = el > 5.8 ? (Math.sin(el*2.5)*0.4+0.6) : clamp((el-4.0)/1.8);
+      const pulse = el > 5.8 ? (Math.sin(el*2.5)*0.4+0.6) : dotA;
       const twG   = ctx.createRadialGradient(gx+twP[0],gy-twP[1],0,gx+twP[0],gy-twP[1],dr*5);
-      twG.addColorStop(0,`rgba(58,134,255,${0.70*pulse})`);
+      twG.addColorStop(0,`rgba(58,134,255,${(0.70*pulse).toFixed(2)})`);
       twG.addColorStop(1,'transparent');
       ctx.beginPath(); ctx.arc(gx+twP[0],gy-twP[1],dr*5,0,Math.PI*2);
       ctx.fillStyle=twG; ctx.fill();
+      ctx.globalAlpha = dotA;
       ctx.beginPath(); ctx.arc(gx+twP[0],gy-twP[1],Math.max(2,dr*0.5),0,Math.PI*2);
       ctx.fillStyle='#3a86ff'; ctx.fill();
+      ctx.globalAlpha = 1;
 
       // Label (appears after globe settles)
       if (el > 6.5) {
@@ -220,14 +255,16 @@ export function startGlobe() {
 
     // China dot
     const cnP = ortho(104,35,cLon,cLat,R);
-    if (cnP) {
+    if (cnP && dotA > 0) {
       const dr  = R * 0.011;
       const cnG = ctx.createRadialGradient(gx+cnP[0],gy-cnP[1],0,gx+cnP[0],gy-cnP[1],dr*3.5);
-      cnG.addColorStop(0,'rgba(230,57,70,0.45)'); cnG.addColorStop(1,'transparent');
+      cnG.addColorStop(0,`rgba(230,57,70,${(0.45*dotA).toFixed(2)})`); cnG.addColorStop(1,'transparent');
       ctx.beginPath(); ctx.arc(gx+cnP[0],gy-cnP[1],dr*3.5,0,Math.PI*2);
       ctx.fillStyle=cnG; ctx.fill();
+      ctx.globalAlpha = dotA;
       ctx.beginPath(); ctx.arc(gx+cnP[0],gy-cnP[1],Math.max(2,dr*0.5),0,Math.PI*2);
       ctx.fillStyle='#e63946'; ctx.fill();
+      ctx.globalAlpha = 1;
 
       if (el > 6.5) {
         const la = clamp((el-6.5)/1.2);

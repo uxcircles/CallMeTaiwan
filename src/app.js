@@ -272,8 +272,17 @@ window.addEventListener('resize', () => {
   if (document.getElementById('data').classList.contains('active')) drawGDP();
 });
 
+function scrollToCompare() {
+  const card = document.querySelector('#compare-content .cmp-card');
+  if (!card) return;
+  const navH = document.querySelector('nav')?.offsetHeight || 58;
+  const target = window.scrollY + card.getBoundingClientRect().top - navH - 16;
+  window.scrollTo({ top: target, behavior: 'smooth' });
+}
+
 // Expose functions called from inline HTML event handlers
 window.show = show;
+window.scrollToCompare = scrollToCompare;
 window.toggleMenu = toggleMenu;
 window.filt = filt;
 window.openMod = openMod;
