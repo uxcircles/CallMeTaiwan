@@ -273,7 +273,8 @@
         <div class="fpair"><div class="flabel"><span>Political Rights</span><span>TW 38/40 · CN 0/40</span></div><div class="ftrack"><div class="ftw" data-w="95"></div><div class="fcn" data-w="0"></div></div></div>
         <div class="fpair"><div class="flabel"><span>Civil Liberties</span><span>TW 56/60 · CN 11/60</span></div><div class="ftrack"><div class="ftw" data-w="93"></div><div class="fcn" data-w="18"></div></div></div>
         <div class="fpair"><div class="flabel"><span>Overall Score</span><span>TW 94 · CN 9 /100</span></div><div class="ftrack"><div class="ftw" data-w="94"></div><div class="fcn" data-w="9"></div></div></div>
-        <div class="src">Source: Freedom House Freedom in the World 2025 · Blue = Taiwan · Red = China</div>
+        <div class="fpair"><div class="flabel"><span>Internet Freedom</span><span>TW 79 · CN 9 /100</span></div><div class="ftrack"><div class="ftw" data-w="79"></div><div class="fcn" data-w="9"></div></div></div>
+        <div class="src">Sources: Freedom House Freedom in the World 2025 (Civil &amp; Political) · Freedom on the Net 2024 (Internet) · Blue = Taiwan · Red = China</div>
       </div>
       <div class="vc wide fu"><div class="vlabel">GDP per Capita USD — World Bank</div><div class="vtitle">Economic Trajectory 1990–2023</div>
         <div class="lcwrap"><canvas class="lc" id="gdpc"></canvas></div>
@@ -289,6 +290,11 @@
 
 <!-- ===== COMPARE ===== -->
 <div class="page" id="compare">
+  <div class="globe-stage">
+    <canvas id="globe-canvas"></canvas>
+    <div class="globe-loading">Locating Taiwan…</div>
+  </div>
+  <div id="compare-content">
   <div class="ph"><div class="eyebrow">Taiwan &amp; China — Compared</div><h2 class="stitle">Two governments.<br><em>One claim — is it valid?</em></h2>
     <div class="vsh">
       <div><span class="vsf">🇹🇼</span><div class="vsn tw">Taiwan</div><div class="vss">Republic of China · Est. 1912</div></div>
@@ -297,6 +303,7 @@
     </div>
     <table class="ctbl">
       <tr class="wtw"><td class="col-tw"><span class="vtw">Free</span><span class="vs2">Score 94/100</span></td><td class="col-mid"><span class="mn">Freedom House</span><span class="mi">🗽</span></td><td class="col-cn"><span class="vcn">Not Free</span><span class="vs2">Score 9/100</span></td></tr>
+      <tr class="wtw"><td class="col-tw"><span class="vtw">79/100</span><span class="vs2">Internet Freedom 2024</span></td><td class="col-mid"><span class="mn">Internet Freedom</span><span class="mi">🌐</span></td><td class="col-cn"><span class="vcn">9/100</span><span class="vs2">Not Free</span></td></tr>
       <tr class="wtw"><td class="col-tw"><span class="vtw">#35</span><span class="vs2">Press Freedom Rank</span></td><td class="col-mid"><span class="mn">Press Freedom</span><span class="mi">📰</span></td><td class="col-cn"><span class="vcn">#179</span><span class="vs2">of 180 countries</span></td></tr>
       <tr class="wtw"><td class="col-tw"><span class="vtw">8.92</span><span class="vs2">Democracy Index</span></td><td class="col-mid"><span class="mn">EIU Democracy</span><span class="mi">🗳️</span></td><td class="col-cn"><span class="vcn">1.97</span><span class="vs2">Authoritarian</span></td></tr>
       <tr class="wtw"><td class="col-tw"><span class="vtw">~$35K</span><span class="vs2">GDP per Capita</span></td><td class="col-mid"><span class="mn">GDP per Capita</span><span class="mi">💰</span></td><td class="col-cn"><span class="vcn">~$12.7K</span><span class="vs2">GDP per Capita</span></td></tr>
@@ -307,6 +314,7 @@
     </table>
     <div class="kfact"><div class="kfl">A question of precedent</div><p>The PRC was founded in 1949. <strong>It has never governed Taiwan for a single day.</strong> Every post-colonial nation that achieved self-governance — Ireland, Algeria, India, Vietnam — is recognised under its own name. Taiwan has governed itself longer than most. Does it deserve the same recognition?</p></div>
   </div>
+  </div><!-- /compare-content -->
 </div>
 
 <!-- ===== GENERATOR ===== -->

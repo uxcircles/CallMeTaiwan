@@ -390,6 +390,65 @@ footer{border-top:1px solid #242448;padding:36px 40px;text-align:center;
   background:#07070f;line-height:2.2;}
 footer .brand{color:#e63946;font-size:11px;letter-spacing:4px;}
 
+/* ====== GLOBE / COMPARE ====== */
+#compare {
+  position: relative;
+  background: #07070f;
+}
+
+/* Fixed-size hero area where the globe plays */
+.globe-stage {
+  position: relative;
+  width: 100%;
+  height: min(80vh, 640px);
+  overflow: hidden;
+  background: #07070f;
+  /* subtle dark radial so it blends with the canvas */
+  background: radial-gradient(ellipse at 50% 60%, #0a1228 0%, #07070f 70%);
+}
+
+#globe-canvas {
+  position: absolute;
+  inset: 0;
+  display: block;
+  pointer-events: none;
+}
+
+/* Compare content fades in after globe animation */
+#compare-content {
+  position: relative;
+  z-index: 1;
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 1.5s ease, transform 1.5s ease;
+  pointer-events: none;
+  /* subtle dark veil so text is readable over the globe stage above */
+  background: linear-gradient(to bottom, transparent 0%, #07070f 80px);
+}
+
+#compare-content.globe-visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* Loading state label inside globe-stage */
+.globe-loading {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 3px;
+  color: #303060;
+  text-transform: uppercase;
+  pointer-events: none;
+  transition: opacity 0.6s ease;
+}
+.globe-stage.running .globe-loading { opacity: 0; }
+
 /* RESPONSIVE */
 @media(max-width:760px){
   nav{padding:0 20px;}
@@ -405,4 +464,5 @@ footer .brand{color:#e63946;font-size:11px;letter-spacing:4px;}
   .glayout{grid-template-columns:1fr;}.pwrap{position:static;}
   .brow{grid-template-columns:70px 1fr 34px;}
   .sn{font-size:34px;}.dwrap{flex-direction:column;}
+  .globe-stage{height:min(55vh,360px);}
 }

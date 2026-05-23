@@ -1,4 +1,5 @@
 import { CASES } from './data.js';
+import { startGlobe, stopGlobe } from './globe.js';
 
 let curMod = null;
 let curFmt = 'square';
@@ -32,6 +33,8 @@ function show(id) {
     });
     if (id === 'history') obsEras();
     if (id === 'data') setTimeout(drawGDP, 150);
+    if (id === 'compare') setTimeout(startGlobe, 80);
+    else stopGlobe();
   }, 60);
   return false;
 }
