@@ -105,10 +105,16 @@ export function startGlobe() {
     gx += (targetX - gx) * 0.07;
     const gy = H / 2;
 
+    // Zoom globe in on scroll to highlight Taiwan/China area
+    // (only kicks in after the intro animation has settled)
+    if (el > 5.8) {
+      R = R * lerp(1, 1.22, ease(driftFrac));
+    }
+
     // Content (title + cards) slides LEFT — both in sync
-    // Slides 28vw left; opacity drops only slightly (stays readable)
+    // 16vw: enough to reveal globe on right, still leaves left margin
     const slideFrac  = ease(clamp(scrollY / (vH * 0.50)));
-    const slideVW    = mobile ? 0 : -slideFrac * 28;
+    const slideVW    = mobile ? 0 : -slideFrac * 16;
     const slideOpac  = Math.max(0.80, 1 - slideFrac * 0.20);
 
     const hero = document.querySelector('.globe-hero-content');
@@ -174,11 +180,11 @@ export function startGlobe() {
       ctx.stroke();
     }
 
-    // Country borders — kept very subtle so globe stays clean
+    // Country borders
     if (worldPolygons) {
-      ctx.lineWidth = 0.7;
+      ctx.lineWidth = 0.85;
       worldPolygons.forEach(ring => {
-        ctx.beginPath(); ctx.strokeStyle='rgba(100,165,255,0.16)';
+        ctx.beginPath(); ctx.strokeStyle='rgba(100,165,255,0.42)';
         let mv=true;
         for (const [lon,lat] of ring) {
           const p=ortho(lon,lat,cLon,cLat,R); if(!p){mv=true;continue;}
