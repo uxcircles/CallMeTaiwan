@@ -72,14 +72,16 @@ setInterval(cycleName, 3200);
 // ── TopoJSON shared fetch ─────────────────────────────────────────────────────
 // Ally data: id = ISO numeric, dot = needs radial-gradient dot (tiny island),
 // flagLon/flagLat = optional display offset so flags don't overlap
+// Current as of 2025: 12 allies
+// Removed: Honduras (broke ties Mar 2023), Nauru (broke ties Jan 2024)
+// Added: Eswatini (Africa's only ally)
 const ALLY_INFO = [
   { id: 84,  flag: '🇧🇿', lon: -88.5, lat:  17.2 },                              // Belize
+  { id: 748, flag: '🇸🇿', lon:  31.5, lat: -26.5 },                              // Eswatini
   { id: 320, flag: '🇬🇹', lon: -90.3, lat:  15.8 },                              // Guatemala
   { id: 332, flag: '🇭🇹', lon: -73.0, lat:  18.9 },                              // Haiti
-  { id: 340, flag: '🇭🇳', lon: -86.6, lat:  15.0 },                              // Honduras
   { id: 600, flag: '🇵🇾', lon: -58.0, lat: -23.3 },                              // Paraguay
   { id: 584, flag: '🇲🇭', lon: 171.2, lat:   7.1, dot: true },                   // Marshall Islands
-  { id: 520, flag: '🇳🇷', lon: 166.9, lat:  -0.5, dot: true },                   // Nauru
   { id: 585, flag: '🇵🇼', lon: 134.6, lat:   7.5, dot: true },                   // Palau
   { id: 659, flag: '🇰🇳', lon: -62.7, lat:  17.3, dot: true, flagLat: 18.1 },   // St Kitts & Nevis
   { id: 662, flag: '🇱🇨', lon: -61.0, lat:  13.9, dot: true, flagLat: 14.7 },   // St Lucia
