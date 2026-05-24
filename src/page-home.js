@@ -254,20 +254,18 @@ function drawGlobe(canvas, polygons, lon0, lat0) {
     const ally = ALLIES.has(id);
     const tw   = id === 158;
 
-    // Pre-project and skip rings with ANY point well behind the globe.
-    // ctx.fill() closes each sub-path back to its moveTo, creating triangle
-    // artifacts when a ring crosses the limb. Skipping mixed-visibility rings
-    // entirely eliminates the problem — countries simply clip at the horizon.
+    // Project all points. Draw only visible ones (z > 0) into a SINGLE
+    // sub-path — no secondary moveTo calls. This means ctx.fill() only
+    // ever closes one path per ring, eliminating triangle artifacts at
+    // the limb. Invisible points are silently skipped; the straight-line
+    // chord between adjacent visible points is imperceptible at globe scale.
     const pts = ring.map(([lon, lat]) => project(lon, lat));
-    const minZ = pts.reduce((m, p) => Math.min(m, p.z), Infinity);
-    const avgZ = pts.reduce((s, p) => s + p.z, 0) / pts.length;
-    if (minZ < -0.1 || avgZ < 0) return;
+    if (!pts.some(p => p.z > 0)) return; // entirely on back-hemisphere
 
     ctx.beginPath();
-    let prevVis = false;
+    let started = false;
     for (const p of pts) {
-      if (p.z > 0) { prevVis ? ctx.lineTo(p.x, p.y) : ctx.moveTo(p.x, p.y); prevVis = true; }
-      else prevVis = false;
+      if (p.z > 0) { started ? ctx.lineTo(p.x, p.y) : ctx.moveTo(p.x, p.y); started = true; }
     }
     ctx.closePath();
 
