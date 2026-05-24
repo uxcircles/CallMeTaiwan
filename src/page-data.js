@@ -13,6 +13,18 @@ const fuObs = new IntersectionObserver(es => {
 }, { threshold: 0.1 });
 document.querySelectorAll('.fu').forEach(el => fuObs.observe(el));
 
+// Go Deeper section — staggered card reveal
+const gdSection = document.getElementById('gd-section');
+if (gdSection) {
+  const gdCards = [...gdSection.querySelectorAll('.gd-card.sr')];
+  new IntersectionObserver(([entry], obs) => {
+    if (!entry.isIntersecting) return;
+    obs.disconnect();
+    gdSection.classList.add('sr--in');
+    gdCards.forEach((card, i) => setTimeout(() => card.classList.add('sr--in'), i * 130));
+  }, { threshold: 0.1 }).observe(gdSection);
+}
+
 function drawGDP() {
   const canvas = document.getElementById('gdpc');
   if (!canvas) return;

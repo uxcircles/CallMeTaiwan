@@ -22,3 +22,15 @@ function updateActive() {
 
 window.addEventListener('scroll', updateActive, { passive: true });
 updateActive();
+
+// Go Deeper section — staggered card reveal
+const gdSection = document.getElementById('gd-section');
+if (gdSection) {
+  const gdCards = [...gdSection.querySelectorAll('.gd-card.sr')];
+  new IntersectionObserver(([entry], obs) => {
+    if (!entry.isIntersecting) return;
+    obs.disconnect();
+    gdSection.classList.add('sr--in');
+    gdCards.forEach((card, i) => setTimeout(() => card.classList.add('sr--in'), i * 130));
+  }, { threshold: 0.1 }).observe(gdSection);
+}
