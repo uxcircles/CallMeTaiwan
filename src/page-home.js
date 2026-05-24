@@ -258,16 +258,30 @@ function drawGlobe(canvas, polygons, lon0, lat0) {
     const pts = ring.map(([lon, lat]) => project(lon, lat));
     if (!pts.some(p => p.z > 0)) return;
 
-    // Single sub-path per ring: invisible points are silently skipped (no
-    // moveTo, no lineTo). fill() closes just one sub-path, so there are no
-    // spurious multi-path artefacts. The closePath chord (last visible →
-    // first visible) is always short because the orthographic projection maps
-    // antimeridian-crossing points to nearly the same canvas location.
-    ctx.beginPath();
-    let started = false;
-    for (const p of pts) {
-      if (p.z > 0) { started ? ctx.lineTo(p.x, p.y) : ctx.moveTo(p.x, p.y); started = true; }
+    // Sutherland-Hodgman clip to the visible hemisphere (z > 0).
+    // Each edge that crosses the limb is clipped to the exact z=0 intersection
+    // point, so closePath only ever draws a chord between two limb points —
+    // never a long chord that cuts across hidden territory.
+    const cl = [];
+    const n  = pts.length;
+    for (let i = 0; i < n; i++) {
+      const a = pts[i], b = pts[(i + 1) % n];
+      if (a.z > 0) {
+        cl.push(a);
+        if (b.z <= 0) {                         // exiting: add limb crossing
+          const t = a.z / (a.z - b.z);
+          cl.push({ x: a.x + t*(b.x-a.x), y: a.y + t*(b.y-a.y) });
+        }
+      } else if (b.z > 0) {                     // entering: add limb crossing
+        const t = a.z / (a.z - b.z);
+        cl.push({ x: a.x + t*(b.x-a.x), y: a.y + t*(b.y-a.y) });
+      }
     }
+    if (cl.length < 3) return;
+
+    ctx.beginPath();
+    ctx.moveTo(cl[0].x, cl[0].y);
+    for (let i = 1; i < cl.length; i++) ctx.lineTo(cl[i].x, cl[i].y);
     ctx.closePath();
 
     if (tw) {
