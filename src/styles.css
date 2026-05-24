@@ -196,8 +196,9 @@ hr.div{border:none;border-top:1px solid #242448;max-width:960px;margin:0 auto;}
 .twrap::before{content:'';position:absolute;left:14px;top:0;bottom:0;width:1px;
   background:linear-gradient(to bottom,#c1121f 0%,#3a86ff 65%,transparent 100%);}
 .era{position:relative;margin-bottom:52px;opacity:0;transform:translateX(-18px);
-  transition:opacity 0.55s ease,transform 0.55s ease;}
-.era.vis{opacity:1;transform:translateX(0);}
+  transition:opacity 0.5s ease,transform 0.55s ease;}
+.era.vis{opacity:0.38;transform:translateX(0);}
+.era-active{opacity:1 !important;}
 .era-dot{position:absolute;left:-44px;top:8px;width:14px;height:14px;border-radius:50%;
   border:2px solid rgba(233,196,106,0.25);background:#07070f;
   transition:background 0.35s,border-color 0.35s,box-shadow 0.35s;}
