@@ -220,6 +220,37 @@ hr.div{border:none;border-top:1px solid #242448;max-width:960px;margin:0 auto;}
 .era[data-e="democracy"] .era-t{color:#3a86ff;}
 .era[data-e="democracy"] .era-dot{background:#3a86ff;border-color:#3a86ff;}
 
+/* ====== HISTORY ILLUSTRATION ====== */
+.ph--history{max-width:none;padding:80px 0 28px 80px;}
+.history-layout{display:flex;align-items:flex-start;}
+.history-left{flex:0 0 auto;padding:24px 40px 140px 80px;}
+.history-layout .twrap{max-width:460px;}
+.era-illus-panel{
+  flex:1;position:sticky;top:58px;
+  height:calc(100vh - 58px);overflow:hidden;
+}
+.era-illus{
+  position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;object-position:center top;
+  opacity:0;transition:opacity 0.65s ease;
+}
+.era-illus.illus-active{opacity:1;}
+.era-illus-grad{
+  position:absolute;inset:0;pointer-events:none;z-index:1;
+  background:linear-gradient(to right,
+    #07070f 0%,
+    rgba(7,7,15,0.82) 16%,
+    rgba(7,7,15,0.12) 44%,
+    transparent 66%
+  );
+}
+@media(max-width:900px){
+  .ph--history{padding:60px 20px 20px;}
+  .history-layout{flex-direction:column;}
+  .history-left{padding:16px 20px 80px;}
+  .era-illus-panel{display:none;}
+}
+
 /* ====== DATA ====== */
 .vgrid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
 .vc{background:#111126;border:1px solid #303060;padding:24px;}

@@ -1,6 +1,7 @@
 import './nav.js';
 
-const eras = [...document.querySelectorAll('.era')];
+const eras   = [...document.querySelectorAll('.era')];
+const illusts = [...document.querySelectorAll('.era-illus')];
 
 // Fade-in: add .vis once when era enters viewport
 const fadeObs = new IntersectionObserver(es => {
@@ -8,7 +9,7 @@ const fadeObs = new IntersectionObserver(es => {
 }, { threshold: 0.12 });
 eras.forEach(el => fadeObs.observe(el));
 
-// Active dot: whichever era's centre is closest to the viewport middle
+// Active dot + illustration: whichever era's centre is closest to viewport middle
 function updateActive() {
   const mid = window.innerHeight / 2;
   let closest = null, minDist = Infinity;
@@ -18,6 +19,12 @@ function updateActive() {
     if (dist < minDist) { minDist = dist; closest = el; }
   });
   eras.forEach(el => el.classList.toggle('era-active', el === closest));
+
+  // Crossfade illustration
+  if (closest) {
+    const key = closest.dataset.e;
+    illusts.forEach(img => img.classList.toggle('illus-active', img.dataset.e === key));
+  }
 }
 
 window.addEventListener('scroll', updateActive, { passive: true });
