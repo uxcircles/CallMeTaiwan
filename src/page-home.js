@@ -254,22 +254,15 @@ function drawGlobe(canvas, polygons, lon0, lat0) {
     const ally = ALLIES.has(id);
     const tw   = id === 158;
 
-    // Skip rings entirely on the back hemisphere
+    // Skip rings entirely on the back hemisphere.
     const pts = ring.map(([lon, lat]) => project(lon, lat));
     if (!pts.some(p => p.z > 0)) return;
 
-    // Skip rings crossing the antimeridian (lon jump > 180° between consecutive
-    // points); those straight canvas chords span the whole globe incorrectly.
-    let hasAMjump = false;
-    for (let i = 1; i < ring.length; i++) {
-      if (Math.abs(ring[i][0] - ring[i-1][0]) > 180) { hasAMjump = true; break; }
-    }
-    if (hasAMjump) return;
-
-    // Single sub-path per ring: invisible points are silently skipped (no moveTo,
-    // no lineTo), so fill() never has multiple disconnected sub-paths to close
-    // incorrectly. closePath connects last visible → first visible which is a
-    // short chord for any ring that doesn't wrap the globe.
+    // Single sub-path per ring: invisible points are silently skipped (no
+    // moveTo, no lineTo). fill() closes just one sub-path, so there are no
+    // spurious multi-path artefacts. The closePath chord (last visible →
+    // first visible) is always short because the orthographic projection maps
+    // antimeridian-crossing points to nearly the same canvas location.
     ctx.beginPath();
     let started = false;
     for (const p of pts) {
