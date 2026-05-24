@@ -866,6 +866,7 @@ footer .brand{color:#e63946;font-size:11px;letter-spacing:4px;}
   letter-spacing: 2px;
   text-transform: uppercase;
   color: var(--muted);
+  white-space: nowrap;
 }
 .gd-year {
   font-family: 'Space Mono', monospace;
