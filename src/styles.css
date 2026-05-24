@@ -199,8 +199,11 @@ hr.div{border:none;border-top:1px solid #242448;max-width:960px;margin:0 auto;}
   transition:opacity 0.55s ease,transform 0.55s ease;}
 .era.vis{opacity:1;transform:translateX(0);}
 .era-dot{position:absolute;left:-44px;top:8px;width:14px;height:14px;border-radius:50%;
-  border:2px solid #303060;background:#07070f;transition:background 0.3s,border-color 0.3s;}
-.era:hover .era-dot{background:#e9c46a;border-color:#e9c46a;}
+  border:2px solid rgba(233,196,106,0.25);background:#07070f;
+  transition:background 0.4s,border-color 0.4s,box-shadow 0.4s;}
+.era.vis .era-dot{border-color:#e9c46a;}
+.era:hover .era-dot{background:#e9c46a;border-color:#e9c46a;
+  box-shadow:0 0 0 4px rgba(233,196,106,0.15);}
 .era-meta{display:flex;align-items:baseline;gap:12px;margin-bottom:8px;}
 .era-yr{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:1px;color:#e9c46a;}
 .era-rl{font-family:'Space Mono',monospace;font-size:8px;letter-spacing:2px;color:#8888aa;
