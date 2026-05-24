@@ -303,7 +303,7 @@ function revealOn(sectionSel, innerSel) {
     if (!e.isIntersecting) return;
     obs.disconnect();
     inner.classList.add('sr--in');
-  }, { threshold: 0 }).observe(section);
+  }, { threshold: 0, rootMargin: '0px 0px -80px 0px' }).observe(section);
 }
 
 revealOn('.hs-map-section', '.hs-map-inner');
