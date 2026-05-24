@@ -23,14 +23,12 @@ function nextTilt() {
   return TILTS[tiltIdx];
 }
 
-// Badge — static, always "Chinese Taipei" (most iconic imposed name).
-// The cycling happens only in the left text panel; the badge is a permanent symbol.
-const BADGE_FIXED = NAMES[0]; // '"Chinese Taipei"', badgeColor: 'red'
+// Badge — static: "Chinese Taipei" crossed out, "Taiwan" written below.
+// Mirrors the website's core claim: reject the imposed name, assert the real one.
 if (badgeEl) {
-  badgeEl.textContent = BADGE_FIXED.text;
-  badgeEl.style.color = '#c1121f';
+  badgeEl.textContent = 'Taiwan';
+  badgeEl.style.color = '#3a86ff';   // blue = assertion, not red = correction
 }
-if (badgeTwEl) badgeTwEl.style.textDecorationColor = '#c1121f';
 
 if (badgeWrap) {
   setTimeout(() => {
@@ -156,15 +154,18 @@ async function drawTaiwanSvg(canvas) {
   ctx.translate(tx, ty);
   ctx.scale(sc, sc);
 
-  // Fill only — no per-path stroke, so Taipei/Kaohsiung seam lines disappear.
-  // Shadow creates a soft outer glow at the true coastline.
-  ctx.shadowColor = 'rgba(190,190,215,0.65)';
-  ctx.shadowBlur  = 14;          // screen-space pixels (not divided by sc)
-  ctx.fillStyle   = 'rgba(150,150,175,0.10)';
+  // Fill pass — blue, consistent with globe colour. Shadow = outer glow.
+  ctx.shadowColor = 'rgba(58,134,255,0.45)';
+  ctx.shadowBlur  = 18;          // screen-space pixels (not divided by sc)
+  ctx.fillStyle   = 'rgba(58,134,255,0.40)';
+  paths.forEach(d => { try { ctx.fill(new Path2D(d)); } catch (_) {} });
 
-  paths.forEach(d => {
-    try { ctx.fill(new Path2D(d)); } catch (_) {}
-  });
+  // Stroke pass — coastline outline, no shadow so seam lines stay invisible.
+  ctx.shadowColor = 'transparent';
+  ctx.shadowBlur  = 0;
+  ctx.strokeStyle = 'rgba(58,134,255,0.80)';
+  ctx.lineWidth   = 1.5 / sc;   // 1.5 screen-px regardless of SVG scale
+  paths.forEach(d => { try { ctx.stroke(new Path2D(d)); } catch (_) {} });
 
   ctx.restore();
 }

@@ -473,14 +473,13 @@ footer .brand{color:#e63946;font-size:11px;letter-spacing:4px;}
 }
 .hs-badge-taiwan {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 18px;
+  font-size: 15px;
   font-style: italic;
   color: #2a1a1a;
   text-decoration: line-through;
-  text-decoration-color: #c1121f;  /* updated via JS each cycle */
+  text-decoration-color: #c1121f;
   text-decoration-thickness: 2px;
   line-height: 1.2;
-  transition: text-decoration-color 0.35s ease;
 }
 .hs-badge-imposed {
   font-family: 'Caveat', cursive;
