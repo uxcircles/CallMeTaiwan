@@ -2,7 +2,7 @@ import './nav.js';
 
 // ── Name cycling ──────────────────────────────────────────────────────────────
 const NAMES = [
-  { text: '"Chinese Taipei"',              ctx: 'Olympics & international sports · imposed 1981', color: '#e63946', badgeColor: 'red'   },
+  { text: '"Chinese Taipei"',              ctx: 'Olympics & international sports · not chosen · 1981', color: '#e63946', badgeColor: 'red'   },
   { text: 'Republic of China',             ctx: 'On the passport · inherited name from 1912',     color: '#8888aa', badgeColor: 'black' },
   { text: '"Taiwan, Province of China"',   ctx: 'Some UN agencies & forms · pushed by Beijing',   color: '#c1121f', badgeColor: 'red'   },
 ];
