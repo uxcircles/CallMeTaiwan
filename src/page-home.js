@@ -27,7 +27,7 @@ function nextTilt() {
 // Mirrors the website's core claim: reject the imposed name, assert the real one.
 if (badgeEl) {
   badgeEl.textContent = 'Taiwan';
-  badgeEl.style.color = '#3a86ff';   // blue = assertion, not red = correction
+  badgeEl.style.color = '#1a1a2e';   // dark ink — handwritten correction, not UI colour
 }
 
 if (badgeWrap) {
