@@ -409,3 +409,39 @@ function revealOn(sectionSel, innerSel) {
 revealOn('.hs-map-section', '.hs-map-inner');
 revealOn('.hs-stakes-section', '.hs-stakes-inner');
 revealOn('.hs-nav-section', '.hs-nav-inner');
+
+// Stakes counter animation
+function animateCount(el, target, suffix, delay, duration = 1200) {
+  setTimeout(() => {
+    const start = performance.now();
+    const tick = now => {
+      const p = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.round(eased * target) + suffix;
+      if (p < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  }, delay);
+}
+
+// Map section counter (12 countries)
+const mapSection = document.querySelector('.hs-map-section');
+if (mapSection) {
+  new IntersectionObserver(([e], obs) => {
+    if (!e.isIntersecting) return;
+    obs.disconnect();
+    const el = mapSection.querySelector('.hs-map-n[data-count]');
+    if (el) animateCount(el, +el.dataset.count, '', 0, 1000);
+  }, { threshold: 0, rootMargin: '0px 0px -80px 0px' }).observe(mapSection);
+}
+
+const stakesSection = document.querySelector('.hs-stakes-section');
+if (stakesSection) {
+  new IntersectionObserver(([e], obs) => {
+    if (!e.isIntersecting) return;
+    obs.disconnect();
+    stakesSection.querySelectorAll('.hs-stake-n[data-count]').forEach((el, i) => {
+      animateCount(el, +el.dataset.count, el.dataset.suffix || '', i * 160);
+    });
+  }, { threshold: 0, rootMargin: '0px 0px -80px 0px' }).observe(stakesSection);
+}
