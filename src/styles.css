@@ -574,44 +574,50 @@ footer .brand{color:#e63946;font-size:11px;letter-spacing:4px;}
 .hs-map-section {
   padding: 80px 40px;
   border-top: 1px solid #242448;
+  overflow: hidden;
 }
 .hs-map-inner {
-  max-width: 960px;
+  max-width: 1000px;
   width: 100%;
   margin: 0 auto;
   display: flex;
   align-items: center;
-  gap: 60px;
+  gap: 40px;
 }
-.hs-map-left  { flex: 0 0 280px; }
-.hs-map-right { flex: 1; display: flex; justify-content: center; }
+.hs-map-left  { flex: 0 0 auto; margin-left: -40px; }  /* globe bleeds left */
+.hs-map-right { flex: 1; min-width: 0; }
 
 .hs-map-stat {
-  margin: 20px 0 40px;
+  margin: 16px 0 36px;
 }
-.hs-map-headline {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(32px, 5vw, 56px);
-  font-weight: 700;
-  color: #e8e8f0;
-  line-height: 1.15;
+.hs-map-recognised {
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #8888aa;
+  margin-bottom: 2px;
 }
 .hs-map-n {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(110px, 18vw, 180px);
+  font-weight: 700;
   color: #3a86ff;
+  line-height: 0.85;
+  display: block;
 }
 .hs-map-sub {
   font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(28px, 4.5vw, 50px);
+  font-size: clamp(22px, 3vw, 34px);
   font-weight: 400;
   font-style: italic;
   color: #8888aa;
-  line-height: 1.15;
-  margin-top: 4px;
+  margin-top: 10px;
 }
 
 .hs-globe-canvas {
-  width: 420px;
-  height: 420px;
+  width: 540px;
+  height: 540px;
   display: block;
   cursor: grab;
   border-radius: 50%;
@@ -676,9 +682,10 @@ footer .brand{color:#e63946;font-size:11px;letter-spacing:4px;}
   .hs-hero-inner { display: block; }
   .hs-hero-right { display: none; }
   .hs-map-section { padding: 60px 20px; }
-  .hs-map-inner { flex-direction: column; gap: 40px; }
-  .hs-map-left  { flex: none; width: 100%; }
-  .hs-globe-canvas { width: 300px; height: 300px; }
+  .hs-map-inner { flex-direction: column; gap: 0; }
+  .hs-map-left  { margin-left: 0; }
+  .hs-map-right { width: 100%; }
+  .hs-globe-canvas { width: 320px; height: 320px; margin: 0 auto; display: block; }
   .hs-map-stat { gap: 16px; flex-wrap: wrap; }
   .hs-nav-section { padding: 60px 20px 80px; }
 }
