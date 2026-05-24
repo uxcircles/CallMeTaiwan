@@ -259,29 +259,44 @@ function drawGlobe(canvas, polygons, lon0, lat0) {
     if (!pts.some(p => p.z > 0)) return;
 
     // Sutherland-Hodgman clip to the visible hemisphere (z > 0).
-    // Each edge that crosses the limb is clipped to the exact z=0 intersection
-    // point, so closePath only ever draws a chord between two limb points —
-    // never a long chord that cuts across hidden territory.
+    // Tag limb-crossing points so we can arc along the globe rim between
+    // consecutive limb points instead of drawing a chord through the interior.
     const cl = [];
     const n  = pts.length;
     for (let i = 0; i < n; i++) {
       const a = pts[i], b = pts[(i + 1) % n];
       if (a.z > 0) {
-        cl.push(a);
-        if (b.z <= 0) {                         // exiting: add limb crossing
+        cl.push({ x: a.x, y: a.y, onLimb: false });
+        if (b.z <= 0) {
           const t = a.z / (a.z - b.z);
-          cl.push({ x: a.x + t*(b.x-a.x), y: a.y + t*(b.y-a.y) });
+          cl.push({ x: a.x + t*(b.x-a.x), y: a.y + t*(b.y-a.y), onLimb: true });
         }
-      } else if (b.z > 0) {                     // entering: add limb crossing
+      } else if (b.z > 0) {
         const t = a.z / (a.z - b.z);
-        cl.push({ x: a.x + t*(b.x-a.x), y: a.y + t*(b.y-a.y) });
+        cl.push({ x: a.x + t*(b.x-a.x), y: a.y + t*(b.y-a.y), onLimb: true });
       }
     }
     if (cl.length < 3) return;
 
+    // Draw the shorter arc along the globe rim between two limb crossing points.
+    function limbArc(p1, p2) {
+      const a1 = Math.atan2(p1.y - cy, p1.x - cx);
+      const a2 = Math.atan2(p2.y - cy, p2.x - cx);
+      let da = a2 - a1;
+      if (da >  Math.PI) da -= 2 * Math.PI;
+      if (da < -Math.PI) da += 2 * Math.PI;
+      ctx.arc(cx, cy, R, a1, a2, da < 0);
+    }
+
     ctx.beginPath();
     ctx.moveTo(cl[0].x, cl[0].y);
-    for (let i = 1; i < cl.length; i++) ctx.lineTo(cl[i].x, cl[i].y);
+    for (let i = 1; i < cl.length; i++) {
+      const p = cl[i - 1], c = cl[i];
+      if (p.onLimb && c.onLimb) limbArc(p, c);
+      else ctx.lineTo(c.x, c.y);
+    }
+    // Closing edge (last → first): arc along the rim if both are limb points.
+    if (cl[cl.length - 1].onLimb && cl[0].onLimb) limbArc(cl[cl.length - 1], cl[0]);
     ctx.closePath();
 
     if (tw) {
