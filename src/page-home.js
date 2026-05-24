@@ -407,4 +407,5 @@ function revealOn(sectionSel, innerSel) {
 }
 
 revealOn('.hs-map-section', '.hs-map-inner');
+revealOn('.hs-stakes-section', '.hs-stakes-inner');
 revealOn('.hs-nav-section', '.hs-nav-inner');
