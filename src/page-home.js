@@ -17,35 +17,32 @@ const badgeTwEl   = document.querySelector('.hs-badge-taiwan');
 // Tilt angles — varied mix, never the same twice in a row
 const TILTS = [-6, -3, -8, 3, -5, 2, -7, 4, -4];
 let tiltIdx  = 0;
-let badgeReady = false;
 
 function nextTilt() {
   tiltIdx = (tiltIdx + Math.floor(Math.random() * (TILTS.length - 1)) + 1) % TILTS.length;
   return TILTS[tiltIdx];
 }
 
-// Badge entry: JS-controlled so CSS transition owns transform thereafter
+// Badge — static, always "Chinese Taipei" (most iconic imposed name).
+// The cycling happens only in the left text panel; the badge is a permanent symbol.
+const BADGE_FIXED = NAMES[0]; // '"Chinese Taipei"', badgeColor: 'red'
+if (badgeEl) {
+  badgeEl.textContent = BADGE_FIXED.text;
+  badgeEl.style.color = '#c1121f';
+}
+if (badgeTwEl) badgeTwEl.style.textDecorationColor = '#c1121f';
+
 if (badgeWrap) {
   setTimeout(() => {
     badgeWrap.style.transform = `rotate(${TILTS[tiltIdx]}deg)`;
     badgeWrap.style.opacity   = '1';
-    badgeReady = true;
   }, 900);
-}
-
-function applyBadgeStyle(n) {
-  const isBlack = n.badgeColor === 'black';
-  const strikeCol  = isBlack ? '#2a1a1a' : '#c1121f';
-  const imposedCol = isBlack ? '#1a0808' : '#c1121f';
-  if (badgeEl)   badgeEl.style.color = imposedCol;
-  if (badgeTwEl) badgeTwEl.style.textDecorationColor = strikeCol;
 }
 
 function cycleName() {
   const n = NAMES[ni % NAMES.length];
   nameEl.style.opacity = '0';
   ctxEl.style.opacity  = '0';
-  if (badgeReady && badgeWrap) badgeWrap.style.opacity = '0';
 
   setTimeout(() => {
     nameEl.textContent = n.text;
@@ -54,14 +51,6 @@ function cycleName() {
     document.documentElement.style.setProperty('--cc', n.color);
     nameEl.style.opacity = '1';
     ctxEl.style.opacity  = '1';
-
-    if (badgeEl) badgeEl.textContent = n.text;
-    applyBadgeStyle(n);
-
-    if (badgeReady && badgeWrap) {
-      badgeWrap.style.transform = `rotate(${nextTilt()}deg)`;
-      badgeWrap.style.opacity   = '1';
-    }
   }, 350);
   ni++;
 }

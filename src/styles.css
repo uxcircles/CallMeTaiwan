@@ -405,7 +405,7 @@ footer .brand{color:#e63946;font-size:11px;letter-spacing:4px;}
   margin: 0 auto;
   display: flex;
   align-items: center;
-  gap: 56px;
+  gap: 20px;
 }
 .hs-hero-left { flex: 1; min-width: 0; }
 
@@ -422,11 +422,11 @@ footer .brand{color:#e63946;font-size:11px;letter-spacing:4px;}
 }
 .hs-taiwan-canvas {
   position: absolute;
-  left: 50%;
+  left: 40%;
   top: 50%;
   width: 140%;
   height: 140%;
-  transform: translate(-50%, -50%);  /* base: center on panel */
+  transform: translate(-50%, -50%);  /* base: center on panel, shifted left */
   display: block;
   pointer-events: none;
   opacity: 0;
@@ -437,7 +437,7 @@ footer .brand{color:#e63946;font-size:11px;letter-spacing:4px;}
 .hs-badge {
   position: absolute;
   bottom: 30%;
-  right: -12px;
+  right: 20px;
   width: 195px;
   background: #f4ede0;
   border-radius: 5px;
