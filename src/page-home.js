@@ -254,19 +254,25 @@ function drawGlobe(canvas, polygons, lon0, lat0) {
     const ally = ALLIES.has(id);
     const tw   = id === 158;
 
-    // Project all points. Draw only visible ones (z > 0) into a SINGLE
-    // sub-path — no secondary moveTo calls. This means ctx.fill() only
-    // ever closes one path per ring, eliminating triangle artifacts at
-    // the limb. Invisible points are silently skipped; the straight-line
-    // chord between adjacent visible points is imperceptible at globe scale.
+    // Two sources of canvas fill artifacts:
+    // 1. Limb: closePath implicitly closes the path back to the first moveTo;
+    //    any point near/behind the limb (z < 0.05) can produce a spurious chord.
+    //    Raising the threshold to 0.05 keeps rings well inside the hemisphere.
+    // 2. Antimeridian: consecutive ring points can jump from lon≈+179 to lon≈−179;
+    //    both project to valid (z > 0) locations, but the straight canvas line
+    //    between them is geographically wrong — skip those rings entirely.
     const pts = ring.map(([lon, lat]) => project(lon, lat));
-    if (!pts.some(p => p.z > 0)) return; // entirely on back-hemisphere
+    if (pts.some(p => p.z < 0.05)) return;
+
+    let hasAMjump = false;
+    for (let i = 1; i < ring.length; i++) {
+      if (Math.abs(ring[i][0] - ring[i-1][0]) > 180) { hasAMjump = true; break; }
+    }
+    if (hasAMjump) return;
 
     ctx.beginPath();
-    let started = false;
-    for (const p of pts) {
-      if (p.z > 0) { started ? ctx.lineTo(p.x, p.y) : ctx.moveTo(p.x, p.y); started = true; }
-    }
+    ctx.moveTo(pts[0].x, pts[0].y);
+    for (let i = 1; i < pts.length; i++) ctx.lineTo(pts[i].x, pts[i].y);
     ctx.closePath();
 
     if (tw) {
