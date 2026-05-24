@@ -254,10 +254,15 @@ function drawGlobe(canvas, polygons, lon0, lat0) {
     const ally = ALLIES.has(id);
     const tw   = id === 158;
 
+    // Pre-project and skip rings that are mostly behind the globe to
+    // prevent ctx.fill() from drawing triangle artifacts across the sphere.
+    const pts = ring.map(([lon, lat]) => project(lon, lat));
+    const avgZ = pts.reduce((s, p) => s + p.z, 0) / pts.length;
+    if (avgZ < 0) return;
+
     ctx.beginPath();
     let prevVis = false;
-    for (const [lon, lat] of ring) {
-      const p = project(lon, lat);
+    for (const p of pts) {
       if (p.z > 0) { prevVis ? ctx.lineTo(p.x, p.y) : ctx.moveTo(p.x, p.y); prevVis = true; }
       else prevVis = false;
     }

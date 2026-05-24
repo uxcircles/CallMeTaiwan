@@ -585,18 +585,17 @@ footer .brand{color:#e63946;font-size:11px;letter-spacing:4px;}
   gap: 40px;
 }
 .hs-map-left  { flex: 0 0 auto; margin-left: -40px; }  /* globe bleeds left */
-.hs-map-right { flex: 1; min-width: 0; }
+.hs-map-right { flex: 1; min-width: 0; padding-left: 40px; }
 
 .hs-map-stat {
   margin: 16px 0 36px;
 }
 .hs-map-recognised {
-  font-family: 'Space Mono', monospace;
-  font-size: 10px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(22px, 3vw, 34px);
+  font-style: italic;
   color: #8888aa;
-  margin-bottom: 2px;
+  margin-bottom: -10px;
 }
 .hs-map-n {
   font-family: 'Cormorant Garamond', serif;
