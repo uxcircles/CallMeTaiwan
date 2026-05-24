@@ -155,16 +155,16 @@ async function drawTaiwanSvg(canvas) {
   ctx.scale(sc, sc);
 
   // Fill pass — blue, consistent with globe colour. Shadow = outer glow.
-  ctx.shadowColor = 'rgba(58,134,255,0.45)';
-  ctx.shadowBlur  = 18;          // screen-space pixels (not divided by sc)
-  ctx.fillStyle   = 'rgba(58,134,255,0.40)';
+  ctx.shadowColor = 'rgba(58,134,255,0.30)';
+  ctx.shadowBlur  = 18;
+  ctx.fillStyle   = 'rgba(58,134,255,0.18)';
   paths.forEach(d => { try { ctx.fill(new Path2D(d)); } catch (_) {} });
 
   // Stroke pass — coastline outline, no shadow so seam lines stay invisible.
   ctx.shadowColor = 'transparent';
   ctx.shadowBlur  = 0;
-  ctx.strokeStyle = 'rgba(58,134,255,0.80)';
-  ctx.lineWidth   = 1.5 / sc;   // 1.5 screen-px regardless of SVG scale
+  ctx.strokeStyle = 'rgba(58,134,255,0.65)';
+  ctx.lineWidth   = 1.5 / sc;
   paths.forEach(d => { try { ctx.stroke(new Path2D(d)); } catch (_) {} });
 
   ctx.restore();
