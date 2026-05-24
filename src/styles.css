@@ -817,6 +817,114 @@ footer .brand{color:#e63946;font-size:11px;letter-spacing:4px;}
 .cmp-card--neutral .vtw   { color: #e9c46a; }
 .cmp-card--neutral .vcn   { color: #e9c46a; }
 
+/* ── GO DEEPER — resource cards ──────────────────────────────────────────── */
+.gd-section {
+  border-top: 1px solid var(--border);
+  padding: 56px 40px 72px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+.gd-section .eyebrow { margin-bottom: 28px; }
+.gd-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+.gd-grid-one {
+  grid-template-columns: minmax(0, 460px);
+}
+.gd-card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 22px 22px 18px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.gd-card:hover {
+  border-color: rgba(58,134,255,0.40);
+  box-shadow: 0 0 0 1px rgba(58,134,255,0.12), 0 8px 28px rgba(0,0,0,0.45);
+}
+.gd-meta-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.gd-type {
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.gd-year {
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  color: var(--muted);
+}
+.gd-award {
+  font-family: 'Space Mono', monospace;
+  font-size: 8px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--gold);
+  background: rgba(233,196,106,0.10);
+  border: 1px solid rgba(233,196,106,0.28);
+  border-radius: 3px;
+  padding: 3px 8px;
+  display: inline-block;
+  width: fit-content;
+}
+.gd-title-en {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.2;
+  margin-top: 2px;
+}
+.gd-title-zh {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 14px;
+  font-style: italic;
+  color: var(--muted2);
+  line-height: 1.3;
+}
+.gd-desc {
+  font-size: 12.5px;
+  font-weight: 300;
+  color: var(--muted);
+  line-height: 1.65;
+  flex: 1;
+}
+.gd-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 4px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+}
+.gd-access {
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 1px;
+  color: var(--blue);
+  text-transform: uppercase;
+}
+.gd-cta {
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 1px;
+  color: var(--muted);
+  transition: color 0.2s;
+}
+.gd-card:hover .gd-cta { color: var(--blue); }
+
 /* RESPONSIVE */
 @media(max-width:760px){
   nav{padding:0 20px;}
@@ -837,4 +945,6 @@ footer .brand{color:#e63946;font-size:11px;letter-spacing:4px;}
   .cc-tw,.cc-cn{padding:14px 12px;}
   .cc-label{font-size:7px;}
   .compare-cards-wrap{padding:0 16px 60px;}
+  .gd-section{padding:40px 20px 56px;}
+  .gd-grid{grid-template-columns:1fr;}
 }
