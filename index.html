@@ -73,19 +73,23 @@
     </div>
   </section>
 
-  <!-- ② Diplomatic recognition map -->
+  <!-- ② Diplomatic recognition globe -->
   <section class="hs-map-section">
     <div class="hs-map-inner sr">
-      <div class="eyebrow">Diplomatic Reality</div>
-      <div class="hs-map-stat">
-        <div class="hs-map-headline">Recognised by <span class="hs-map-n">12</span>.</div>
-        <div class="hs-map-sub">Known by billions.</div>
+      <div class="hs-map-left">
+        <div class="eyebrow">Diplomatic Reality</div>
+        <div class="hs-map-stat">
+          <div class="hs-map-headline">Recognised by <span class="hs-map-n">12</span>.</div>
+          <div class="hs-map-sub">Known by billions.</div>
+        </div>
+        <div class="hs-map-legend">
+          <span><span class="hs-leg-dot" style="background:#3a86ff"></span>Taiwan</span>
+          <span><span class="hs-leg-dot" style="background:rgba(58,134,255,0.45)"></span>Diplomatic allies</span>
+          <span><span class="hs-leg-dot" style="background:#1a1a30"></span>No official recognition</span>
+        </div>
       </div>
-      <canvas id="rec-map" class="hs-map-canvas"></canvas>
-      <div class="hs-map-legend">
-        <span><span class="hs-leg-dot" style="background:#3a86ff"></span>Taiwan</span>
-        <span><span class="hs-leg-dot" style="background:rgba(58,134,255,0.45)"></span>Diplomatic allies</span>
-        <span><span class="hs-leg-dot" style="background:#1a1a30"></span>No official recognition</span>
+      <div class="hs-map-right">
+        <canvas id="rec-map" class="hs-globe-canvas"></canvas>
       </div>
     </div>
   </section>

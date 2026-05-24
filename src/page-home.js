@@ -175,102 +175,176 @@ if (twCanvas) {
   window.addEventListener('resize', () => drawTaiwanSvg(twCanvas).catch(() => {}));
 }
 
-// ── Recognition map ───────────────────────────────────────────────────────────
-function drawMap(canvas, polygons) {
+// ── Rotating globe ────────────────────────────────────────────────────────────
+let globeLon = 120;   // start centred on Taiwan
+let globeLat = 20;    // slight northern tilt
+let globeDragging = false;
+let globeDragX = 0, globeDragY = 0, globeDragLon = 0, globeDragLat = 0;
+
+function drawGlobe(canvas, polygons, lon0, lat0) {
   const dpr = window.devicePixelRatio || 1;
-  const W   = canvas.offsetWidth;
-  const H   = canvas.offsetHeight;
-  canvas.width  = W * dpr;
-  canvas.height = H * dpr;
+  const W   = canvas.width  / dpr;
+  const H   = canvas.height / dpr;
   const ctx = canvas.getContext('2d');
-  ctx.scale(dpr, dpr);
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);   // reset + apply DPR scale
 
-  const px = W * 0.005, py = H * 0.03;
-  const iW = W - px * 2, iH = H - py * 2;
-  const xS = lon => px + (lon + 180) / 360 * iW;
-  const yS = lat => py + (90 - lat) / 180 * iH;
+  const cx = W / 2, cy = H / 2;
+  const R  = Math.min(W, H) / 2 - 4;
+  const φ0 = lat0 * Math.PI / 180;
+  const λ0 = lon0 * Math.PI / 180;
 
+  function project(lon, lat) {
+    const φ  = lat * Math.PI / 180;
+    const λ  = lon * Math.PI / 180;
+    const dλ = λ - λ0;
+    const cosφ = Math.cos(φ), sinφ = Math.sin(φ);
+    const cosφ0 = Math.cos(φ0), sinφ0 = Math.sin(φ0);
+    return {
+      x: cx + R * cosφ * Math.sin(dλ),
+      y: cy - R * (cosφ0 * sinφ - sinφ0 * cosφ * Math.cos(dλ)),
+      z: sinφ0 * sinφ + cosφ0 * cosφ * Math.cos(dλ),   // > 0 = front hemisphere
+    };
+  }
+
+  ctx.clearRect(0, 0, W, H);
+
+  // Atmosphere glow
+  const atm = ctx.createRadialGradient(cx, cy, R * 0.85, cx, cy, R * 1.18);
+  atm.addColorStop(0,   'rgba(58,134,255,0.00)');
+  atm.addColorStop(0.5, 'rgba(58,134,255,0.08)');
+  atm.addColorStop(1,   'rgba(58,134,255,0.00)');
+  ctx.beginPath(); ctx.arc(cx, cy, R * 1.18, 0, Math.PI * 2);
+  ctx.fillStyle = atm; ctx.fill();
+
+  // Clip everything inside the globe circle
+  ctx.save();
+  ctx.beginPath(); ctx.arc(cx, cy, R, 0, Math.PI * 2); ctx.clip();
+
+  // Ocean
   ctx.fillStyle = '#07070f';
   ctx.fillRect(0, 0, W, H);
 
+  // Graticule — lon lines every 30°, lat lines every 30°
+  ctx.strokeStyle = 'rgba(42,42,80,0.45)';
+  ctx.lineWidth   = 0.4;
+  for (let lon = -180; lon < 180; lon += 30) {
+    ctx.beginPath();
+    let first = true;
+    for (let lat = -90; lat <= 90; lat += 2) {
+      const p = project(lon, lat);
+      if (p.z > 0) { first ? ctx.moveTo(p.x, p.y) : ctx.lineTo(p.x, p.y); first = false; }
+      else first = true;
+    }
+    ctx.stroke();
+  }
+  for (let lat = -60; lat <= 60; lat += 30) {
+    ctx.beginPath();
+    let first = true;
+    for (let lon = -180; lon <= 180; lon += 2) {
+      const p = project(lon, lat);
+      if (p.z > 0) { first ? ctx.moveTo(p.x, p.y) : ctx.lineTo(p.x, p.y); first = false; }
+      else first = true;
+    }
+    ctx.stroke();
+  }
+
+  // Countries
   polygons.forEach(({ ring, id }) => {
-    if (id === 10) return;           // hide Antarctica
+    if (id === 10) return;   // Antarctica
     const ally = ALLIES.has(id);
     const tw   = id === 158;
 
     ctx.beginPath();
-    let mv = true, prevLon = null;
+    let prevVis = false;
     for (const [lon, lat] of ring) {
-      if (prevLon !== null && Math.abs(lon - prevLon) > 180) mv = true;
-      mv ? (ctx.moveTo(xS(lon), yS(lat)), mv = false) : ctx.lineTo(xS(lon), yS(lat));
-      prevLon = lon;
+      const p = project(lon, lat);
+      if (p.z > 0) { prevVis ? ctx.lineTo(p.x, p.y) : ctx.moveTo(p.x, p.y); prevVis = true; }
+      else prevVis = false;
     }
     ctx.closePath();
 
     if (tw) {
-      ctx.fillStyle   = 'rgba(58,134,255,0.60)';
-      ctx.strokeStyle = 'rgba(58,134,255,0.95)';
-      ctx.lineWidth   = 1.5;
+      ctx.fillStyle = 'rgba(58,134,255,0.70)'; ctx.strokeStyle = 'rgba(58,134,255,1.00)'; ctx.lineWidth = 1.5;
     } else if (ally) {
-      ctx.fillStyle   = 'rgba(58,134,255,0.25)';
-      ctx.strokeStyle = 'rgba(58,134,255,0.60)';
-      ctx.lineWidth   = 0.8;
+      ctx.fillStyle = 'rgba(58,134,255,0.28)'; ctx.strokeStyle = 'rgba(58,134,255,0.65)'; ctx.lineWidth = 0.8;
     } else {
-      ctx.fillStyle   = 'rgba(14,14,38,0.95)';
-      ctx.strokeStyle = 'rgba(42,42,80,0.40)';
-      ctx.lineWidth   = 0.35;
+      ctx.fillStyle = 'rgba(20,20,50,0.95)';   ctx.strokeStyle = 'rgba(42,42,80,0.50)';   ctx.lineWidth = 0.3;
     }
-    ctx.fill();
-    ctx.stroke();
+    ctx.fill(); ctx.stroke();
   });
 
-  // Ally dots + flag emoji
-  ctx.font = '13px serif';
-  ctx.textAlign = 'center';
-  ctx.textBaseline = 'middle';
-  ALLY_INFO.forEach(({ lon, lat, flag, dot, flagLat }) => {
-    const x = xS(lon), y = yS(lat);
-    if (dot) {
-      const g = ctx.createRadialGradient(x, y, 0, x, y, 7);
-      g.addColorStop(0, 'rgba(58,134,255,0.85)');
-      g.addColorStop(1, 'transparent');
-      ctx.beginPath(); ctx.arc(x, y, 7, 0, Math.PI * 2);
-      ctx.fillStyle = g; ctx.fill();
-      ctx.beginPath(); ctx.arc(x, y, 2.5, 0, Math.PI * 2);
-      ctx.fillStyle = '#3a86ff'; ctx.fill();
-    }
-    // Draw flag emoji (use flagLat offset if supplied, else default above dot/centroid)
-    const fy = flagLat != null ? yS(flagLat) : (dot ? y - 11 : y - 9);
-    ctx.fillText(flag, x, fy);
+  // Glow dots for tiny island allies
+  ALLY_INFO.forEach(({ lon, lat, dot }) => {
+    if (!dot) return;
+    const p = project(lon, lat);
+    if (p.z <= 0) return;
+    const g = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, 7);
+    g.addColorStop(0, 'rgba(58,134,255,0.90)'); g.addColorStop(1, 'transparent');
+    ctx.beginPath(); ctx.arc(p.x, p.y, 7, 0, Math.PI * 2); ctx.fillStyle = g; ctx.fill();
+    ctx.beginPath(); ctx.arc(p.x, p.y, 2.5, 0, Math.PI * 2); ctx.fillStyle = '#3a86ff'; ctx.fill();
   });
 
-  const tx = xS(121), ty = yS(23.5);
-  const tg = ctx.createRadialGradient(tx, ty, 0, tx, ty, 12);
-  tg.addColorStop(0, 'rgba(58,134,255,0.90)');
-  tg.addColorStop(1, 'transparent');
-  ctx.beginPath(); ctx.arc(tx, ty, 12, 0, Math.PI * 2);
-  ctx.fillStyle = tg; ctx.fill();
-  ctx.beginPath(); ctx.arc(tx, ty, 3.5, 0, Math.PI * 2);
-  ctx.fillStyle = '#3a86ff'; ctx.fill();
+  ctx.restore();   // remove clip
+
+  // Globe rim
+  ctx.beginPath(); ctx.arc(cx, cy, R, 0, Math.PI * 2);
+  ctx.strokeStyle = 'rgba(58,134,255,0.20)'; ctx.lineWidth = 1.5; ctx.stroke();
 }
 
-const mapCanvas = document.getElementById('rec-map');
-if (mapCanvas) {
+const globeCanvas = document.getElementById('rec-map');
+if (globeCanvas) {
   let polygons = null;
-  function renderMap() { if (polygons) drawMap(mapCanvas, polygons); }
 
-  const io = new IntersectionObserver(entries => {
+  function tick() {
+    // Sync canvas pixel size to its CSS size
+    const dpr = window.devicePixelRatio || 1;
+    const cw  = globeCanvas.offsetWidth  * dpr;
+    const ch  = globeCanvas.offsetHeight * dpr;
+    if (globeCanvas.width !== cw || globeCanvas.height !== ch) {
+      globeCanvas.width  = cw;
+      globeCanvas.height = ch;
+    }
+    if (!globeDragging) globeLon = (globeLon + 0.12) % 360;
+    if (polygons) drawGlobe(globeCanvas, polygons, globeLon, globeLat);
+    requestAnimationFrame(tick);
+  }
+
+  // Mouse drag
+  globeCanvas.addEventListener('mousedown', e => {
+    globeDragging = true;
+    globeDragX = e.clientX; globeDragY = e.clientY;
+    globeDragLon = globeLon; globeDragLat = globeLat;
+  });
+  window.addEventListener('mousemove', e => {
+    if (!globeDragging) return;
+    globeLon = globeDragLon - (e.clientX - globeDragX) * 0.35;
+    globeLat = Math.max(-70, Math.min(70, globeDragLat + (e.clientY - globeDragY) * 0.25));
+  });
+  window.addEventListener('mouseup', () => { globeDragging = false; });
+
+  // Touch drag
+  globeCanvas.addEventListener('touchstart', e => {
+    globeDragging = true;
+    globeDragX = e.touches[0].clientX; globeDragY = e.touches[0].clientY;
+    globeDragLon = globeLon; globeDragLat = globeLat;
+  }, { passive: true });
+  window.addEventListener('touchmove', e => {
+    if (!globeDragging) return;
+    globeLon = globeDragLon - (e.touches[0].clientX - globeDragX) * 0.35;
+    globeLat = Math.max(-70, Math.min(70, globeDragLat + (e.touches[0].clientY - globeDragY) * 0.25));
+  }, { passive: true });
+  window.addEventListener('touchend', () => { globeDragging = false; });
+
+  // Lazy-start: begin animating when the canvas enters the viewport
+  new IntersectionObserver((entries, obs) => {
     if (!entries[0].isIntersecting) return;
-    io.disconnect();
+    obs.disconnect();
     getTopoData().then(topo => {
       if (!topo) return;
       polygons = decodeTopo(topo, 'countries');
-      renderMap();
-      window.addEventListener('resize', renderMap);
+      tick();
     });
-  }, { threshold: 0.1 });
-
-  io.observe(mapCanvas);
+  }, { threshold: 0.1 }).observe(globeCanvas);
 }
 
 // ── Clickable scroll arrow ────────────────────────────────────────────────────
