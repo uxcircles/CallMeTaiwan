@@ -254,11 +254,14 @@ function drawGlobe(canvas, polygons, lon0, lat0) {
     const ally = ALLIES.has(id);
     const tw   = id === 158;
 
-    // Pre-project and skip rings that are mostly behind the globe to
-    // prevent ctx.fill() from drawing triangle artifacts across the sphere.
+    // Pre-project and skip rings with ANY point well behind the globe.
+    // ctx.fill() closes each sub-path back to its moveTo, creating triangle
+    // artifacts when a ring crosses the limb. Skipping mixed-visibility rings
+    // entirely eliminates the problem — countries simply clip at the horizon.
     const pts = ring.map(([lon, lat]) => project(lon, lat));
+    const minZ = pts.reduce((m, p) => Math.min(m, p.z), Infinity);
     const avgZ = pts.reduce((s, p) => s + p.z, 0) / pts.length;
-    if (avgZ < 0) return;
+    if (minZ < -0.1 || avgZ < 0) return;
 
     ctx.beginPath();
     let prevVis = false;
@@ -271,22 +274,22 @@ function drawGlobe(canvas, polygons, lon0, lat0) {
     if (tw) {
       ctx.fillStyle = 'rgba(58,134,255,0.70)'; ctx.strokeStyle = 'rgba(58,134,255,1.00)'; ctx.lineWidth = 1.5;
     } else if (ally) {
-      ctx.fillStyle = 'rgba(58,134,255,0.28)'; ctx.strokeStyle = 'rgba(58,134,255,0.65)'; ctx.lineWidth = 0.8;
+      ctx.fillStyle = 'rgba(22,60,160,0.30)';  ctx.strokeStyle = 'rgba(40,80,180,0.22)';  ctx.lineWidth = 0.6;
     } else {
       ctx.fillStyle = 'rgba(20,20,50,0.95)';   ctx.strokeStyle = 'rgba(42,42,80,0.50)';   ctx.lineWidth = 0.3;
     }
     ctx.fill(); ctx.stroke();
   });
 
-  // Glow dots for tiny island allies
+  // Glow dots for tiny island allies — darker blue, distinct from Taiwan
   ALLY_INFO.forEach(({ lon, lat, dot }) => {
     if (!dot) return;
     const p = project(lon, lat);
     if (p.z <= 0) return;
     const g = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, 7);
-    g.addColorStop(0, 'rgba(58,134,255,0.90)'); g.addColorStop(1, 'transparent');
+    g.addColorStop(0, 'rgba(30,90,200,0.75)'); g.addColorStop(1, 'transparent');
     ctx.beginPath(); ctx.arc(p.x, p.y, 7, 0, Math.PI * 2); ctx.fillStyle = g; ctx.fill();
-    ctx.beginPath(); ctx.arc(p.x, p.y, 2.5, 0, Math.PI * 2); ctx.fillStyle = '#3a86ff'; ctx.fill();
+    ctx.beginPath(); ctx.arc(p.x, p.y, 2.5, 0, Math.PI * 2); ctx.fillStyle = '#1e5acc'; ctx.fill();
   });
 
   ctx.restore();   // remove clip
