@@ -529,16 +529,29 @@ footer .brand{color:#e63946;font-size:11px;letter-spacing:4px;}
   font-size: 18px;
   font-style: italic;
   color: #2a1a1a;
-  text-decoration: line-through;
-  text-decoration-color: #1a1a2e;
-  text-decoration-thickness: 2px;
   line-height: 1.2;
+  position: relative;
+  display: inline-block;
+}
+.hs-badge-taiwan::after {
+  content: '';
+  position: absolute;
+  left: -8px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 2px;
+  background: #e63946;
+  animation: badge-strike 0.45s ease 1.5s forwards;
+}
+@keyframes badge-strike {
+  to { width: calc(100% + 16px); }
 }
 .hs-badge-imposed {
   font-family: 'Caveat', cursive;
   font-weight: 700;
-  font-size: 38px;
-  color: #1a0808;
+  font-size: 32px;
+  color: #e63946;
   line-height: 1.2;
   min-height: 58px;
   display: flex;
@@ -548,7 +561,7 @@ footer .brand{color:#e63946;font-size:11px;letter-spacing:4px;}
 
 .hs-h1 {
   font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(52px, 9vw, 108px);
+  font-size: clamp(32px, 4.8vw, 68px);
   line-height: 0.96;
   font-weight: 700;
   margin-bottom: 44px;
@@ -693,6 +706,49 @@ footer .brand{color:#e63946;font-size:11px;letter-spacing:4px;}
 }
 .hs-leg-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
 
+/* ====== HOME ANALOGY ====== */
+.hs-analogy-section {
+  padding: 100px 40px;
+  border-top: 1px solid #242448;
+}
+.hs-analogy-inner {
+  max-width: 960px;
+  margin: 0 auto;
+}
+.hs-analogy-inner .eyebrow { margin-bottom: 48px; }
+.hs-analogy-line {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(36px, 5.5vw, 76px);
+  font-weight: 700;
+  color: #8888aa;
+  line-height: 1.05;
+  margin-bottom: 4px;
+  opacity: 0;
+}
+.hs-analogy-inner.sr--in .hs-analogy-line {
+  animation: up 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.hs-analogy-inner.sr--in .hs-analogy-line:nth-child(1) { animation-delay: 0.05s; }
+.hs-analogy-inner.sr--in .hs-analogy-line:nth-child(2) { animation-delay: 0.22s; }
+.hs-analogy-inner.sr--in .hs-analogy-line:nth-child(3) { animation-delay: 0.39s; }
+.hs-analogy-foot {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(22px, 3vw, 38px);
+  font-style: italic;
+  color: #fff;
+  margin-top: 48px;
+  line-height: 1.4;
+  opacity: 0;
+  border-left: 3px solid #e63946;
+  padding-left: 20px;
+}
+.hs-analogy-inner.sr--in .hs-analogy-foot {
+  animation: up 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.56s both;
+}
+@media (max-width: 760px) {
+  .hs-analogy-section { padding: 60px 20px; }
+}
+
 /* ====== HOME STAKES ====== */
 .hs-stakes-section {
   padding: 80px 40px;
@@ -724,7 +780,7 @@ footer .brand{color:#e63946;font-size:11px;letter-spacing:4px;}
 }
 .hs-stakes-foot {
   font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(18px, 2.5vw, 24px);
+  font-size: clamp(20px, 2.8vw, 36px);
   font-style: italic;
   color: #aaaacc;
   border-left: 2px solid #3a86ff;
@@ -774,13 +830,35 @@ footer .brand{color:#e63946;font-size:11px;letter-spacing:4px;}
 }
 
 @media (max-width: 760px) {
-  .hs-hero { padding: 40px 20px 60px; }
+  .hs-hero { padding: 40px 20px 60px; position: relative; }
+  .hs-hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, #07070f 40%, rgba(7,7,15,0.75) 65%, transparent 88%);
+    z-index: 1;
+    pointer-events: none;
+  }
   .hs-hero-inner { display: block; }
-  .hs-hero-right { display: none; }
+  .hs-hero-left { position: relative; z-index: 2; }
+  .hs-hero-right {
+    display: block;
+    position: absolute;
+    right: -130px;
+    top: 50%;
+    transform: translateY(-50%);
+    flex: none;
+    width: 420px;
+    height: 420px;
+    z-index: 0;
+    opacity: 0.22;
+    pointer-events: none;
+  }
+  .hs-badge { display: none; }
   .hs-map-section { padding: 60px 20px; }
   .hs-map-inner { flex-direction: column; gap: 0; }
   .hs-map-left  { margin-left: 0; }
-  .hs-map-right { width: 100%; }
+  .hs-map-right { width: 100%; margin-top: 40px; padding-left: 0; }
   .hs-globe-canvas { width: 320px; height: 320px; margin: 0 auto; display: block; }
   .hs-map-stat { gap: 16px; flex-wrap: wrap; }
   .hs-nav-section { padding: 60px 20px 80px; }

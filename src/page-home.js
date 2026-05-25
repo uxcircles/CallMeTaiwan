@@ -23,12 +23,7 @@ function nextTilt() {
   return TILTS[tiltIdx];
 }
 
-// Badge — static: "Chinese Taipei" crossed out, "Taiwan" written below.
-// Mirrors the website's core claim: reject the imposed name, assert the real one.
-if (badgeEl) {
-  badgeEl.textContent = 'Taiwan';
-  badgeEl.style.color = '#1a1a2e';   // dark ink — handwritten correction, not UI colour
-}
+// Badge imposed name syncs with left-side cycling
 
 if (badgeWrap) {
   setTimeout(() => {
@@ -41,6 +36,7 @@ function cycleName() {
   const n = NAMES[ni % NAMES.length];
   nameEl.style.opacity = '0';
   ctxEl.style.opacity  = '0';
+  if (badgeEl) badgeEl.style.opacity = '0';
 
   setTimeout(() => {
     nameEl.textContent = n.text;
@@ -49,6 +45,10 @@ function cycleName() {
     document.documentElement.style.setProperty('--cc', n.color);
     nameEl.style.opacity = '1';
     ctxEl.style.opacity  = '1';
+    if (badgeEl) {
+      badgeEl.textContent = n.text.replace(/"/g, '');
+      badgeEl.style.opacity = '1';
+    }
   }, 350);
   ni++;
 }
@@ -406,6 +406,7 @@ function revealOn(sectionSel, innerSel) {
   }, { threshold: 0, rootMargin: '0px 0px -80px 0px' }).observe(section);
 }
 
+revealOn('.hs-analogy-section', '.hs-analogy-inner');
 revealOn('.hs-map-section', '.hs-map-inner');
 revealOn('.hs-stakes-section', '.hs-stakes-inner');
 revealOn('.hs-nav-section', '.hs-nav-inner');
