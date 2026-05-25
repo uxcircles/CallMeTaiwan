@@ -84,8 +84,8 @@ hr.div{border:none;border-top:1px solid #242448;max-width:960px;margin:0 auto;}
 .hcard:hover{background:#191938;transform:translateY(-3px);}
 .hcard:hover::before{transform:scaleY(1);}
 .hc-ico{font-size:22px;margin-bottom:9px;display:block;}
-.hc-t{font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:700;margin-bottom:5px;}
-.hc-d{font-size:11px;color:#8888aa;line-height:1.5;}
+.hc-t{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:700;margin-bottom:5px;}
+.hc-d{font-size:13px;color:#8888aa;line-height:1.5;}
 .hero-badge{margin-top:48px;display:flex;align-items:center;gap:12px;}
 .hero-badge .bf{font-size:24px;line-height:1;}
 .hero-badge .bc{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:3px;color:#e63946;text-transform:uppercase;}
@@ -614,8 +614,8 @@ footer .brand{color:#e63946;font-size:11px;letter-spacing:4px;}
 }
 
 .hs-cycle-note {
-  font-size: 13px;
-  color: #8888aa;
+  font-size: 15px;
+  color: #aaaacc;
   line-height: 1.6;
   opacity: 0;
   animation: up 0.6s ease 0.6s forwards;
