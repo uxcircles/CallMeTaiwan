@@ -95,6 +95,12 @@ function dlCard() {
   lnk.download = 'callmetaiwan-' + c.id + '.png';
   lnk.href = cv.toDataURL('image/png');
   lnk.click();
+  if (typeof gtag === 'function') {
+    gtag('event', 'card_download', {
+      card_id: c.id,
+      card_format: curFmt
+    });
+  }
 }
 
 window.updCard = updCard;
