@@ -26,12 +26,12 @@ nav{position:fixed;top:0;left:0;right:0;z-index:300;height:58px;
   background:rgba(7,7,15,0.94);backdrop-filter:blur(20px);border-bottom:1px solid #242448;}
 .nav-logo{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:3px;color:#e63946;
   text-transform:uppercase;cursor:pointer;border:none;background:none;}
-.nav-menu{display:flex;gap:2px;list-style:none;}
+.nav-menu{display:flex;gap:0;list-style:none;}
 .nav-menu a{display:block;padding:8px 13px;font-family:'Space Mono',monospace;font-size:10px;
   letter-spacing:1.5px;color:#8888aa;text-decoration:none;text-transform:uppercase;
-  border:1px solid transparent;transition:all 0.2s;white-space:nowrap;}
-.nav-menu a:hover{color:#eae6f8;border-color:#303060;}
-.nav-menu a.active{color:#e63946;border-color:#c1121f;}
+  border-bottom:2px solid transparent;transition:color 0.2s, border-color 0.2s;white-space:nowrap;}
+.nav-menu a:hover{color:#eae6f8;}
+.nav-menu a.active{color:#e63946;border-bottom-color:#e63946;}
 .hbg{display:none;background:none;border:none;color:#8888aa;font-size:20px;cursor:pointer;}
 
 /* PAGES */
