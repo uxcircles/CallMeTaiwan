@@ -1263,6 +1263,7 @@ footer .brand{color:#e63946;font-size:11px;letter-spacing:4px;}
 /* Card */
 .tl-card {
   margin-left: 16px;
+  max-width: 640px;
   background: #111126;
   border: 1px solid #242448;
   padding: 16px 18px;
@@ -1300,7 +1301,6 @@ footer .brand{color:#e63946;font-size:11px;letter-spacing:4px;}
   font-size: 13px;
   line-height: 1.7;
   color: #8888aa;
-  max-width: 600px;
 }
 .tl-desc strong { color: #c0c0e0; font-weight: 500; }
 
