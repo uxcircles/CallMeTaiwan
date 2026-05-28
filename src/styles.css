@@ -1235,8 +1235,7 @@ footer .brand{color:#e63946;font-size:11px;letter-spacing:4px;}
   font-size: 12px;
   letter-spacing: 1px;
   color: #c0c0e0;
-  text-align: right;
-  padding-right: 16px;
+  text-align: left;
   padding-top: 3px;
   line-height: 1;
 }
@@ -1301,6 +1300,7 @@ footer .brand{color:#e63946;font-size:11px;letter-spacing:4px;}
   font-size: 13px;
   line-height: 1.7;
   color: #8888aa;
+  max-width: 600px;
 }
 .tl-desc strong { color: #c0c0e0; font-weight: 500; }
 
