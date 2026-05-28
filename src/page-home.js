@@ -1,4 +1,5 @@
 import './nav.js';
+import { CASES } from './data.js';
 
 // ── Name cycling ──────────────────────────────────────────────────────────────
 const NAMES = [
@@ -446,3 +447,45 @@ if (stakesSection) {
     });
   }, { threshold: 0.25, rootMargin: '0px 0px -60px 0px' }).observe(stakesSection);
 }
+
+// ── Analogy section: personalise first line by visitor's locale ───────────────
+// Lines 2 & 3 are fixed: "Ottoman Athens" (greece) and "Mongolian Beijing" (mongolia).
+// Never swap the dynamic line to one of those — it would create a duplicate.
+const _AC = {
+  UA:'ukraine',  GR:'greece',   EE:'estonia',  LV:'latvia',   LT:'lithuania',
+  PL:'poland',   FI:'finland',  NO:'norway',   DK:'denmark',  IS:'iceland',
+  IE:'ireland',  GB:'ireland',  DZ:'algeria',  MA:'algeria',  TN:'algeria',
+  VN:'vietnam',  IN:'india',    MY:'malaysia', SG:'malaysia', PH:'malaysia',
+  ID:'malaysia', MX:'mexico',   AR:'mexico',   BR:'mexico',   CL:'mexico',
+  CO:'mexico',   PE:'mexico',   PT:'mexico',   ES:'mexico',
+  US:'usa',      CA:'usa',      AU:'usa',      NZ:'usa',
+  MN:'mongolia', CN:'mongolia', HK:'mongolia', MO:'mongolia',
+  RU:'ukraine',  BY:'poland',   TR:'greece',
+  FR:'algeria',  BE:'algeria',  DE:'poland',   AT:'estonia',
+  IT:'greece',   SE:'norway',   NL:'denmark',  CH:'finland',
+  TH:'vietnam',  KH:'vietnam',  MM:'vietnam',
+};
+const _AL = {
+  uk:'ukraine', el:'greece',  et:'estonia', lv:'latvia',  lt:'lithuania',
+  pl:'poland',  fi:'finland', no:'norway',  da:'denmark', is:'iceland',
+  ga:'ireland', vi:'vietnam', hi:'india',   ms:'malaysia',id:'malaysia',
+  es:'mexico',  pt:'mexico',  ru:'ukraine', tr:'greece',
+  fr:'algeria', de:'poland',  it:'greece',  sv:'norway',
+  nl:'denmark', mn:'mongolia',zh:'mongolia',ar:'algeria',
+};
+const _FIXED = new Set(['greece', 'mongolia']);   // already on lines 2 & 3
+
+(function setAnalogyLine() {
+  const langs = Array.from(navigator.languages || [navigator.language || '']);
+  let caseId = null;
+  for (const lang of langs) {
+    const [base, region] = lang.split('-');
+    if (region) { const c = _AC[region.toUpperCase()]; if (c && !_FIXED.has(c)) { caseId = c; break; } }
+    if (base)   { const c = _AL[base.toLowerCase()];   if (c && !_FIXED.has(c)) { caseId = c; break; } }
+  }
+  if (!caseId || caseId === 'usa') return;   // keep the default "British Washington D.C."
+  const c = CASES.find(c => c.id === caseId);
+  if (!c) return;
+  const el = document.querySelector('.hs-analogy-line');
+  if (el) el.textContent = c.abs;
+})();
