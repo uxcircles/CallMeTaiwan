@@ -433,7 +433,7 @@ if (mapSection) {
     obs.disconnect();
     const el = mapSection.querySelector('.hs-map-n[data-count]');
     if (el) animateCount(el, +el.dataset.count, '', 0, 1000);
-  }, { threshold: 0, rootMargin: '0px 0px -80px 0px' }).observe(mapSection);
+  }, { threshold: 0.25, rootMargin: '0px 0px -60px 0px' }).observe(mapSection);
 }
 
 const stakesSection = document.querySelector('.hs-stakes-section');
@@ -442,7 +442,7 @@ if (stakesSection) {
     if (!e.isIntersecting) return;
     obs.disconnect();
     stakesSection.querySelectorAll('.hs-stake-n[data-count]').forEach((el, i) => {
-      animateCount(el, +el.dataset.count, el.dataset.suffix || '', i * 160);
+      animateCount(el, +el.dataset.count, el.dataset.suffix || '', i * 180);
     });
-  }, { threshold: 0, rootMargin: '0px 0px -80px 0px' }).observe(stakesSection);
+  }, { threshold: 0.25, rootMargin: '0px 0px -60px 0px' }).observe(stakesSection);
 }

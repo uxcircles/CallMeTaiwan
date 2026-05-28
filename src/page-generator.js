@@ -64,30 +64,30 @@ function dlCard() {
   const p = Math.round(W*.07);
   ctx.font = Math.round(W*.08) + 'px serif';
   ctx.fillText(c.flag, p, p + Math.round(W*.09));
-  ctx.fillStyle = 'rgba(255,255,255,0.3)';
+  ctx.fillStyle = 'rgba(255,255,255,0.48)';
   ctx.font = Math.round(W*.017) + 'px monospace';
   ctx.fillText('WOULD THIS MAKE SENSE TO YOU?', p, H*.35);
   ctx.fillStyle = '#e63946';
   ctx.font = 'italic bold ' + Math.round(W*.062) + 'px Georgia,serif';
   ctx.fillText(c.abs, p, H*.44);
-  ctx.fillStyle = 'rgba(255,255,255,0.26)';
+  ctx.fillStyle = 'rgba(255,255,255,0.48)';
   ctx.font = Math.round(W*.02) + 'px monospace';
   ctx.fillText('if not → then why accept ↓', p, H*.52);
   ctx.fillStyle = '#3a86ff';
   ctx.font = 'bold ' + Math.round(W*.047) + 'px Georgia,serif';
   ctx.fillText('"Chinese Taipei"', p, H*.60);
-  ctx.fillStyle = 'rgba(58,134,255,0.42)';
+  ctx.fillStyle = 'rgba(58,134,255,0.65)';
   ctx.font = Math.round(W*.014) + 'px monospace';
   ctx.fillText("TAIWAN'S IMPOSED NAME", p, H*.645);
-  ctx.fillStyle = 'rgba(255,255,255,0.36)';
+  ctx.fillStyle = 'rgba(255,255,255,0.58)';
   ctx.font = Math.round(W*.02) + 'px sans-serif';
   wrapText(ctx, c.sh, p, H*.73, W - p*2, Math.round(W*.028));
   if (n) {
-    ctx.fillStyle = 'rgba(255,255,255,0.28)';
+    ctx.fillStyle = 'rgba(255,255,255,0.48)';
     ctx.font = Math.round(W*.016) + 'px monospace';
     ctx.fillText(n, p, H - p - Math.round(W*.027));
   }
-  ctx.fillStyle = 'rgba(193,18,31,0.65)';
+  ctx.fillStyle = 'rgba(193,18,31,0.75)';
   ctx.font = Math.round(W*.016) + 'px monospace';
   const ht = '#TaiwanIsTaiwan · callmetaiwan.org';
   ctx.fillText(ht, W - p - ctx.measureText(ht).width, H - p - Math.round(W*.027));

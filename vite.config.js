@@ -4,7 +4,7 @@ import { defineConfig } from 'vite';
 // In dev, Vite serves /the-name/ (with slash) correctly but /the-name (no slash)
 // falls back to root index.html. This plugin redirects bare slugs to their
 // trailing-slash form so the browser lands on the right page.
-const PAGES = ['the-name', 'identity', 'history', 'data', 'tw-vs-cn', 'make-a-card'];
+const PAGES = ['the-name', 'identity', 'history', 'renamed', 'data', 'tw-vs-cn', 'make-a-card'];
 
 function trailingSlashPlugin() {
   return {
@@ -34,6 +34,7 @@ export default defineConfig({
         'the-name':    resolve(__dirname, 'the-name/index.html'),
         identity:      resolve(__dirname, 'identity/index.html'),
         history:       resolve(__dirname, 'history/index.html'),
+        renamed:       resolve(__dirname, 'renamed/index.html'),
         data:          resolve(__dirname, 'data/index.html'),
         'tw-vs-cn':    resolve(__dirname, 'tw-vs-cn/index.html'),
         'make-a-card': resolve(__dirname, 'make-a-card/index.html'),
