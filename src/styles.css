@@ -1240,6 +1240,7 @@ footer .brand{color:#e63946;font-size:11px;letter-spacing:4px;}
   padding-top: 4px;
   line-height: 1;
 }
+.tl-yr--dup { visibility: hidden; }
 
 /* Dot */
 .tl-dot {

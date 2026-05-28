@@ -19,10 +19,27 @@ tabs.forEach(btn => {
     });
     if (countEl) countEl.textContent = visible;
 
+    dedupeYears();
     // re-trigger scroll reveal for newly shown items
     requestAnimationFrame(() => observeItems());
   });
 });
+
+// ── Year deduplication ───────────────────────────────────────────────────────
+// Show the year label only when it changes; hide repeats (visibility:hidden
+// so the grid column keeps its width).
+function dedupeYears() {
+  let lastYear = null;
+  document.querySelectorAll('.tl-item:not(.hidden)').forEach(item => {
+    const yrEl = item.querySelector('.tl-yr');
+    if (!yrEl) return;
+    const yr = yrEl.textContent.trim();
+    yrEl.classList.toggle('tl-yr--dup', yr === lastYear);
+    if (yr !== lastYear) lastYear = yr;
+  });
+}
+
+dedupeYears();
 
 // ── Scroll-reveal ────────────────────────────────────────────────────────────
 function observeItems() {
