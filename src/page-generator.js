@@ -70,13 +70,13 @@ function dlCard() {
   ctx.fillStyle = '#e63946';
   ctx.font = 'italic bold ' + Math.round(W*.062) + 'px Georgia,serif';
   ctx.fillText(c.abs, p, H*.44);
-  ctx.fillStyle = 'rgba(255,255,255,0.48)';
+  ctx.fillStyle = 'rgba(255,255,255,0.68)';
   ctx.font = Math.round(W*.02) + 'px monospace';
   ctx.fillText('if not → then why accept ↓', p, H*.52);
   ctx.fillStyle = '#3a86ff';
   ctx.font = 'bold ' + Math.round(W*.047) + 'px Georgia,serif';
   ctx.fillText('"Chinese Taipei"', p, H*.60);
-  ctx.fillStyle = 'rgba(58,134,255,0.65)';
+  ctx.fillStyle = 'rgba(58,134,255,0.85)';
   ctx.font = Math.round(W*.014) + 'px monospace';
   ctx.fillText("TAIWAN'S IMPOSED NAME", p, H*.645);
   ctx.fillStyle = 'rgba(255,255,255,0.58)';
@@ -107,14 +107,65 @@ window.updCard = updCard;
 window.setFmt  = setFmt;
 window.dlCard  = dlCard;
 
+// ── Auto-select case by visitor's locale ─────────────────────────────────────
+// Country code (from locale tag) → case id
+const COUNTRY_MAP = {
+  UA:'ukraine',  GR:'greece',   EE:'estonia',  LV:'latvia',   LT:'lithuania',
+  PL:'poland',   FI:'finland',  NO:'norway',   DK:'denmark',  IS:'iceland',
+  IE:'ireland',  GB:'ireland',  DZ:'algeria',  MA:'algeria',  TN:'algeria',
+  VN:'vietnam',  IN:'india',    MY:'malaysia', SG:'malaysia', PH:'malaysia',
+  ID:'malaysia', MX:'mexico',   AR:'mexico',   BR:'mexico',   CL:'mexico',
+  CO:'mexico',   PE:'mexico',   PT:'mexico',   ES:'mexico',
+  US:'usa',      CA:'usa',      AU:'usa',      NZ:'usa',
+  MN:'mongolia', CN:'mongolia', HK:'mongolia', MO:'mongolia',
+  RU:'ukraine',  BY:'poland',   TR:'greece',
+  FR:'algeria',  BE:'algeria',  DE:'poland',   AT:'estonia',
+  IT:'greece',   SE:'norway',   NL:'denmark',  CH:'finland',
+  TH:'vietnam',  KH:'vietnam',  MM:'vietnam',
+};
+// Language-only fallbacks (no country tag)
+const LANG_MAP = {
+  uk:'ukraine', el:'greece',   et:'estonia',  lv:'latvia',   lt:'lithuania',
+  pl:'poland',  fi:'finland',  no:'norway',   da:'denmark',  is:'iceland',
+  ga:'ireland', vi:'vietnam',  hi:'india',    ms:'malaysia', id:'malaysia',
+  es:'mexico',  pt:'mexico',   ru:'ukraine',  tr:'greece',
+  fr:'algeria', de:'poland',   it:'greece',   sv:'norway',
+  nl:'denmark', mn:'mongolia', zh:'mongolia', ar:'algeria',
+};
+
+function detectCase() {
+  const langs = Array.from(navigator.languages || [navigator.language]);
+  for (const lang of langs) {
+    const [base, region] = lang.split('-');
+    if (region && COUNTRY_MAP[region.toUpperCase()]) return COUNTRY_MAP[region.toUpperCase()];
+    if (base   && LANG_MAP[base.toLowerCase()])      return LANG_MAP[base.toLowerCase()];
+  }
+  return null;
+}
+
 popSel();
 
-// Pre-select case if coming from the-name page via goGen()
-const saved = sessionStorage.getItem('genCase');
-if (saved) {
-  const sel = document.getElementById('gcase');
-  if (sel) sel.value = saved;
-  sessionStorage.removeItem('genCase');
+// Save manual selections to localStorage
+document.getElementById('gcase')?.addEventListener('change', () => {
+  const v = document.getElementById('gcase').value;
+  localStorage.setItem('ctw-card-case', v);
+});
+
+// Priority: sessionStorage (cross-page) > localStorage (returning user) > locale > default
+const sel = document.getElementById('gcase');
+if (sel) {
+  const fromSession = sessionStorage.getItem('genCase');
+  const fromStorage = localStorage.getItem('ctw-card-case');
+  const fromLocale  = detectCase();
+
+  if (fromSession) {
+    sel.value = fromSession;
+    sessionStorage.removeItem('genCase');
+  } else if (fromStorage && [...sel.options].some(o => o.value === fromStorage)) {
+    sel.value = fromStorage;
+  } else if (fromLocale && [...sel.options].some(o => o.value === fromLocale)) {
+    sel.value = fromLocale;
+  }
 }
 
 updCard();

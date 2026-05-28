@@ -389,11 +389,11 @@ canvas.lc{width:100%;height:100%;display:block;}
   color:rgba(255,255,255,0.48);text-transform:uppercase;margin-bottom:9px;}
 .sc-abs{font-family:'Cormorant Garamond',serif;font-size:clamp(19px,3.5vw,30px);
   font-weight:700;font-style:italic;color:#e63946;line-height:1.1;margin-bottom:4px;}
-.sc-arr{font-family:'Space Mono',monospace;font-size:9px;color:rgba(255,255,255,0.48);margin-bottom:12px;}
+.sc-arr{font-family:'Space Mono',monospace;font-size:9px;color:rgba(255,255,255,0.68);margin-bottom:12px;}
 .sc-tw{font-family:'Cormorant Garamond',serif;font-size:clamp(15px,2.5vw,22px);
   font-weight:600;color:#3a86ff;margin-bottom:2px;}
 .sc-tws{font-family:'Space Mono',monospace;font-size:8px;letter-spacing:2px;
-  color:rgba(58,134,255,0.65);text-transform:uppercase;}
+  color:rgba(58,134,255,0.85);text-transform:uppercase;}
 .sc-ctx{font-size:10px;line-height:1.6;color:rgba(255,255,255,0.58);margin-top:12px;max-width:92%;}
 .sc-bot{display:flex;justify-content:space-between;align-items:flex-end;}
 .sc-nm{font-family:'Space Mono',monospace;font-size:8px;color:rgba(255,255,255,0.48);}
