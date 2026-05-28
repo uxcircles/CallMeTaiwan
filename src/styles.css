@@ -1001,6 +1001,23 @@ footer .brand{color:#e63946;font-size:11px;letter-spacing:4px;}
   margin: 0 auto;
 }
 .gd-section .eyebrow { margin-bottom: 28px; }
+.gd-subhead {
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #8888aa;
+  margin: 44px 0 18px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.gd-subhead::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: #242448;
+}
 .gd-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
