@@ -155,21 +155,44 @@ function makeCard(c, stackPos) {
 }
 
 // ── Drag / swipe mechanics ────────────────────────────────────────────────────
-let dragging = false, startX = 0, startY = 0, dx = 0;
+let dragging    = false;
+let pendingDrag = false;   // touch is down but direction not yet determined
+let startX = 0, startY = 0, dx = 0;
 let topCard  = null;
 const THRESHOLD = 80;
 
 function attachDrag(el) {
   el.addEventListener('pointerdown', e => {
-    dragging = true;
+    pendingDrag = true;
+    dragging    = false;
     startX = e.clientX; startY = e.clientY; dx = 0;
     topCard = el;
-    el.setPointerCapture(e.pointerId);
-    el.style.transition = 'none';
+    // Do NOT setPointerCapture yet — wait to confirm horizontal intent
   });
 
   el.addEventListener('pointermove', e => {
+    // Direction detection phase: decide swipe vs. scroll
+    if (pendingDrag && !dragging) {
+      const moveX = Math.abs(e.clientX - startX);
+      const moveY = Math.abs(e.clientY - startY);
+      if (moveX < 5 && moveY < 5) return;           // too little movement to decide
+
+      if (moveX >= moveY) {
+        // Horizontal dominant → take over as swipe
+        dragging    = true;
+        pendingDrag = false;
+        el.setPointerCapture(e.pointerId);           // now lock the pointer
+        el.style.transition = 'none';
+      } else {
+        // Vertical dominant → abandon, let the page scroll
+        pendingDrag = false;
+        topCard     = null;
+        return;
+      }
+    }
+
     if (!dragging) return;
+
     dx = e.clientX - startX;
     const dy  = (e.clientY - startY) * 0.15;
     const rot = dx * 0.07;
@@ -183,8 +206,17 @@ function attachDrag(el) {
     else              { stampNo.style.opacity  = 0; stampYes.style.opacity = 0; }
   });
 
-  el.addEventListener('pointerup',     () => { if (dragging) commit(); });
-  el.addEventListener('pointercancel', () => { dragging = false; if (topCard) springBack(topCard); });
+  el.addEventListener('pointerup', () => {
+    pendingDrag = false;
+    if (dragging) commit();
+    else topCard = null;   // tap or abandoned vertical — no action
+  });
+
+  el.addEventListener('pointercancel', () => {
+    pendingDrag = false;
+    dragging    = false;
+    if (topCard) springBack(topCard);
+  });
 }
 
 function commit() {

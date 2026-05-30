@@ -1394,7 +1394,7 @@ footer .brand{color:#e63946;font-size:11px;letter-spacing:4px;}
   user-select: none;
   will-change: transform;
   transform-origin: center bottom;
-  touch-action: none;
+  touch-action: pan-y;   /* allow vertical scroll; horizontal captured by JS */
   display: flex;
   flex-direction: column;
 }
