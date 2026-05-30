@@ -1360,31 +1360,27 @@ footer .brand{color:#e63946;font-size:11px;letter-spacing:4px;}
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 48px 20px 80px;
+  padding: 24px 20px 80px;
 }
 
-/* Progress dots */
-.tn-progress {
-  display: flex;
-  gap: 7px;
-  margin-bottom: 36px;
+/* Card counter (inside top card, bottom-right) */
+.tn-counter {
+  position: absolute;
+  bottom: 18px;
+  right: 22px;
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 1px;
+  color: #303060;
+  pointer-events: none;
 }
-.tn-dot {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: #242448;
-  transition: background 0.3s;
-}
-.tn-dot.active { background: #c1121f; }
-.tn-dot.done   { background: #3a86ff; }
 
 /* Card deck container */
 .tn-deck {
   position: relative;
   width: 380px;
-  height: 440px;
-  margin-bottom: 36px;
+  height: 400px;
+  margin-bottom: 20px;
 }
 
 /* Individual swipe card */
@@ -1457,17 +1453,17 @@ footer .brand{color:#e63946;font-size:11px;letter-spacing:4px;}
   font-size: 13px;
   line-height: 1.75;
   color: #c0c0e0;
-  margin-bottom: auto;
 }
-.tn-card-q {
-  margin-top: 20px;
-  padding-top: 16px;
-  border-top: 1px solid #242448;
+
+/* Question prompt — sits outside card, above buttons */
+.tn-question {
   font-family: 'Space Mono', monospace;
   font-size: 9px;
   letter-spacing: 1.5px;
   text-transform: uppercase;
   color: #8888aa;
+  margin-bottom: 20px;
+  text-align: center;
 }
 
 /* Action buttons */
@@ -1475,7 +1471,7 @@ footer .brand{color:#e63946;font-size:11px;letter-spacing:4px;}
   display: flex;
   gap: 14px;
   margin-bottom: 18px;
-  width: 380px;
+  width: 350px;
 }
 .tn-btn {
   flex: 1;
@@ -1581,8 +1577,8 @@ footer .brand{color:#e63946;font-size:11px;letter-spacing:4px;}
 
 /* Mobile */
 @media (max-width: 600px) {
-  .tn-deck  { width: 320px; height: 400px; }
-  .tn-actions { width: 320px; }
+  .tn-deck  { width: 320px; height: 360px; }
+  .tn-actions { width: 295px; }
   .tn-card  { padding: 22px 20px 20px; }
   .tn-card-abs  { font-size: 22px; }
   .tn-card-flag { font-size: 38px; }

@@ -69,31 +69,22 @@ function buildDeck() {
 }
 
 // ── State ─────────────────────────────────────────────────────────────────────
-const deck    = buildDeck();
-let   idx     = 0;
-let   noVotes = 0;
+const deck        = buildDeck();
+let   idx         = 0;
+let   noVotes     = 0;
+let   firstRender = true;
 
 // ── DOM refs ──────────────────────────────────────────────────────────────────
-const deckEl     = document.getElementById('tnDeck');
-const progressEl = document.getElementById('tnProgress');
-const swipeEl    = document.getElementById('tnSwipe');
-const resultEl   = document.getElementById('tnResult');
-const btnNo      = document.getElementById('btnNo');
-const btnYes     = document.getElementById('btnYes');
-
-// ── Progress dots ─────────────────────────────────────────────────────────────
-function renderProgress() {
-  if (!progressEl) return;
-  progressEl.innerHTML = deck.map((_, i) =>
-    `<div class="tn-dot${i === idx ? ' active' : i < idx ? ' done' : ''}"></div>`
-  ).join('');
-}
+const deckEl  = document.getElementById('tnDeck');
+const swipeEl = document.getElementById('tnSwipe');
+const resultEl = document.getElementById('tnResult');
+const btnNo   = document.getElementById('btnNo');
+const btnYes  = document.getElementById('btnYes');
 
 // ── Card stack ────────────────────────────────────────────────────────────────
 function renderStack() {
   if (!deckEl) return;
   deckEl.innerHTML = '';
-  renderProgress();
 
   // Build back-to-front so top card is last in DOM (highest z-index)
   const slice = deck.slice(idx, idx + 3);
@@ -102,6 +93,19 @@ function renderStack() {
     const el = makeCard(slice[i], stackPos);
     deckEl.appendChild(el);
   }
+
+  // Animate newly-promoted top card from dark → bright (skip on first render)
+  if (!firstRender) {
+    const topEl = [...deckEl.children].find(el => el.style.zIndex === '10');
+    if (topEl) {
+      topEl.style.filter = 'brightness(0.5)';
+      topEl.style.transition = 'filter 0.6s ease';
+      requestAnimationFrame(() => requestAnimationFrame(() => {
+        topEl.style.filter = 'brightness(1)';
+      }));
+    }
+  }
+  firstRender = false;
 }
 
 function makeCard(c, stackPos) {
@@ -113,17 +117,21 @@ function makeCard(c, stackPos) {
   const ty    = stackPos * 14;
   el.style.transform = `scale(${scale}) translateY(${ty}px)`;
   el.style.zIndex    = String(10 - stackPos);
-  if (stackPos > 0) el.style.pointerEvents = 'none';
+
+  // Back cards: darker (creates visual depth)
+  if (stackPos === 1) el.style.filter = 'brightness(0.5)';
+  if (stackPos === 2) el.style.filter = 'brightness(0.3)';
+  if (stackPos > 0)  el.style.pointerEvents = 'none';
 
   el.innerHTML =
-    `<div class="tn-stamp tn-stamp-no">Absurd</div>` +
+    `<div class="tn-stamp tn-stamp-no">Ridiculous</div>` +
     `<div class="tn-stamp tn-stamp-yes">Acceptable</div>` +
     (c.r === 'special' ? `<div class="tn-special-tag">↩ Logic Reversed</div>` : '') +
     `<div class="tn-card-flag">${c.flag}</div>` +
     `<div class="tn-card-abs">${c.abs}</div>` +
     `<div class="tn-card-meta">${c.real} · ${c.yr}</div>` +
     `<div class="tn-card-sh">${c.sh}</div>` +
-    `<div class="tn-card-q">Would you accept this name?</div>`;
+    (stackPos === 0 ? `<div class="tn-counter">${idx + 1} / ${deck.length}</div>` : '');
 
   if (stackPos === 0) attachDrag(el);
   return el;
