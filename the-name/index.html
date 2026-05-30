@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>What If This Logic Applied to Your Country? | CallMeTaiwan.org</title>
-<meta name="description" content="&quot;Chinese Taipei&quot; is Taiwan's imposed name. What if the same logic applied to Ukraine, India, or Greece? A comparison that makes the absurdity clear.">
+<meta name="description" content="&quot;Chinese Taipei&quot; is Taiwan's imposed name. What if the same logic applied to Ukraine, India, or Greece? Swipe to answer.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://callmetaiwan.org/the-name">
 <meta property="og:title" content="What If This Logic Applied to Your Country?">
@@ -46,43 +46,37 @@
 </nav>
 
 <div class="page active" id="names">
+
+  <!-- Hero -->
   <div class="ph">
     <div class="eyebrow">A Naming Question</div>
     <h1 class="stitle">What if we applied<br>the <em>same logic</em> elsewhere?</h1>
-    <div class="imposed-card">
-      <span style="font-size:42px">🇹🇼</span>
-      <div>
-        <div style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:2px;color:#3a86ff;text-transform:uppercase;margin-bottom:5px">Is this name fair?</div>
-        <div style="font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:700;margin-bottom:4px">Taiwan</div>
-        <div style="font-family:'Space Mono',monospace;font-size:10px;color:#8888aa">
-          <span style="text-decoration:line-through;opacity:0.55">Chinese Taipei</span>
-          <span style="margin:0 8px;opacity:0.35">←</span>Used in Olympics &amp; international bodies — but who chose it?
-        </div>
-      </div>
-    </div>
-    <div class="rtabs">
-      <button class="rtab active" onclick="filt('all',this)">Everyone</button>
-      <button class="rtab" onclick="filt('european',this)">European friends</button>
-      <button class="rtab" onclick="filt('asian',this)">Asian friends</button>
-      <button class="rtab" onclick="filt('american',this)">American friends</button>
-      <button class="rtab" onclick="filt('special',this)" style="border-color:#e9c46a;color:#e9c46a">&#8617; Logic Reversed</button>
-    </div>
-    <div class="cgrid" id="cgrid"></div>
+    <p class="tn-intro">Taiwan competes internationally as <strong>"Chinese Taipei"</strong> — a name it never chose. If this logic applied to your country, would you accept it?</p>
   </div>
-</div>
 
-<!-- Modal -->
-<div class="mov" id="modal" onclick="closeMov(event)">
-  <div class="modal">
-    <button class="mc" onclick="closeMod()">✕</button>
-    <span class="mflag" id="mf"></span>
-    <div class="mabs" id="ma"></div>
-    <div class="mreal" id="mr"></div>
-    <div class="mdiv"></div>
-    <div class="mbody" id="mb"></div>
-    <div class="mcmp" id="mc"></div>
-    <button class="msh" onclick="goGen()">→ Share This Question</button>
+  <!-- Swipe deck -->
+  <div class="tn-swipe" id="tnSwipe">
+    <div class="tn-progress" id="tnProgress"></div>
+    <div class="tn-deck" id="tnDeck"></div>
+    <div class="tn-actions">
+      <button class="tn-btn tn-btn-no"  id="btnNo">✕ Absurd</button>
+      <button class="tn-btn tn-btn-yes" id="btnYes">Acceptable ✓</button>
+    </div>
+    <div class="tn-hint">← drag · arrow keys · or tap buttons →</div>
   </div>
+
+  <!-- Result screen -->
+  <div class="tn-result" id="tnResult">
+    <div class="tn-result-tw">🇹🇼</div>
+    <div class="tn-result-main">Taiwan said the same NO.<br><em>But the world doesn't care.</em></div>
+    <div class="tn-result-sub">You said <strong>NO</strong> to <span id="resNoCount">0</span> of <span id="resTotalCount">0</span> questions.</div>
+    <div class="tn-result-social" id="resSocial"></div>
+    <div class="tn-result-btns">
+      <a href="/make-a-card" class="tn-result-cta">→ Make a Shareable Card</a>
+      <a href="/renamed" class="tn-result-more">See 31 real incidents →</a>
+    </div>
+  </div>
+
 </div>
 
 <footer><span class="brand">CALL ME TAIWAN</span><br>callmetaiwan.org · DESIGN DIPLOMACY<br>Sources: EIU · Freedom House · RSF · World Bank · TrendForce</footer>
