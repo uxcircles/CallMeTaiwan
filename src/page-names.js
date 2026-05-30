@@ -98,7 +98,7 @@ function renderStack() {
   if (!firstRender) {
     const topEl = [...deckEl.children].find(el => el.style.zIndex === '10');
     if (topEl) {
-      topEl.style.filter = 'brightness(0.5)';
+      topEl.style.filter = 'brightness(0.65)';
       topEl.style.transition = 'filter 0.6s ease';
       requestAnimationFrame(() => requestAnimationFrame(() => {
         topEl.style.filter = 'brightness(1)';
@@ -118,9 +118,9 @@ function makeCard(c, stackPos) {
   el.style.transform = `scale(${scale}) translateY(${ty}px)`;
   el.style.zIndex    = String(10 - stackPos);
 
-  // Back cards: darker (creates visual depth)
-  if (stackPos === 1) el.style.filter = 'brightness(0.5)';
-  if (stackPos === 2) el.style.filter = 'brightness(0.3)';
+  // Back cards: progressively darker for depth
+  if (stackPos === 1) el.style.filter = 'brightness(0.65)';
+  if (stackPos === 2) el.style.filter = 'brightness(0.42)';
   if (stackPos > 0)  el.style.pointerEvents = 'none';
 
   el.innerHTML =
