@@ -86,12 +86,17 @@ let   idx         = 0;
 let   noVotes     = 0;
 let   firstRender = true;
 
+// Prevent duplicate votes: first completion sets localStorage flag + flips this bool.
+// Replays in the same session also see hasVoted=true, so sbVote is never called twice.
+let hasVoted = !!localStorage.getItem('cmt_voted');
+
 // ── DOM refs ──────────────────────────────────────────────────────────────────
-const deckEl  = document.getElementById('tnDeck');
-const swipeEl = document.getElementById('tnSwipe');
-const resultEl = document.getElementById('tnResult');
-const btnNo   = document.getElementById('btnNo');
-const btnYes  = document.getElementById('btnYes');
+const deckEl    = document.getElementById('tnDeck');
+const swipeEl   = document.getElementById('tnSwipe');
+const resultEl  = document.getElementById('tnResult');
+const btnNo     = document.getElementById('btnNo');
+const btnYes    = document.getElementById('btnYes');
+const btnReplay = document.getElementById('btnReplay');
 
 // ── Card stack ────────────────────────────────────────────────────────────────
 function renderStack() {
@@ -203,7 +208,7 @@ function flyOut(choice) {
 
   topCard = null;
   if (choice === 'absurd') noVotes++;
-  sbVote(deck[idx].id, choice);
+  if (!hasVoted) sbVote(deck[idx].id, choice);  // skip on replay — no duplicate votes
   idx++;
 
   // ── The actual fly + back-card slide ────────────────────────────────────────
@@ -269,6 +274,12 @@ async function showResult() {
   document.getElementById('resNoCount').textContent    = noVotes;
   document.getElementById('resTotalCount').textContent = deck.length;
 
+  // Lock in the vote on first completion; replays won't reach sbVote anyway
+  if (!hasVoted) {
+    hasVoted = true;
+    localStorage.setItem('cmt_voted', '1');
+  }
+
   const { absurd, accept } = await sbCounts();
   const grand = absurd + accept;
   if (grand >= 100) {
@@ -280,6 +291,16 @@ async function showResult() {
     gtag('event', 'swipe_complete', { no_count: noVotes, total: deck.length });
   }
 }
+
+// ── Replay ────────────────────────────────────────────────────────────────────
+btnReplay?.addEventListener('click', () => {
+  idx         = 0;
+  noVotes     = 0;
+  firstRender = true;
+  resultEl.style.display = 'none';
+  swipeEl.style.display  = '';   // revert to CSS flex
+  renderStack();
+});
 
 // ── Init ──────────────────────────────────────────────────────────────────────
 renderStack();
