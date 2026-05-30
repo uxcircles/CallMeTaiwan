@@ -122,7 +122,8 @@ function makeCard(c, stackPos) {
     `<div class="tn-card-flag">${c.flag}</div>` +
     `<div class="tn-card-abs">${c.abs}</div>` +
     `<div class="tn-card-meta">${c.real} · ${c.yr}</div>` +
-    `<div class="tn-card-sh">${c.sh}</div>`;
+    `<div class="tn-card-sh">${c.sh}</div>` +
+    `<div class="tn-card-q">Would you accept this name?</div>`;
 
   if (stackPos === 0) attachDrag(el);
   return el;
