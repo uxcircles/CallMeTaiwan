@@ -191,10 +191,14 @@ function flyOut(choice) {
   const el = topCard || deckEl?.lastElementChild;
 
   if (el) {
-    // Button / keyboard press: no drag occurred, so flash the stamp for visual feedback
     if (!topCard) {
+      // Button / keyboard: snap card to a drag-like starting position first,
+      // so the fly-out matches the feel of a swipe release.
       const stamp = el.querySelector(choice === 'absurd' ? '.tn-stamp-no' : '.tn-stamp-yes');
       if (stamp) stamp.style.opacity = '1';
+      el.style.transition = 'none';
+      el.style.transform  = `translateX(${dir * 36}px) translateY(-6px) rotate(${dir * 2.5}deg)`;
+      el.getBoundingClientRect(); // force reflow so the snap applies before the transition below
     }
     el.style.transition = 'transform 0.7s ease, opacity 0.7s ease';
     el.style.transform  = `translateX(${dir * window.innerWidth * 1.5}px) rotate(${dir * 28}deg)`;
