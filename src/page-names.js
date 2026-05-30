@@ -185,35 +185,57 @@ function springBack(el) {
 
 function flyOut(choice) {
   if (idx >= deck.length) return;
-  const dir = choice === 'absurd' ? -1 : 1;
+  const dir      = choice === 'absurd' ? -1 : 1;
+  const fromDrag = topCard !== null;
+  const el       = topCard || deckEl?.lastElementChild;
 
-  // Always target the actual top card (lastElementChild = last appended = stackPos 0)
-  const el = topCard || deckEl?.lastElementChild;
-
-  if (el) {
-    if (!topCard) {
-      // Button / keyboard: snap card to a drag-like starting position first,
-      // so the fly-out matches the feel of a swipe release.
-      const stamp = el.querySelector(choice === 'absurd' ? '.tn-stamp-no' : '.tn-stamp-yes');
-      if (stamp) stamp.style.opacity = '1';
-      el.style.transition = 'none';
-      el.style.transform  = `translateX(${dir * 36}px) translateY(-6px) rotate(${dir * 2.5}deg)`;
-      el.getBoundingClientRect(); // force reflow so the snap applies before the transition below
-    }
-    el.style.transition = 'transform 0.7s ease, opacity 0.7s ease';
-    el.style.transform  = `translateX(${dir * window.innerWidth * 1.5}px) rotate(${dir * 28}deg)`;
-    el.style.opacity    = '0';
-  }
   topCard = null;
-
   if (choice === 'absurd') noVotes++;
   sbVote(deck[idx].id, choice);
   idx++;
 
-  setTimeout(() => {
-    if (idx >= deck.length) showResult();
-    else                    renderStack();
-  }, 620);
+  // ── The actual fly + back-card slide ────────────────────────────────────────
+  const launch = () => {
+    if (!el) return;
+
+    // Fly top card off screen
+    el.style.transition = 'transform 0.7s ease, opacity 0.65s ease';
+    el.style.transform  = `translateX(${dir * window.innerWidth * 1.5}px) rotate(${dir * 28}deg)`;
+    el.style.opacity    = '0';
+
+    // Simultaneously slide remaining cards into their new stack positions
+    [...deckEl.children]
+      .filter(c => c !== el)
+      .sort((a, b) => parseInt(b.style.zIndex) - parseInt(a.style.zIndex))
+      .forEach((card, i) => {
+        const s = 1 - i * 0.04;
+        const t = i * 14;
+        // The card moving to middle also brightens slightly
+        card.style.transition = i === 0
+          ? 'transform 0.55s ease'
+          : 'transform 0.55s ease, filter 0.55s ease';
+        card.style.transform  = `scale(${s}) translateY(${t}px)`;
+        if (i > 0) card.style.filter = 'brightness(0.78)';
+      });
+
+    setTimeout(() => {
+      if (idx >= deck.length) showResult();
+      else renderStack();
+    }, 600);
+  };
+
+  if (!fromDrag && el) {
+    // Button / keyboard: flash stamp, then snap card to a slight directional offset
+    // via double-rAF (more reliable than getBoundingClientRect for forcing reflow)
+    // so the animation starts from the same position as a drag release.
+    const stamp = el.querySelector(choice === 'absurd' ? '.tn-stamp-no' : '.tn-stamp-yes');
+    if (stamp) stamp.style.opacity = '1';
+    el.style.transition = 'none';
+    el.style.transform  = `translateX(${dir * 40}px) translateY(-8px) rotate(${dir * 3}deg)`;
+    requestAnimationFrame(() => requestAnimationFrame(launch));
+  } else {
+    launch();
+  }
 }
 
 // ── Keyboard ──────────────────────────────────────────────────────────────────
