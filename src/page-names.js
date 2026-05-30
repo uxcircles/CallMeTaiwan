@@ -47,23 +47,35 @@ const _AL = {
   nl:'denmark', mn:'mongolia',zh:'mongolia',ar:'algeria',
 };
 
-// Curated 8-card deck — mongolia always last (it's the twist)
-const DECK_IDS = ['ireland', 'ukraine', 'india', 'greece', 'vietnam', 'usa', 'algeria', 'mongolia'];
+// Base 11-card deck — Nordic/Baltic absent by default, inserted dynamically if detected
+// mongolia always last (logic-reversed twist)
+const DECK_IDS = [
+  'ireland', 'ukraine', 'india', 'greece', 'vietnam',
+  'usa', 'algeria', 'poland', 'mexico', 'malaysia', 'mongolia',
+];
 
 function buildDeck() {
   const front = DECK_IDS.filter(id => id !== 'mongolia');
   const langs  = Array.from(navigator.languages || [navigator.language || '']);
+
   for (const lang of langs) {
     const [base, region] = lang.split('-');
     const detected =
       (region && _AC[region.toUpperCase()]) ||
       (base   && _AL[base.toLowerCase()]);
-    if (detected && detected !== 'mongolia' && front.includes(detected)) {
+    if (!detected || detected === 'mongolia') continue;
+
+    if (front.includes(detected)) {
+      // Already in base deck → move to front
       front.splice(front.indexOf(detected), 1);
       front.unshift(detected);
-      break;
+    } else if (CASES.find(c => c.id === detected)) {
+      // Not in base deck but exists in data (e.g. Nordic / Baltic) → insert at front
+      front.unshift(detected);
     }
+    break;
   }
+
   front.push('mongolia');
   return front.map(id => CASES.find(c => c.id === id)).filter(Boolean);
 }
