@@ -186,9 +186,17 @@ function springBack(el) {
 function flyOut(choice) {
   if (idx >= deck.length) return;
   const dir = choice === 'absurd' ? -1 : 1;
-  const el  = topCard || deckEl?.querySelector('.tn-card');
+
+  // Always target the actual top card (lastElementChild = last appended = stackPos 0)
+  const el = topCard || deckEl?.lastElementChild;
+
   if (el) {
-    el.style.transition = 'transform 0.55s ease, opacity 0.55s ease';
+    // Button / keyboard press: no drag occurred, so flash the stamp for visual feedback
+    if (!topCard) {
+      const stamp = el.querySelector(choice === 'absurd' ? '.tn-stamp-no' : '.tn-stamp-yes');
+      if (stamp) stamp.style.opacity = '1';
+    }
+    el.style.transition = 'transform 0.7s ease, opacity 0.7s ease';
     el.style.transform  = `translateX(${dir * window.innerWidth * 1.5}px) rotate(${dir * 28}deg)`;
     el.style.opacity    = '0';
   }
@@ -201,7 +209,7 @@ function flyOut(choice) {
   setTimeout(() => {
     if (idx >= deck.length) showResult();
     else                    renderStack();
-  }, 480);
+  }, 620);
 }
 
 // ── Keyboard ──────────────────────────────────────────────────────────────────
@@ -212,8 +220,8 @@ window.addEventListener('keydown', e => {
 });
 
 // ── Buttons ───────────────────────────────────────────────────────────────────
-btnNo?.addEventListener('click',  () => { if (idx < deck.length) { dx = -THRESHOLD - 1; flyOut('absurd');     } });
-btnYes?.addEventListener('click', () => { if (idx < deck.length) { dx =  THRESHOLD + 1; flyOut('acceptable'); } });
+btnNo?.addEventListener('click',  () => { if (idx < deck.length) flyOut('absurd');     });
+btnYes?.addEventListener('click', () => { if (idx < deck.length) flyOut('acceptable'); });
 
 // ── Result ────────────────────────────────────────────────────────────────────
 async function showResult() {
