@@ -1455,23 +1455,13 @@ footer .brand{color:#e63946;font-size:11px;letter-spacing:4px;}
   color: #c0c0e0;
 }
 
-/* Question prompt — sits outside card, above buttons */
-.tn-question {
-  font-family: 'Space Mono', monospace;
-  font-size: 9px;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  color: #8888aa;
-  margin-bottom: 20px;
-  text-align: center;
-}
-
 /* Action buttons */
 .tn-actions {
   display: flex;
   gap: 14px;
   margin-bottom: 18px;
   width: 350px;
+  margin-top: 8px;
 }
 .tn-btn {
   flex: 1;

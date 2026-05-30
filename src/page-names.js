@@ -98,7 +98,7 @@ function renderStack() {
   if (!firstRender) {
     const topEl = [...deckEl.children].find(el => el.style.zIndex === '10');
     if (topEl) {
-      topEl.style.filter = 'brightness(0.65)';
+      topEl.style.filter = 'brightness(0.78)';
       topEl.style.transition = 'filter 0.6s ease';
       requestAnimationFrame(() => requestAnimationFrame(() => {
         topEl.style.filter = 'brightness(1)';
@@ -119,8 +119,8 @@ function makeCard(c, stackPos) {
   el.style.zIndex    = String(10 - stackPos);
 
   // Back cards: progressively darker for depth
-  if (stackPos === 1) el.style.filter = 'brightness(0.65)';
-  if (stackPos === 2) el.style.filter = 'brightness(0.42)';
+  if (stackPos === 1) el.style.filter = 'brightness(0.78)';
+  if (stackPos === 2) el.style.filter = 'brightness(0.60)';
   if (stackPos > 0)  el.style.pointerEvents = 'none';
 
   el.innerHTML =
@@ -188,8 +188,8 @@ function flyOut(choice) {
   const dir = choice === 'absurd' ? -1 : 1;
   const el  = topCard || deckEl?.querySelector('.tn-card');
   if (el) {
-    el.style.transition = 'transform 0.35s ease, opacity 0.35s ease';
-    el.style.transform  = `translateX(${dir * window.innerWidth * 1.5}px) rotate(${dir * 25}deg)`;
+    el.style.transition = 'transform 0.55s ease, opacity 0.55s ease';
+    el.style.transform  = `translateX(${dir * window.innerWidth * 1.5}px) rotate(${dir * 28}deg)`;
     el.style.opacity    = '0';
   }
   topCard = null;
@@ -201,7 +201,7 @@ function flyOut(choice) {
   setTimeout(() => {
     if (idx >= deck.length) showResult();
     else                    renderStack();
-  }, 300);
+  }, 480);
 }
 
 // ── Keyboard ──────────────────────────────────────────────────────────────────
