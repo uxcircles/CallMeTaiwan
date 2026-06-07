@@ -25,26 +25,36 @@ async function sbCounts() {
 
 // ── Locale detection → prioritise visitor's country card ─────────────────────
 const _AC = {
+  // Base deck countries — move their card to front
   UA:'ukraine', GR:'greece',  EE:'estonia', LV:'latvia',  LT:'lithuania',
   PL:'poland',  FI:'finland', NO:'norway',  DK:'denmark', IS:'iceland',
-  IE:'ireland', GB:'ireland', DZ:'algeria', MA:'algeria', TN:'algeria',
-  VN:'vietnam', IN:'india',   MY:'malaysia',SG:'malaysia',PH:'malaysia',
-  ID:'malaysia',MX:'mexico',  AR:'mexico',  BR:'mexico',  CL:'mexico',
-  CO:'mexico',  PE:'mexico',  PT:'mexico',  ES:'mexico',
-  US:'usa',     CA:'usa',     AU:'usa',     NZ:'usa',
+  IE:'ireland', DZ:'algeria', MA:'algeria', TN:'algeria',
+  VN:'vietnam', IN:'india',   MY:'malaysia',MX:'mexico',
+  US:'usa',
   MN:'mongolia',CN:'mongolia',HK:'mongolia',MO:'mongolia',
-  RU:'ukraine', BY:'poland',  TR:'greece',
-  FR:'algeria', BE:'algeria', DE:'poland',  AT:'estonia',
-  IT:'greece',  SE:'norway',  NL:'denmark', CH:'finland',
+  BY:'poland',  SE:'norway',  AT:'estonia', CH:'finland',
   TH:'vietnam', KH:'vietnam', MM:'vietnam',
+  CL:'mexico',  CO:'mexico',  PE:'mexico',
+  // Locale-specific cards — insert dedicated card at front
+  GB:'uk',      DE:'germany', FR:'france',  IT:'italy',
+  ES:'spain',   PT:'portugal',NL:'netherlands',TR:'turkey',
+  RU:'russia',  BE:'france',
+  JP:'japan',   KR:'korea',   ID:'indonesia',PH:'philippines',
+  AU:'australia',NZ:'newzealand',SG:'singapore',
+  CA:'canada',  BR:'brazil',  AR:'argentina',CU:'cuba',
+  CZ:'czech',   HU:'hungary', RO:'romania', RS:'serbia',
+  EG:'egypt',   NG:'nigeria', ZA:'southafrica',ET:'ethiopia',
+  IR:'iran',    IQ:'iraq',    SA:'saudi',
 };
 const _AL = {
   uk:'ukraine', el:'greece',  et:'estonia', lv:'latvia',  lt:'lithuania',
   pl:'poland',  fi:'finland', no:'norway',  da:'denmark', is:'iceland',
-  ga:'ireland', vi:'vietnam', hi:'india',   ms:'malaysia',id:'malaysia',
-  es:'mexico',  pt:'mexico',  ru:'ukraine', tr:'greece',
-  fr:'algeria', de:'poland',  it:'greece',  sv:'norway',
-  nl:'denmark', mn:'mongolia',zh:'mongolia',ar:'algeria',
+  ga:'ireland', vi:'vietnam', hi:'india',   ms:'malaysia',
+  mn:'mongolia',zh:'mongolia',ar:'algeria',
+  // Locale-specific language fallbacks
+  de:'germany', fr:'france',  it:'italy',   es:'spain',
+  pt:'portugal',nl:'netherlands',tr:'turkey',ru:'russia',
+  ja:'japan',   ko:'korea',   id:'indonesia',sv:'norway',
 };
 
 // Base 11-card deck — Nordic/Baltic absent by default, inserted dynamically if detected

@@ -3,14 +3,36 @@ import './nav.js';
 
 let curFmt = 'square';
 
+const GROUPS = [
+  { label: 'Europe',
+    ids: ['czech','france','germany','greece','hungary','ireland','italy','netherlands','poland','portugal','romania','serbia','spain','turkey','uk','ukraine'] },
+  { label: 'Baltic & Nordic',
+    ids: ['denmark','estonia','finland','iceland','latvia','lithuania','norway'] },
+  { label: 'Asia-Pacific',
+    ids: ['australia','india','indonesia','japan','malaysia','newzealand','philippines','singapore','korea','vietnam'] },
+  { label: 'Americas',
+    ids: ['argentina','brazil','canada','cuba','mexico','usa'] },
+  { label: 'Africa & Middle East',
+    ids: ['algeria','egypt','ethiopia','iran','iraq','nigeria','saudi','southafrica'] },
+  { label: '↩ Logic Reversed',
+    ids: ['mongolia','russia'] },
+];
+
 function popSel() {
   const s = document.getElementById('gcase');
   if (!s) return;
-  CASES.forEach(c => {
-    const o = document.createElement('option');
-    o.value = c.id;
-    o.textContent = c.flag + ' ' + c.abs + ' — ' + c.real;
-    s.appendChild(o);
+  GROUPS.forEach(group => {
+    const og = document.createElement('optgroup');
+    og.label = group.label;
+    group.ids.forEach(id => {
+      const c = CASES.find(c => c.id === id);
+      if (!c) return;
+      const o = document.createElement('option');
+      o.value = c.id;
+      o.textContent = c.flag + ' ' + c.abs + ' — ' + c.real;
+      og.appendChild(o);
+    });
+    s.appendChild(og);
   });
 }
 

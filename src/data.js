@@ -69,8 +69,169 @@ export const CASES = [
    sh:'The US declared independence from Britain in 1776 — self-determination is foundational to American identity. Would Americans accept competing internationally as "British Washington D.C."?',
    full:'<p>The United States fought a war of independence against Britain, founding its identity on the principle that <span class="pw">people have the right to determine their own government and name</span>. That principle is written into the Declaration of Independence.</p><p>Taiwan has self-governed democratically since 1949 — longer than many nations that are fully recognised today. If self-determination justified America\'s independence in 1776, why doesn\'t it justify Taiwan\'s name in 2026?</p>',
    cmp:{t:'"British Washington D.C." — unthinkable for a country founded on self-determination',u:`"Chinese Taipei" — imposed on a democracy that has governed itself for ${yearsGoverned} years`}},
-  {id:'mongolia',r:'special',flag:'\u{1F1E8}\u{1F1F3}',abs:'"Mongolian Beijing"',real:'China (reversed)',cl:'Mongol Empire / Yuan Dynasty',yr:'Yuan Dynasty ruled China 1271–1368',
-   sh:'The Mongol Empire built Beijing and ruled China for nearly 100 years. By China\'s own logic — shouldn\'t Beijing be called "Mongolian Beijing"?',
-   full:'<p>The Mongol Empire — under Kublai Khan — <span class="pw">conquered China and founded the Yuan Dynasty</span>, ruling from 1271 to 1368. Beijing was built and designated as the imperial capital by the Mongols.</p><p>By the same logic China uses to claim Taiwan — that historical connection justifies a naming right — shouldn\'t Beijing be "Mongolian Beijing"? The Mongols actually ruled China for ~100 years. The PRC has never governed Taiwan for a single day.</p>',
-   cmp:{t:'Mongols actually built and ruled Beijing for ~100 years',u:'PRC has never governed Taiwan for a single day'}}
+  {id:'mongolia',r:'special',flag:'\u{1F1E8}\u{1F1F3}',abs:'"Mongol Beijing"',real:'China (reversed)',cl:'Mongol Empire / Yuan Dynasty',yr:'Yuan Dynasty ruled China 1271–1368',
+   sh:'The Mongol Empire built Beijing and ruled China for nearly 100 years. By China\'s own logic — shouldn\'t Beijing be called "Mongol Beijing"?',
+   full:'<p>The Mongol Empire — under Kublai Khan — <span class="pw">conquered China and founded the Yuan Dynasty</span>, ruling from 1271 to 1368. Beijing was built and designated as the imperial capital by the Mongols.</p><p>By the same logic China uses to claim Taiwan — that historical connection justifies a naming right — shouldn\'t Beijing be "Mongol Beijing"? The Mongols actually ruled China for ~100 years. The PRC has never governed Taiwan for a single day.</p>',
+   cmp:{t:'Mongols actually built and ruled Beijing for ~100 years',u:'PRC has never governed Taiwan for a single day'}},
+
+  // ── Locale-specific cards — inserted at deck front when user's country is detected ──────────
+
+  // Asia-Pacific
+  {id:'japan',r:'asian',flag:'🇯🇵',abs:'"American Tokyo"',real:'Japan',cl:'United States (Allied Occupation)',yr:'Occupied 1945–1952',
+   sh:'General MacArthur governed Japan from the Dai-Ichi Building — rewriting its constitution, dissolving its military, restructuring its society. The Emperor stayed only because MacArthur allowed it. Would Japan compete internationally as "American Tokyo"?',
+   full:'<p>The Allied Occupation gave MacArthur <span class="pw">more direct power over Japan than any shogun or emperor in centuries</span>. He rewrote the constitution, broke up the zaibatsu, redesigned Japanese society — all in seven years.</p><p>Japan today is one of the world\'s most culturally sovereign nations. Yet for seven years it was effectively an American province. "American Tokyo" would be absurd to any Japanese person. "Chinese Taipei" is no different to any Taiwanese person.</p>',
+   cmp:{t:'Japan occupied 7 years — "American Tokyo" is obviously absurd',u:'"Chinese Taipei" — imposed despite zero days of PRC governance'}},
+
+  {id:'korea',r:'asian',flag:'🇰🇷',abs:'"Japanese Seoul"',real:'South Korea',cl:'Japan (Imperial)',yr:'Colonised 1910–1945',
+   sh:'Japan renamed Seoul "Keijo" (京城), banned Korean in schools, and forced Koreans to take Japanese surnames. Cultural erasure through renaming is the clearest tool of empire — and the exact same logic China uses to justify "Chinese Taipei."',
+   full:'<p>Under Japanese colonial rule, <span class="pw">the Korean language was banned in schools, Koreans were forced to adopt Japanese names</span>, and Seoul was renamed Keijo. Identity itself became illegal.</p><p>Korea reclaimed its name in 1945. Taiwan has governed itself since 1949. The logic that makes "Japanese Seoul" unacceptable makes "Chinese Taipei" unacceptable.</p>',
+   cmp:{t:'Korea reclaimed Seoul\'s name after liberation in 1945',u:'Taiwan still uses "Chinese Taipei" today'}},
+
+  {id:'indonesia',r:'asian',flag:'🇮🇩',abs:'"Dutch Jakarta"',real:'Indonesia',cl:'Netherlands (VOC)',yr:'Batavia 1619–1942',
+   sh:'The Dutch renamed Jakarta "Batavia" — after a Germanic tribe — and kept it for 323 years. The longest-running colonial renaming in Asian history. Indonesia would find "Dutch Jakarta" as absurd as Taiwan finds "Chinese Taipei."',
+   full:'<p>The Dutch East India Company renamed the city <span class="pw">"Batavia" in 1619 after a Germanic tribe in the Rhine delta</span> — a name with no connection to Java whatsoever. It remained Batavia for 323 years.</p><p>Indonesia reclaimed "Jakarta" in 1942. Taiwan has governed itself since 1949. History is full of names imposed by force — and reclaimed by persistence.</p>',
+   cmp:{t:'"Batavia" rejected — Jakarta restored after independence',u:'"Chinese Taipei" — still imposed on a self-governing democracy'}},
+
+  {id:'philippines',r:'asian',flag:'🇵🇭',abs:'"American Manila"',real:'Philippines',cl:'United States',yr:'Colonial rule 1898–1946',
+   sh:'The US purchased the Philippines from Spain for $20 million in 1898, then fought a brutal war to suppress independence. Manila was rebuilt in the American colonial image. Would Filipinos compete internationally as "American Manila"?',
+   full:'<p>Spain sold the Philippines to the United States for $20 million. When Filipinos declared independence, the US fought a <span class="pw">war that killed between 200,000 and one million Filipinos</span> to suppress it.</p><p>The Philippines gained independence in 1946. No one calls its capital "American Manila." Taiwan has self-governed since 1949. Does it get the same respect?</p>',
+   cmp:{t:'"American Manila" — absurd after 1946 independence',u:'"Chinese Taipei" — imposed despite zero PRC governance'}},
+
+  {id:'australia',r:'asian',flag:'🇦🇺',abs:'"British Sydney"',real:'Australia',cl:'Britain',yr:'Colonial settlement from 1788',
+   sh:'Britain claimed Australia as "terra nullius" — legally empty — erasing 60,000 years of First Nations history. Sydney began as a convict settlement. Australia remains a Commonwealth realm. Yet "British Sydney" sounds absurd. Why doesn\'t "Chinese Taipei"?',
+   full:'<p>The legal fiction of <span class="pw">"terra nullius" erased 60,000 years of continuous Indigenous Australian history</span> to justify British settlement. The High Court only overturned it in 1992.</p><p>Australia remains a Commonwealth realm with the British monarch as head of state. Yet "British Sydney" is obviously absurd. Taiwan has self-governed since 1949. "Chinese Taipei" should be equally obvious.</p>',
+   cmp:{t:'"British Sydney" — absurd despite ongoing Commonwealth ties',u:'"Chinese Taipei" — accepted despite zero PRC governance'}},
+
+  {id:'newzealand',r:'asian',flag:'🇳🇿',abs:'"British Wellington"',real:'New Zealand',cl:'Britain',yr:'Colonial rule from 1840',
+   sh:'The Treaty of Waitangi (1840) promised Māori sovereignty. Britain delivered colonial rule instead. New Zealand remains a Commonwealth realm. Yet "British Wellington" sounds wrong to any New Zealander. Why should "Chinese Taipei" sound acceptable?',
+   full:'<p>The Treaty of Waitangi promised Māori <span class="pw">protection of their sovereignty and lands</span>. What followed was decades of land confiscation, war, and cultural suppression.</p><p>New Zealand has been independent since 1947. "British Wellington" would be a colonial insult. "Chinese Taipei" is no different.</p>',
+   cmp:{t:'"British Wellington" — absurd for an independent nation',u:'"Chinese Taipei" — imposed on Asia\'s oldest Chinese-speaking democracy'}},
+
+  {id:'singapore',r:'asian',flag:'🇸🇬',abs:'"British Singapore"',real:'Singapore',cl:'Britain (Raffles)',yr:'British colony 1819–1963',
+   sh:'Raffles planted the British flag on Singapore in 1819, transforming a Malay fishing village into an imperial trading post. Singapore built one of the world\'s most successful city-states after independence. No one suggests "British Singapore." Why "Chinese Taipei"?',
+   full:'<p>Stamford Raffles <span class="pw">established a British trading post in 1819</span>. Singapore remained under British rule for 144 years, briefly occupied by Japan in WWII, then became independent in 1965.</p><p>"British Singapore" is not how the world knows this city. Taiwan has self-governed since 1949. The same logic applies.</p>',
+   cmp:{t:'"British Singapore" — absurd for a successful city-state',u:'"Chinese Taipei" — accepted without question'}},
+
+  // Europe
+  {id:'uk',r:'european',flag:'🇬🇧',abs:'"French London"',real:'United Kingdom',cl:'Normans (France)',yr:'Norman rule from 1066',
+   sh:'After 1066, French was England\'s official language for over 300 years. English kings swore oaths in French. London\'s ruling class spoke French. If 300 years of French linguistic dominance doesn\'t justify "French London" — what justifies "Chinese Taipei"?',
+   full:'<p>The Norman Conquest changed England\'s language as much as its king. <span class="pw">French remained the official language of English law and government for over three centuries</span>. Many English words today are Norman French.</p><p>No one calls London "French London." Taiwan has been self-governing since 1949. "French London" is absurd after 300 years of French rule. "Chinese Taipei" is absurd after zero days of PRC rule.</p>',
+   cmp:{t:'"French London" — absurd despite 300 years of French dominance',u:'"Chinese Taipei" — imposed despite zero days of PRC governance'}},
+
+  {id:'germany',r:'european',flag:'🇩🇪',abs:'"French Berlin"',real:'Germany',cl:'Napoleon\'s France / Allied Powers',yr:'French occupation 1806–1808 · divided 1945–1990',
+   sh:'Napoleon entered Berlin in 1806 and made Prussia a vassal state. After WWII, the Allies divided Berlin — its fate decided entirely by others. Germany knows what it means to have your capital\'s name defined by someone else\'s politics.',
+   full:'<p>Napoleon occupied Berlin in 1806, humiliating the Prussian state. After 1945, <span class="pw">Berlin was divided into American, British, French, and Soviet sectors</span> — its future decided entirely by others for 45 years.</p><p>Germany reunified in 1990 and Berlin is simply Berlin again. Taiwan has self-governed since 1949. "Chinese Taipei" is Berlin in 1961 — a capital under a name it didn\'t choose.</p>',
+   cmp:{t:'Berlin restored after reunification — no imposed prefix',u:'"Chinese Taipei" — Taiwan\'s capital still under an imposed name'}},
+
+  {id:'france',r:'european',flag:'🇫🇷',abs:'"German Paris"',real:'France',cl:'Nazi Germany',yr:'Occupied 1940–1944',
+   sh:'German troops paraded down the Champs-Élysées in June 1940. For four years Paris was a German-administered capital. De Gaulle rebuilt French identity on refusing that erasure. Should Taiwan be asked to accept what France would never accept?',
+   full:'<p>The Nazi occupation of Paris lasted four years. <span class="pw">The Vichy government collaborated; the Resistance refused</span>. De Gaulle\'s central argument was that France was never legitimately "German Paris" — that identity cannot be erased by military force.</p><p>The PRC has never administered Taiwan for a single day. "Chinese Taipei" has less historical basis than "German Paris" ever had. France refused the name. Taiwan is still fighting for that right.</p>',
+   cmp:{t:'"German Paris" — rejected by France and the world',u:'"Chinese Taipei" — accepted by most of the world'}},
+
+  {id:'italy',r:'european',flag:'🇮🇹',abs:'"German Rome"',real:'Italy',cl:'Nazi Germany',yr:'Occupied 1943–1944',
+   sh:'After Italy\'s 1943 armistice, Nazi Germany occupied Rome — enforcing martial law, deporting Jews to death camps. Rome, capital of 2,000 years of civilisation, became "German" by force of arms. Identity cannot be owned by the armed.',
+   full:'<p>When Italy signed an armistice in September 1943, German forces immediately occupied Rome. <span class="pw">1,259 Roman Jews were deported to Auschwitz</span> on October 16 — two weeks into the occupation.</p><p>The Allies liberated Rome in June 1944. "German Rome" lasted less than a year yet remains a defining wound. Taiwan has never been under PRC control. "Chinese Taipei" is occupation by language, not by force.</p>',
+   cmp:{t:'"German Rome" — a wound Italy has not forgotten',u:'"Chinese Taipei" — an occupation of language Taiwan cannot escape'}},
+
+  {id:'spain',r:'european',flag:'🇪🇸',abs:'"Arabic Madrid"',real:'Spain',cl:'Moors (Al-Andalus)',yr:'Islamic rule 711–1492',
+   sh:'For 781 years, most of the Iberian Peninsula was governed under Islamic caliphates — longer than the United States has existed. Spain spent centuries reclaiming its name. Would it accept "Arabic Madrid" today — for a rule that ended over 500 years ago?',
+   full:'<p>Al-Andalus was one of the medieval world\'s most sophisticated civilisations. <span class="pw">Córdoba\'s library held 400,000 volumes when most European cities had none</span>. The Reconquista took 781 years.</p><p>Modern Spain does not carry "Arabic" as a prefix. Taiwan has self-governed since 1949. Historical connection does not justify a naming right — in any direction.</p>',
+   cmp:{t:'"Arabic Madrid" — rejected after Spain\'s 781-year reclamation',u:'"Chinese Taipei" — imposed despite zero PRC governance'}},
+
+  {id:'portugal',r:'european',flag:'🇵🇹',abs:'"Spanish Lisbon"',real:'Portugal',cl:'Spain (Philip II)',yr:'Iberian Union 1580–1640',
+   sh:'When King Sebastião died heirless in 1578, Philip II of Spain seized the Portuguese crown — absorbing a separate nation\'s identity into his empire for 60 years. Portugal fought back and reclaimed independence in 1640. Should a nation\'s name depend on its neighbour\'s ambition?',
+   full:'<p>The Iberian Union merged Portugal and Spain under the Spanish crown for 60 years. <span class="pw">Portugal\'s overseas empire — Brazil, Angola, Mozambique, Goa — was administered as Spanish territory</span> during this period.</p><p>Portugal restored independence in 1640. "Spanish Lisbon" is not how anyone knows the city. Taiwan has self-governed since 1949. The principle is identical.</p>',
+   cmp:{t:'"Spanish Lisbon" — rejected after 60 years of union',u:'"Chinese Taipei" — imposed despite zero PRC governance'}},
+
+  {id:'czech',r:'european',flag:'🇨🇿',abs:'"German Prague"',real:'Czechia',cl:'Nazi Germany',yr:'Protectorate of Bohemia & Moravia 1939–1945',
+   sh:'Western powers handed Czechoslovakia to Hitler at Munich in 1938 — without a Czech in the room. Prague became the capital of a German "Protectorate." No Czech voted for it. No Czech accepted it. Taiwan did not vote for "Chinese Taipei" either.',
+   full:'<p>The Munich Agreement transferred Czechoslovakia\'s Sudetenland to Germany — <span class="pw">without Czechoslovakia present at the negotiating table</span>. Six months later, Germany occupied the rest. Prague became the administrative centre of the Protectorate of Bohemia and Moravia.</p><p>The Czech people never recognised German rule as legitimate. Taiwan does not recognise "Chinese Taipei" as legitimate. The world agreed with Czechia. Does it agree with Taiwan?</p>',
+   cmp:{t:'"German Prague" — never accepted, now unthinkable',u:'"Chinese Taipei" — still accepted, still contested'}},
+
+  {id:'hungary',r:'european',flag:'🇭🇺',abs:'"Ottoman Budapest"',real:'Hungary',cl:'Ottoman Empire',yr:'Ottoman occupation 1541–1699',
+   sh:'The Ottomans held Buda for 158 years. The three towns we call Budapest didn\'t unify until 1873, after liberation. Occupation reshapes identity. So does a name imposed from outside.',
+   full:'<p>The Battle of Mohács (1526) destroyed the Hungarian kingdom. <span class="pw">Buda fell to Süleiman the Magnificent in 1541 and remained Ottoman for 158 years</span>. The Royal Palace became a military barracks; cathedrals became mosques.</p><p>Hungary reclaimed its name after liberation in 1699. "Ottoman Budapest" is not how Hungary knows its capital. Taiwan has self-governed since 1949. "Chinese Taipei" should not be how the world knows Taiwan\'s capital.</p>',
+   cmp:{t:'"Ottoman Budapest" — absurd after 158 years of occupation',u:'"Chinese Taipei" — imposed despite zero PRC governance'}},
+
+  {id:'romania',r:'european',flag:'🇷🇴',abs:'"Russian Bucharest"',real:'Romania',cl:'Soviet Union',yr:'Soviet occupation 1947–1989',
+   sh:'Soviet troops liberated Romania from Nazi Germany — then stayed for 42 years. Romania calls it occupation. The world agreed. Yet Taiwan\'s situation — where no PRC soldier has ever set foot — draws far less international clarity.',
+   full:'<p>The Soviet Union installed a communist government in Romania in 1947 and maintained <span class="pw">military presence through the Warsaw Pact until the 1989 revolution</span>. Bucharest was the capital of a Soviet satellite state for over four decades.</p><p>Romania calls its post-1947 history an occupation. The world accepts that framing. Taiwan has never been governed by the PRC. Why does Taiwan\'s situation receive less clarity than Romania\'s?</p>',
+   cmp:{t:'"Russian Bucharest" — acknowledged as occupation, now liberated',u:'"Chinese Taipei" — an occupation of language with no liberation date'}},
+
+  {id:'serbia',r:'european',flag:'🇷🇸',abs:'"Ottoman Belgrade"',real:'Serbia',cl:'Ottoman Empire',yr:'Ottoman rule 1521–1867',
+   sh:'Belgrade was the Ottoman frontier fortress for 346 years — nearly four centuries. Serbian culture, Orthodox faith, and language survived underground. Name erasure is a tool of empire. Serbia resisted. So does Taiwan.',
+   full:'<p>The Ottomans took Belgrade in 1521. For <span class="pw">346 years it served as a key Ottoman administrative and military centre</span>. The Serbs fought for autonomy through the 19th century, gaining self-governance in 1867.</p><p>Serbia reclaimed its name. "Ottoman Belgrade" is not how Serbia knows its capital. Taiwan has self-governed since 1949. The logic of reclaiming a name does not expire.</p>',
+   cmp:{t:'"Ottoman Belgrade" — absurd after 346 years of rule and liberation',u:'"Chinese Taipei" — imposed despite zero PRC governance'}},
+
+  {id:'netherlands',r:'european',flag:'🇳🇱',abs:'"Spanish Amsterdam"',real:'Netherlands',cl:'Spain (Habsburg)',yr:'Spanish Netherlands 1516–1581',
+   sh:'The Dutch lived under Spanish Habsburg rule until declaring independence in 1581 — launching the Eighty Years\' War. Dutch identity was forged in resistance to an imposed ruler. A name is not just a label. It is a declaration.',
+   full:'<p>The Habsburg Netherlands was prosperous but restless. <span class="pw">The Dutch Revolt began in 1568 as a refusal to accept Spanish religious and political authority</span> — leading to the Eighty Years\' War and the birth of the Dutch Republic.</p><p>"Spanish Amsterdam" would be considered an affront to every Dutch person. Taiwan\'s refusal to accept "Chinese Taipei" comes from the same place.</p>',
+   cmp:{t:'"Spanish Amsterdam" — fought off after 65 years of Habsburg rule',u:'"Chinese Taipei" — imposed despite zero PRC governance'}},
+
+  {id:'turkey',r:'european',flag:'🇹🇷',abs:'"Greek Istanbul"',real:'Turkey',cl:'Byzantine Empire (Greek)',yr:'Constantinople 330–1453',
+   sh:'Istanbul was Constantinople — capital of the Byzantine (Greek) Empire for 1,123 years. Mehmed II conquered and renamed it in 1453. Turkey would not accept "Greek Istanbul" today. Taiwan has never been governed by Beijing — yet must accept "Chinese Taipei."',
+   full:'<p>Constantinople was founded by the Roman Emperor Constantine in 330 CE. For <span class="pw">1,123 years it was the capital of the Eastern Roman (Byzantine) Empire</span> — the centre of Greek Orthodox Christianity and civilisation.</p><p>When Mehmed II conquered it in 1453, renaming it signalled total victory. Turkey would find "Greek Istanbul" obviously offensive. Taiwan finds "Chinese Taipei" equally offensive. One of these is respected.</p>',
+   cmp:{t:'"Greek Istanbul" — Turkey would find this obviously offensive',u:'"Chinese Taipei" — Taiwan finds this equally offensive'}},
+
+  {id:'russia',r:'european',flag:'🇷🇺',abs:'"Mongol Moscow"',real:'Russia',cl:'Mongol Empire (Golden Horde)',yr:'Mongol domination 1237–1480',
+   sh:'The Golden Horde burned Moscow, made Russian princes bow before Mongol khans, and collected tribute for 243 years. Russia calls it the "Tatar Yoke." By Russia\'s own logic — that historical presence justifies a naming claim — Moscow should be "Mongol Moscow." The PRC has governed Taiwan for zero days.',
+   full:'<p>The Mongol invasion of 1237–42 destroyed most Russian cities and made Russian princes <span class="pw">subjects of the Golden Horde for 243 years</span>. Russian tsars travelled to the Mongol capital to receive their authority.</p><p>Russia\'s own history was shaped by a powerful neighbour claiming authority over it. The PRC has governed Taiwan for exactly zero days. If Russia finds "Mongol Moscow" absurd — why does it not find "Chinese Taipei" equally absurd?</p>',
+   cmp:{t:'"Mongol Moscow" — absurd despite 243 years of Golden Horde domination',u:'"Chinese Taipei" — accepted despite zero PRC governance'}},
+
+  // Americas
+  {id:'canada',r:'american',flag:'🇨🇦',abs:'"French Ottawa"',real:'Canada',cl:'France / Britain',yr:'New France 1534–1763',
+   sh:'France colonised Canada first — Nouvelle-France stretched from the Gulf of St. Lawrence to the Rockies. Britain conquered it in 1763. French Canadians never forgot. Quebec still debates independence today. Canada was built on the question of whose name prevails. Taiwan is still asking the same.',
+   full:'<p>Samuel de Champlain founded Quebec City in 1608. <span class="pw">New France stretched over an enormous territory before the British Conquest of 1763</span>. Today, 7 million Canadians speak French as their first language.</p><p>Canada negotiated a bilingual identity. Taiwan has not been given the chance to negotiate its international name. "French Ottawa" is not how Canada presents itself. "Chinese Taipei" should not be how Taiwan is forced to present itself.</p>',
+   cmp:{t:'"French Ottawa" — Canada chose its own national identity',u:'"Chinese Taipei" — Taiwan was not given that choice'}},
+
+  {id:'brazil',r:'american',flag:'🇧🇷',abs:'"Portuguese São Paulo"',real:'Brazil',cl:'Portugal',yr:'Colonial rule 1500–1822',
+   sh:`São Paulo was founded by Portuguese missionaries in 1554 — built on the edge of indigenous Tupinambá land. Brazil's independence in 1822 reclaimed its future. Taiwan has self-governed for ${yearsGoverned} years. The colonizer's name is still on the door.`,
+   full:`<p>São Paulo began as a Jesuit mission in 1554. <span class="pw">Brazil was a Portuguese colony for 322 years</span>, its indigenous peoples decimated, its resources extracted across the Atlantic.</p><p>Brazil declared independence in 1822 and reclaimed its right to name its cities. Taiwan has self-governed since 1949. "Portuguese São Paulo" would be a colonial insult. "Chinese Taipei" is no different.</p>`,
+   cmp:{t:'"Portuguese São Paulo" — absurd for an independent nation',u:`"Chinese Taipei" — imposed on a democracy after ${yearsGoverned} years`}},
+
+  {id:'argentina',r:'american',flag:'🇦🇷',abs:'"Spanish Buenos Aires"',real:'Argentina',cl:'Spain',yr:'Colonial rule 1536–1816',
+   sh:`Buenos Aires was founded by Spanish colonisers in 1536. For 280 years it was a Spanish colonial port. Independence in 1816 reclaimed it for Argentina. Taiwan has governed itself for ${yearsGoverned} years and is still called something else.`,
+   full:`<p>Buenos Aires was refounded as a permanent settlement in 1580. <span class="pw">For 280 years it served as capital of the Spanish Viceroyalty of the Río de la Plata</span>.</p><p>Argentina's independence in 1816 reclaimed the city's future — and its right to define itself. "Spanish Buenos Aires" is not how Argentina presents its capital. Taiwan has self-governed since 1949. The same principle applies.</p>`,
+   cmp:{t:'"Spanish Buenos Aires" — absurd after 1816 independence',u:`"Chinese Taipei" — imposed on a democracy after ${yearsGoverned} years`}},
+
+  {id:'cuba',r:'american',flag:'🇨🇺',abs:'"American Havana"',real:'Cuba',cl:'United States',yr:'US protectorate 1898–1959',
+   sh:'The Platt Amendment gave the US the right to intervene in Cuban affairs indefinitely. Havana became the playground of American corporations, the mob, and tourists. The Cuban Revolution of 1959 was, at least partly, a revolt against a capital that no longer felt Cuban.',
+   full:'<p>After the Spanish-American War, the US installed the Platt Amendment — <span class="pw">reserving the right to intervene in Cuba at will</span>. Havana\'s economy was controlled by American corporations and, later, organised crime.</p><p>Cuba\'s revolution in 1959 was a violent rejection of external control over national identity. "American Havana" captures what Havana felt like under that influence. Taiwan\'s "Chinese Taipei" carries a similar weight — enforced not by force, but by diplomatic pressure.</p>',
+   cmp:{t:'"American Havana" — Cuba revolted against exactly this',u:'"Chinese Taipei" — Taiwan resists through diplomacy, not revolution'}},
+
+  // Africa & Middle East
+  {id:'egypt',r:'african',flag:'🇪🇬',abs:'"British Cairo"',real:'Egypt',cl:'Britain',yr:'British protectorate 1882–1922',
+   sh:'Britain occupied Egypt to protect the Suez Canal — a strategic asset, not Egyptian people. Cairo became an imperial administration centre. "Independent" with conditions is not quite independent. Taiwan knows the feeling.',
+   full:'<p>Britain occupied Egypt in 1882 — ostensibly to stabilise its finances and protect the Suez Canal. <span class="pw">Egypt remained under British influence even after nominal independence in 1922</span>, with British troops in the Canal Zone until 1956.</p><p>The Suez Crisis of 1956 was Egypt\'s declaration that its capital was truly its own. Taiwan has not yet had that moment. "Chinese Taipei" is Cairo before 1956.</p>',
+   cmp:{t:'"British Cairo" — Egypt asserted its name at Suez in 1956',u:'"Chinese Taipei" — Taiwan still waiting for that assertion to be heard'}},
+
+  {id:'nigeria',r:'african',flag:'🇳🇬',abs:'"British Lagos"',real:'Nigeria',cl:'Britain',yr:'Amalgamated 1914',
+   sh:'Britain amalgamated Northern and Southern Nigeria in 1914 — without consulting any Nigerian. The borders, the capital, the name: all British decisions. Nigeria has spent its entire post-independence history living with the consequences of a map it didn\'t draw.',
+   full:'<p>Lord Lugard amalgamated Nigeria in 1914 as an administrative convenience. <span class="pw">Over 250 ethnic groups were merged into one British territory</span> with no representation in the decision.</p><p>Nigeria gained independence in 1960. "British Lagos" would insult every Nigerian. Names imposed without consent carry their own injustice. Taiwan\'s "Chinese Taipei" was never consented to either.</p>',
+   cmp:{t:'"British Lagos" — absurd after Nigerian independence',u:'"Chinese Taipei" — imposed without Taiwan\'s consent'}},
+
+  {id:'southafrica',r:'african',flag:'🇿🇦',abs:'"British Cape Town"',real:'South Africa',cl:'Britain',yr:'British rule from 1806',
+   sh:'Cape Town was founded by the Dutch East India Company in 1652 — then seized by Britain in 1806. The Boer Wars were whites fighting whites over land that belonged to neither. Britain invented the modern concentration camp to hold Boer women and children. "British Cape Town" would be an insult to nearly everyone.',
+   full:'<p>Cape Town\'s history is a series of erasures. The Dutch displaced the Khoikhoi. <span class="pw">Britain fought the Boer Wars to control the gold and diamond wealth of the interior</span> — creating concentration camps that killed 28,000 Boer civilians. Black South Africans remained invisible throughout.</p><p>The apartheid system was a direct legacy of colonial logic. "British Cape Town" erases all of this into a single label. So does "Chinese Taipei."</p>',
+   cmp:{t:'"British Cape Town" — every layer of this history is a wound',u:'"Chinese Taipei" — a single label erasing a complex identity'}},
+
+  {id:'ethiopia',r:'african',flag:'🇪🇹',abs:'"Italian Addis Ababa"',real:'Ethiopia',cl:'Fascist Italy',yr:'Italian occupation 1936–1941',
+   sh:'Ethiopia was one of two African nations to resist European colonisation. Mussolini used poison gas and aerial bombing to take it anyway. Haile Selassie addressed the League of Nations — who listened and did nothing. Some names survive only because someone decided to fight.',
+   full:'<p>Ethiopia\'s resistance to colonisation made it a symbol of African dignity. <span class="pw">Mussolini used mustard gas dropped from aircraft to overwhelm Ethiopian forces</span> — a war crime the League of Nations condemned but did not stop.</p><p>Italy\'s occupation lasted five years before British and Ethiopian forces expelled it. Addis Ababa was restored. Taiwan\'s "Chinese Taipei" is enforced not by poison gas but by economic and diplomatic pressure. The mechanism differs. The logic is the same.</p>',
+   cmp:{t:'"Italian Addis Ababa" — five years, then expelled',u:`"Chinese Taipei" — imposed for ${yearsGoverned} years, still contested`}},
+
+  {id:'iran',r:'middleeast',flag:'🇮🇷',abs:'"British Tehran"',real:'Iran',cl:'Britain and Russia',yr:'Anglo-Russian influence 1907–1953',
+   sh:'The Anglo-Russian Convention of 1907 divided Iran into "spheres of influence" without asking Iran. Britain controlled its oil for decades. When Iran nationalised it in 1951, Britain and the CIA staged a coup. Tehran was never formally renamed — but it was not quite Iranian either.',
+   full:'<p>The 1907 Anglo-Russian Convention divided Iran into a Russian zone and a British zone. <span class="pw">Britain controlled Iranian oil through the Anglo-Persian Oil Company from 1908</span>. When Prime Minister Mossadegh nationalised the oil, Britain and the US overthrew him in 1953.</p><p>Tehran was never called "British Tehran" — but its autonomy was fictional for decades. Taiwan\'s name is its autonomy. "Chinese Taipei" is the fiction imposed from outside.</p>',
+   cmp:{t:'"British Tehran" — Iran fought to control its own city and resources',u:'"Chinese Taipei" — Taiwan still fighting to control its own name'}},
+
+  {id:'iraq',r:'middleeast',flag:'🇮🇶',abs:'"British Baghdad"',real:'Iraq',cl:'Britain',yr:'British Mandate 1920–1932',
+   sh:'Sykes-Picot drew Iraq\'s borders with a ruler on a map — no Iraqi in the room. Britain held the League of Nations mandate for 12 years, installing a king of their choice. Baghdad, golden-age capital of the Abbasid Caliphate, became a British administrative centre. Lines on maps create nations. Names on signs erase them.',
+   full:'<p>The British Mandate for Mesopotamia was created after WWI. <span class="pw">Britain installed Faisal I as king despite a referendum showing Iraqis preferred a republic</span>. The 1920 Iraqi revolt was suppressed by RAF bombing.</p><p>Baghdad had been the centre of the Islamic golden age. As "British Baghdad" it became a colonial capital. Iraq gained independence in 1932. "British Baghdad" is now obviously absurd. "Chinese Taipei" should be equally obvious.</p>',
+   cmp:{t:'"British Baghdad" — Iraq\'s name restored at independence',u:'"Chinese Taipei" — Taiwan\'s name still held by others\' politics'}},
+
+  {id:'saudi',r:'middleeast',flag:'🇸🇦',abs:'"Ottoman Riyadh"',real:'Saudi Arabia',cl:'Ottoman Empire (via Rashidi)',yr:'Al Saud expelled 1891',
+   sh:'The Ottomans backed the rival Rashidi dynasty to expel the Al Saud family from Riyadh in 1891. Ibn Saud led 40 men in a midnight raid in 1902 to take it back — and built a nation from that single city. Riyadh was never Ottoman in soul. A name imposed by force rarely outlasts the people who refuse it.',
+   full:'<p>The Ottomans never directly administered Riyadh — they <span class="pw">backed the Rashidi dynasty as a proxy to control central Arabia</span>. Ibn Saud spent his teenage years in exile in Kuwait.</p><p>His 1902 raid on the Masmak Fortress with 40 men retook Riyadh and launched modern Saudi Arabia. Riyadh was always Al Saud\'s city in soul, even when it was lost. Taiwan is "Chinese Taipei" in name only.</p>',
+   cmp:{t:'"Ottoman Riyadh" — reclaimed by 40 men in a single night',u:'"Chinese Taipei" — Taiwan reclaiming its name diplomatically, year by year'}}
 ];

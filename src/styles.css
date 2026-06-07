@@ -389,7 +389,7 @@ canvas.lc{width:100%;height:100%;display:block;}
   color:rgba(255,255,255,0.48);text-transform:uppercase;margin-bottom:9px;}
 .sc-abs{font-family:'Cormorant Garamond',serif;font-size:clamp(19px,3.5vw,30px);
   font-weight:700;font-style:italic;color:#e63946;line-height:1.1;margin-bottom:4px;}
-.sc-arr{font-family:'Space Mono',monospace;font-size:9px;color:rgba(255,255,255,0.68);margin-bottom:12px;}
+.sc-arr{font-family:'Space Mono',monospace;font-size:9px;color:rgba(255,255,255,0.48);margin-bottom:12px;}
 .sc-tw{font-family:'Cormorant Garamond',serif;font-size:clamp(15px,2.5vw,22px);
   font-weight:600;color:#3a86ff;margin-bottom:2px;}
 .sc-tws{font-family:'Space Mono',monospace;font-size:8px;letter-spacing:2px;
@@ -1036,11 +1036,20 @@ footer .brand{color:#e63946;font-size:11px;letter-spacing:4px;}
   border-radius: 6px;
   text-decoration: none;
   color: inherit;
+  min-width: 0;
   transition: border-color 0.2s, box-shadow 0.2s;
 }
 .gd-card:hover {
   border-color: rgba(58,134,255,0.40);
   box-shadow: 0 0 0 1px rgba(58,134,255,0.12), 0 8px 28px rgba(0,0,0,0.45);
+}
+/* Scroll-reveal: override .sr's transition (same specificity, later in file loses) */
+.gd-card.sr {
+  transform: translateY(14px);
+  transition: opacity 0.5s ease, transform 0.5s ease, border-color 0.2s, box-shadow 0.2s;
+}
+.gd-card.sr.sr--in {
+  transform: none;
 }
 .gd-meta-row {
   display: flex;
@@ -1118,6 +1127,7 @@ footer .brand{color:#e63946;font-size:11px;letter-spacing:4px;}
   transition: color 0.2s;
 }
 .gd-card:hover .gd-cta { color: var(--blue); }
+
 
 /* RESPONSIVE */
 @media(max-width:760px){
@@ -1480,16 +1490,16 @@ footer .brand{color:#e63946;font-size:11px;letter-spacing:4px;}
   transition: background 0.18s, transform 0.1s;
 }
 .tn-btn:active { transform: scale(0.97); }
-.tn-btn-no  { color: #e63946; border-color: #e63946; }
-.tn-btn-yes { color: #2dc653; border-color: #2dc653; }
-.tn-btn-no:hover  { background: rgba(230,57,70,0.08); }
-.tn-btn-yes:hover { background: rgba(45,198,83,0.08); }
+.tn-btn-no  { background: rgba(230,57,70,0.14); color: #e63946; border-color: #e63946; }
+.tn-btn-yes { background: rgba(45,198,83,0.14); color: #2dc653; border-color: #2dc653; }
+.tn-btn-no:hover  { background: rgba(230,57,70,0.26); }
+.tn-btn-yes:hover { background: rgba(45,198,83,0.26); }
 
 .tn-hint {
   font-family: 'Space Mono', monospace;
   font-size: 8px;
   letter-spacing: 1.5px;
-  color: #303060;
+  color: var(--muted);
   text-transform: uppercase;
 }
 

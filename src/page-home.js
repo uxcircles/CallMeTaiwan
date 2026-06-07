@@ -449,7 +449,7 @@ if (stakesSection) {
 }
 
 // ── Analogy section: personalise first line by visitor's locale ───────────────
-// Lines 2 & 3 are fixed: "Ottoman Athens" (greece) and "Mongolian Beijing" (mongolia).
+// Lines 2 & 3 are fixed: "Ottoman Athens" (greece) and "Mongol Beijing" (mongolia).
 // Never swap the dynamic line to one of those — it would create a duplicate.
 const _AC = {
   UA:'ukraine',  GR:'greece',   EE:'estonia',  LV:'latvia',   LT:'lithuania',

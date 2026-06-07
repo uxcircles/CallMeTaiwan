@@ -30,7 +30,7 @@ function updateActive() {
 window.addEventListener('scroll', updateActive, { passive: true });
 updateActive();
 
-// Go Deeper section — staggered card reveal
+// Go Deeper section — staggered reveal for featured cards only
 const gdSection = document.getElementById('gd-section');
 if (gdSection) {
   const gdCards = [...gdSection.querySelectorAll('.gd-card.sr')];
@@ -41,3 +41,4 @@ if (gdSection) {
     gdCards.forEach((card, i) => setTimeout(() => card.classList.add('sr--in'), i * 130));
   }, { threshold: 0.1 }).observe(gdSection);
 }
+
