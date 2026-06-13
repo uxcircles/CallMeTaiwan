@@ -389,7 +389,7 @@ if (globeCanvas) {
 const scrollArrow = document.querySelector('.hs-scroll');
 if (scrollArrow) {
   scrollArrow.addEventListener('click', () => {
-    document.querySelector('.hs-map-section')?.scrollIntoView({ behavior: 'smooth' });
+    document.querySelector('.hs-analogy-section')?.scrollIntoView({ behavior: 'smooth' });
   });
 }
 
